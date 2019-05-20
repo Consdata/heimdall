@@ -10,7 +10,7 @@ class ReflectiveEventProcessor(private val deletage: Any) : EventProcessor {
         TODO("not implemented")
     }
 
-    override fun after(events: List<Event>) {
+    override fun after(event: Event) {
         TODO("not implemented")
     }
 

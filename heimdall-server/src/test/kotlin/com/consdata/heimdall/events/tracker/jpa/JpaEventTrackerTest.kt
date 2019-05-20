@@ -1,15 +1,15 @@
 package com.consdata.heimdall.events.tracker.jpa
 
-import io.mockk.MockKAnnotations
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
-import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.verify
 import com.consdata.heimdall.events.Event
 import com.consdata.heimdall.events.processor.EventProcessor
 import com.consdata.heimdall.events.processor.EventProcessorDescriptor
 import com.consdata.heimdall.events.store.EventStore
 import com.consdata.heimdall.events.tracker.TrackingKey
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.RelaxedMockK
+import io.mockk.verify
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -32,7 +32,7 @@ class JpaEventTrackerTest {
     @Test
     fun `Should fetch events based on last known offset`() {
         val offset = 17L
-        val events = listOf(anEvent())
+        val event = anEvent()
         val eventProcessorDescriptor = EventProcessorDescriptor("TestEventProcessor", "1.0")
         val trackingKey = TrackingKey.ofEventProcessorDescriptor(eventProcessorDescriptor).key()
 
@@ -40,13 +40,13 @@ class JpaEventTrackerTest {
         every { processor.descriptor() } returns eventProcessorDescriptor
         every { repository.findByKey(trackingKey) } returns JpaEventTrackerEntity(trackingKey, offset)
         every { repository.save(any<JpaEventTrackerEntity>()) } returnsArgument 0
-        every { store.eventsWindow(offset, eventProcessorDescriptor.eventBatchSize) } returns events
+        every { store.eventsWindow(offset, eventProcessorDescriptor.eventBatchSize) } returns listOf(event)
 
         // when
         tracker.run()
 
         // then
-        verify { processor.after(events) }
+        verify { processor.after(event) }
     }
 
     private fun anEvent() = Event(

@@ -3,7 +3,6 @@ package com.consdata.heimdall.report.list
 import com.google.gson.Gson
 import com.consdata.heimdall.events.Event
 import com.consdata.heimdall.report.*
-import com.consdata.heimdall.report.add.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

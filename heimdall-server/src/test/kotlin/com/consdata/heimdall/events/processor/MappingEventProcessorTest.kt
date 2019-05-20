@@ -23,19 +23,19 @@ internal class MappingEventProcessorTest {
         )
 
         // when
-        processor.after(oneEvent())
+        processor.after(anEvent())
 
         // then
         assertThat(captured).isNotNull
     }
 
-    private fun oneEvent(): List<Event> = listOf(Event(
+    private fun anEvent(): Event = Event(
             uuid = "1",
             aggregateUuid = "1",
             version = 1,
             timestamp = 1,
             payloadType = "ReportAdded",
             payload = "hello event"
-    ))
+    )
 
 }

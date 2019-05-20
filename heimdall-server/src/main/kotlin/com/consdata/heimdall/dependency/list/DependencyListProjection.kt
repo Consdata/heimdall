@@ -3,7 +3,7 @@ package com.consdata.heimdall.dependency.list
 import com.consdata.heimdall.events.Event
 import com.consdata.heimdall.events.processor.EventProcessorDescriptor
 import com.consdata.heimdall.events.processor.EventProcessorMapping
-import com.consdata.heimdall.report.add.ReportAddedEvent
+import com.consdata.heimdall.report.ReportAddedEvent
 import org.springframework.stereotype.Component
 
 @Component

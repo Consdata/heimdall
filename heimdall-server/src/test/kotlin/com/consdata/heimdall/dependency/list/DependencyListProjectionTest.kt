@@ -2,7 +2,7 @@ package com.consdata.heimdall.dependency.list
 
 import com.consdata.heimdall.events.EventTestSupport
 import com.consdata.heimdall.report.ArtifactReportTestSupport
-import com.consdata.heimdall.report.add.ReportAddedEvent
+import com.consdata.heimdall.report.ReportAddedEvent
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

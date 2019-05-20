@@ -1,7 +1,6 @@
-package com.consdata.heimdall.report.add
+package com.consdata.heimdall.report
 
 import com.google.gson.Gson
-import com.consdata.heimdall.report.ArtifactReport
 
 data class ReportAddedEvent(val report: ArtifactReport) {
     companion object {

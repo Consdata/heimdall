@@ -1,8 +1,5 @@
-package com.consdata.heimdall.command.simple
+package com.consdata.heimdall.command
 
-import com.consdata.heimdall.command.Command
-import com.consdata.heimdall.command.CommandBus
-import com.consdata.heimdall.command.CommandHandler
 import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 

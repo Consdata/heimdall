@@ -4,7 +4,7 @@ import com.consdata.heimdall.events.Event
 
 interface EventProcessor {
 
-    fun after(events: List<Event>)
+    fun after(event: Event)
     fun descriptor(): EventProcessorDescriptor
 
 }

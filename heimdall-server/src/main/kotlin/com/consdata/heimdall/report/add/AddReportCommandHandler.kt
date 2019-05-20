@@ -7,6 +7,7 @@ import com.consdata.heimdall.command.CommandHandlerException
 import com.consdata.heimdall.events.Event
 import com.consdata.heimdall.events.store.EventStore
 import com.consdata.heimdall.logging.logger
+import com.consdata.heimdall.report.ReportAddedEvent
 import org.springframework.stereotype.Component
 import java.util.*
 
