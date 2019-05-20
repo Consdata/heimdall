@@ -1,0 +1,12 @@
+= Getting Started With Spring REST Docs
+
+.curl request
+include::{snippets}/info/curl-request.adoc[]
+
+.request
+include::{snippets}/info/http-request.adoc[]
+
+.response
+include::{snippets}/info/http-response.adoc[]
+
+As you can see the format is very simple, and in fact you always get the same message.

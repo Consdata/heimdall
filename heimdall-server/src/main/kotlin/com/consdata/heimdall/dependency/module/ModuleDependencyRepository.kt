@@ -1,0 +1,3 @@
+package com.consdata.heimdall.dependency.module
+
+interface ModuleDependencyRepository
