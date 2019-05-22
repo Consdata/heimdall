@@ -1,14 +1,15 @@
 {
   "name": "@consdata/heimdall-scanner",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "main": "dist/index.js",
+  "bin": "dist/run.js",
   "author": "Grzegorz Lipecki",
   "license": "MIT",
   "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf .build && rimraf dist",
     "postbuild": "rimraf .build",
-    "build:compile": "tsc -p src/tsconfig.json",
+    "build:compile": "tsc -p src/tsconfig.json && copyfiles -u 1 src/run.js dist",
     "build": "yarn build:compile",
     "release": "yarn build && yarn publish --minor --non-interactive --access public && git push && git push --tags"
   },
