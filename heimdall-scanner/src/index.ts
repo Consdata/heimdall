@@ -12,7 +12,7 @@ const paths: { [key: string]: string } = {
     yarnLock: `${pathToProject}/yarn.lock`
 };
 
-console.log(`Running Heimdall scanner in ${pathToProject}`);
+// console.log(`Running Heimdall scanner in ${pathToProject}`);
 
 const missingPaths = Object.keys(paths)
     .map(key => paths[key])
