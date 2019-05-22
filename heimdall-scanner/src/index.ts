@@ -25,9 +25,8 @@ if (missingPaths.length > 0) {
 // - path mapping for modules (effectively white list to scan)
 const packageFile = JSON.parse(fs.readFileSync(paths.packageJson)) as PackageFile;
 const yarnLock = lockfile.parse(fs.readFileSync(paths.yarnLock, 'utf8')).object;
-const rootDependencies = packageFile.dependencies;
 
-const report: Report = parse(rootDependencies, yarnLock);
+const report: Report = parse(packageFile, yarnLock);
 
 // console.log(JSON.stringify(compressJson(report)));
 console.log(JSON.stringify(report));

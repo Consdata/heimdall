@@ -3,5 +3,7 @@ export interface PackageFileDependencies {
 }
 
 export interface PackageFile {
+    name: string;
+    version: string;
     dependencies: PackageFileDependencies;
 }

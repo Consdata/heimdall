@@ -1,5 +1,5 @@
 import {ModuleDependency, ModuleType, Report} from './api';
-import {PackageFileDependencies} from './package-file';
+import {PackageFile} from './package-file';
 
 export function dependency(resolutions: any, name: string, version: string): ModuleDependency {
     const nameWithVersion = `${name}@${version}`;
@@ -13,18 +13,15 @@ export function dependency(resolutions: any, name: string, version: string): Mod
     }
 }
 
-export function parse(dependencies: PackageFileDependencies, yarnLock: any): Report {
+export function parse(packageFile: PackageFile, yarnLock: any): Report {
+    const dependencies = packageFile.dependencies;
     const timestamp = new Date().getTime();
     return {
         project: {
-            name: 'Project name',
-            version: '1.0.0-SNAPSHOT'
+            name: packageFile.name,
+            version: packageFile.version
         },
         timestamp: `${timestamp}`,
-        git: {
-            branch: 'master',
-            sha: '256aaa'
-        },
         modules: [
             {
                 type: ModuleType.npm,
