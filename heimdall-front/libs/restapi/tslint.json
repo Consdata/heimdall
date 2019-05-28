@@ -1,7 +1,0 @@
-{
-  "extends": "../../tslint.json",
-  "rules": {
-    "directive-selector": [true, "attribute", "heimdall-front", "camelCase"],
-    "component-selector": [true, "element", "heimdall-front", "kebab-case"]
-  }
-}

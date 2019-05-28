@@ -13,9 +13,6 @@
     },
     "home-e2e": {
       "tags": []
-    },
-    "restapi": {
-      "tags": ["api"]
     }
   }
 }
