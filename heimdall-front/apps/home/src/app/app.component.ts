@@ -8,14 +8,16 @@ import {RestApiService} from '../../../../libs/rest-api/src/lib/rest-api.service
 })
 export class AppComponent implements OnInit {
 
-  title = 'project Heimdall';
-  info: string;
+  title = '';
 
   constructor(private restApiService: RestApiService) {
   }
 
   ngOnInit(): void {
-    this.restApiService.getInfo().subscribe(info => this.info = info);
+    this.restApiService.getInfo()
+      .subscribe(info => {
+        this.title = info
+      });
   }
 
 }

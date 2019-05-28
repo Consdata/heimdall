@@ -9,7 +9,7 @@ export class RestApiService {
   }
 
   getInfo(): Observable<string> {
-    return this.httpClient.get<string>('/api/info');
+    return this.httpClient.get('/api/info', {responseType: 'text'});
   }
 
 }

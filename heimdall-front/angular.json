@@ -22,8 +22,13 @@
             "main": "apps/home/src/main.ts",
             "polyfills": "apps/home/src/polyfills.ts",
             "tsConfig": "apps/home/tsconfig.app.json",
-            "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
-            "styles": ["apps/home/src/styles.scss"],
+            "assets": [
+              "apps/home/src/favicon.ico",
+              "apps/home/src/assets"
+            ],
+            "styles": [
+              "apps/home/src/styles.scss"
+            ],
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -57,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "home:build"
+            "browserTarget": "home:build",
+            "proxyConfig": "apps/home/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -78,7 +84,9 @@
               "apps/home/tsconfig.app.json",
               "apps/home/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -113,7 +121,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/home-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -131,7 +141,9 @@
               "libs/rest-api/tsconfig.lib.json",
               "libs/rest-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
