@@ -117,6 +117,37 @@
           }
         }
       }
+    },
+    "rest-api": {
+      "root": "libs/rest-api",
+      "sourceRoot": "libs/rest-api/src",
+      "projectType": "library",
+      "prefix": "heimdall-front",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rest-api/tsconfig.lib.json",
+              "libs/rest-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/rest-api/jest.config.js",
+            "tsConfig": "libs/rest-api/tsconfig.spec.json",
+            "setupFile": "libs/rest-api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
