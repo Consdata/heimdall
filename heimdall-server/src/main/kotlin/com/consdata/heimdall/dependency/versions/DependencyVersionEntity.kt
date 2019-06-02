@@ -17,6 +17,9 @@ data class DependencyVersionEntity(
         val artifactName: String,
         val major: Long,
         val minor: Long,
-        val patch: Long
-)
+        val patch: Long) {
+
+    fun getVersionString() = "$major.$minor.$patch"
+
+}
 
