@@ -18,7 +18,6 @@ class DependencyListConfiguration {
                     projection.mapping(),
                     projection.descriptor()
             )
-
     )
 
 }

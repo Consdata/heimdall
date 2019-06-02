@@ -22,18 +22,15 @@ class DependencyListProjection(private val repository: DependencyListRepository)
     }
 
     internal fun afterReportAddedEvent(event: Event) {
-        val timestamp = event.timestamp
         val reportAdded = ReportAddedEvent.fromJson(event.payload)
+        val dependencyScope = DependencyScope.ofReportType(reportAdded.report.type)
 
         val dependencies = reportAdded.report.modules.flatMap { module ->
             module.dependencies.map {
-                DependencyListEntity(
-                        timestamp = timestamp,
-                        artifactName = it.name.artifact,
-                        artifactGroup = it.name.group ?: "",
-                        major = it.version.resolved.major.toLong(),
-                        minor = it.version.resolved.minor.toLong(),
-                        patch = it.version.resolved.patch.toLong()
+                DependencyEntity(
+                        scope = dependencyScope,
+                        artifactId = it.name.artifact,
+                        groupId = it.name.group ?: ""
                 )
             }
         }
@@ -45,7 +42,7 @@ class DependencyListProjection(private val repository: DependencyListRepository)
         }
     }
 
-    private fun existsInRepository(it: DependencyListEntity) =
-            repository.existsByArtifactGroupAndArtifactNameAndMajorAndMinorAndPatch(it.artifactGroup, it.artifactName, it.major, it.minor, it.patch)
+    private fun existsInRepository(it: DependencyEntity) =
+            repository.existsByScopeAndGroupIdAndArtifactId(it.scope, it.groupId, it.artifactId)
 
 }

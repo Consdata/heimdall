@@ -1,3 +1,0 @@
-package com.consdata.heimdall.dependency.module
-
-class ModuleDependencyController

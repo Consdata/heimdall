@@ -12,7 +12,7 @@ export enum ModuleType {
 }
 
 export interface ReportModule {
-    name?: string; // empty for single module projects
+    name: string; // empty for single module projects
     path?: string; //  empty for single module projects
     type: ModuleType;
     dependencies?: ModuleDependency[];
@@ -21,7 +21,8 @@ export interface ReportModule {
 export interface Report {
     project: {
         name: string,
-        version: string
+        version: string,
+        type: ModuleType
     },
     git?: {
         branch: string,

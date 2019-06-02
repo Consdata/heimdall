@@ -18,7 +18,7 @@ internal data class AddReportModuleDependencyDto(
 )
 
 internal data class AddReportModuleDto(
-        var name: String?,
+        var name: String,
         var path: String?,
         var type: AddReportModuleTypeDto,
         var dependencies: List<AddReportModuleDependencyDto>?
@@ -26,7 +26,8 @@ internal data class AddReportModuleDto(
 
 internal data class AddReportProjectDto(
         var name: String,
-        var version: String
+        var version: String,
+        var type: AddReportModuleTypeDto
 )
 
 internal data class AddReportGitDto(
@@ -35,7 +36,6 @@ internal data class AddReportGitDto(
 )
 
 internal data class AddReportDto(
-        var type: AddReportModuleTypeDto,
         var timestamp: String,
         var project: AddReportProjectDto,
         var git: AddReportGitDto?,

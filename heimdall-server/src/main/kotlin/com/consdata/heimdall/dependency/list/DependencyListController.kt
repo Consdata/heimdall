@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController
 internal class DependencyListController(private val repository: DependencyListRepository) {
 
     @GetMapping
-    fun getDependencies(): Iterable<DependencyListEntity> = repository.findAll()
+    fun getDependencies(): List<DependencyEntity> = repository.findAll()
 
 }

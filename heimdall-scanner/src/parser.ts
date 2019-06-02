@@ -19,12 +19,14 @@ export function parse(packageFile: PackageFile, yarnLock: any): Report {
     return {
         project: {
             name: packageFile.name,
-            version: packageFile.version
+            version: packageFile.version,
+            type: ModuleType.npm
         },
         timestamp: `${timestamp}`,
         modules: [
             {
                 type: ModuleType.npm,
+                name: packageFile.name,
                 dependencies: Object.keys(dependencies)
                     .map(name => dependency(yarnLock, name, dependencies[name]))
             }
