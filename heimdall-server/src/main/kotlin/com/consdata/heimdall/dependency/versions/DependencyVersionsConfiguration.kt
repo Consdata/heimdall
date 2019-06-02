@@ -1,4 +1,4 @@
-package com.consdata.heimdall.dependency.list
+package com.consdata.heimdall.dependency.versions
 
 import com.consdata.heimdall.events.processor.MappingEventProcessor
 import com.consdata.heimdall.events.store.EventStore
@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class DependencyListConfiguration {
+class DependencyVersionsConfiguration {
 
     @Bean
-    fun dependencyListProjectionProcessor(repository: JpaEventTrackerRepository, eventStore: EventStore, projection: DependencyListProjection) = JpaEventTracker(
+    fun dependencyVersionsProjectionProcessor(repository: JpaEventTrackerRepository, eventStore: EventStore, projection: DependencyVersionsProjection) = JpaEventTracker(
             repository,
             eventStore,
             MappingEventProcessor(

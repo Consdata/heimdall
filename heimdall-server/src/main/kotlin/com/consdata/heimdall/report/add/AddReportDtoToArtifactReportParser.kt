@@ -32,7 +32,7 @@ private class NpmParser : Parser {
             sha = git.sha
     )
 
-    override fun reportDate(timestamp: String) = GenerationDate(timestamp.toInt())
+    override fun reportDate(timestamp: String) = GenerationDate(timestamp.toFloat())
 
     override fun artifactName(raw: String): ArtifactName {
         val parts = raw.split("/")
@@ -65,22 +65,21 @@ class AddReportDtoToArtifactReportParser {
     private val npmParser = NpmParser()
 
     internal fun of(dto: AddReportDto): ArtifactReport {
-        val parser = parser(dto.type)
-        val artifactName = parser.artifactName(dto.project.name)
+        val parser = parser(dto.project.type)
         return ArtifactReport(
-                name = artifactName,
+                name = parser.artifactName(dto.project.name),
                 version = parser.artifactVersion(dto.project.version),
                 date = parser.reportDate(dto.timestamp),
                 git = if (dto.git != null) parser.gitCommit(dto.git!!) else null,
-                modules = ofModules(artifactName, dto.modules ?: listOf()),
-                type = parser.artifactType(dto.type)
+                modules = ofModules(dto.modules ?: listOf()),
+                type = parser.artifactType(dto.project.type)
         )
     }
 
-    private fun ofModules(projectName: ArtifactName, modules: List<AddReportModuleDto>) = modules.map {
+    private fun ofModules(modules: List<AddReportModuleDto>) = modules.map {
         val parser = parser(it.type)
         ArtifactModule(
-                name = if (it.name != null) parser.artifactName(it.name!!) else projectName,
+                name = parser.artifactName(it.name),
                 type = parser.artifactType(it.type),
                 dependencies = ofDependencies(parser, it.dependencies ?: listOf())
         )

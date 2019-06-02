@@ -14,6 +14,7 @@ gradle-app.setting
 /dist
 /tmp
 /out-tsc
+/out
 
 # dependencies
 /node_modules
@@ -70,3 +71,5 @@ pids
 *.seed
 *.pid.lock
 
+# Node
+node_modules

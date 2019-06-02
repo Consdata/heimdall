@@ -1,4 +1,4 @@
-package com.consdata.heimdall.dependency.list
+package com.consdata.heimdall.dependency.versions
 
 import com.consdata.heimdall.events.EventTestSupport
 import com.consdata.heimdall.report.ArtifactReportTestSupport
@@ -10,10 +10,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.context.annotation.Import
 
 @DataJpaTest
-@Import(DependencyListProjection::class)
-internal class DependencyListProjectionTest @Autowired constructor(
-        private val projection: DependencyListProjection,
-        private val repository: DependencyListRepository) {
+@Import(DependencyVersionsProjection::class)
+internal class DependencyVersionsProjectionTest @Autowired constructor(
+        private val projection: DependencyVersionsProjection,
+        private val repository: DependencyVersionsRepository) {
 
     @Test
     fun shouldCreateDependencyFromReport() {

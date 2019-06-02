@@ -1,4 +1,4 @@
-package com.consdata.heimdall.dependency.list
+package com.consdata.heimdall.dependency.versions
 
 import com.consdata.heimdall.events.Event
 import com.consdata.heimdall.events.processor.EventProcessorDescriptor
@@ -7,10 +7,10 @@ import com.consdata.heimdall.report.ReportAddedEvent
 import org.springframework.stereotype.Component
 
 @Component
-class DependencyListProjection(private val repository: DependencyListRepository) {
+class DependencyVersionsProjection(private val repository: DependencyVersionsRepository) {
 
     fun descriptor() = EventProcessorDescriptor(
-            name = "DependencyListProjection",
+            name = "DependencyVersionsProjection",
             eventTypes = listOf(ReportAddedEvent.type)
     )
 
@@ -22,15 +22,20 @@ class DependencyListProjection(private val repository: DependencyListRepository)
     }
 
     internal fun afterReportAddedEvent(event: Event) {
+        val timestamp = event.timestamp
         val reportAdded = ReportAddedEvent.fromJson(event.payload)
-        val dependencyScope = DependencyScope.ofReportType(reportAdded.report.type)
+        val dependencyScope = DependencyVersionScope.ofReportType(reportAdded.report.type)
 
         val dependencies = reportAdded.report.modules.flatMap { module ->
             module.dependencies.map {
-                DependencyEntity(
+                DependencyVersionEntity(
+                        timestamp = timestamp,
                         scope = dependencyScope,
-                        artifactId = it.name.artifact,
-                        groupId = it.name.group ?: ""
+                        artifactName = it.name.artifact,
+                        artifactGroup = it.name.group ?: "",
+                        major = it.version.resolved.major.toLong(),
+                        minor = it.version.resolved.minor.toLong(),
+                        patch = it.version.resolved.patch.toLong()
                 )
             }
         }
@@ -42,7 +47,7 @@ class DependencyListProjection(private val repository: DependencyListRepository)
         }
     }
 
-    private fun existsInRepository(it: DependencyEntity) =
-            repository.existsByScopeAndGroupIdAndArtifactId(it.scope, it.groupId, it.artifactId)
+    private fun existsInRepository(it: DependencyVersionEntity) =
+            repository.existsByArtifactGroupAndArtifactNameAndMajorAndMinorAndPatch(it.artifactGroup, it.artifactName, it.major, it.minor, it.patch)
 
 }
