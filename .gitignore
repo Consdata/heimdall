@@ -2,7 +2,6 @@ HELP.md
 
 # gradle
 .gradle
-/build/
 build/
 .build
 gradle-app.setting
@@ -11,10 +10,10 @@ gradle-app.setting
 .gradletasknamecache
 
 # compiled output
-/dist
-/tmp
-/out-tsc
-/out
+dist
+tmp
+out-tsc
+out
 
 # dependencies
 /node_modules
@@ -29,7 +28,7 @@ gradle-app.setting
 .sts4-cache
 
 # IDEs and editors
-/.idea
+.idea
 .project
 .classpath
 .c9/
@@ -40,7 +39,7 @@ gradle-app.setting
 *.iws
 *.iml
 *.ipr
-/out/
+out/
 .vscode/
 
 # misc
@@ -70,6 +69,7 @@ pids
 *.pid
 *.seed
 *.pid.lock
+*.mv.db
 
 # Node
 node_modules
