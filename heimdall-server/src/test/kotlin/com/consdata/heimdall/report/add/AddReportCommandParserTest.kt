@@ -18,18 +18,18 @@ internal class AddReportCommandParserTest {
         val result = parser.of(dto)
 
         // then
-        assertThat(result).isEqualTo(artifactReport)
+        assertThat(result).isEqualToComparingFieldByFieldRecursively(artifactReport)
     }
 
-    private val timestamp = 10001
+    private val timestamp = 10001L
 
     private val reportJsonDto = """
                         {
                           "project": {
                             "name": "@glipecki/heimdall-scanner",
-                            "version": "1.0"
+                            "version": "1.0",
+                            "type": "Npm"
                           },
-                          "type": "Npm",
                           "timestamp": "$timestamp",
                           "git": {
                             "branch": "master",
@@ -38,6 +38,7 @@ internal class AddReportCommandParserTest {
                           "modules": [
                             {
                               "type": "Npm",
+                              "name": "@glipecki/heimdall-scanner-module",
                               "dependencies": [
                                 {
                                   "name": "file-system",
@@ -74,7 +75,7 @@ internal class AddReportCommandParserTest {
             modules = listOf(
                     ArtifactModule(
                             name = ArtifactName(
-                                    artifact = "heimdall-scanner",
+                                    artifact = "heimdall-scanner-module",
                                     group = "@glipecki"
                             ),
                             type = ArtifactType.Npm,

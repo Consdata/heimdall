@@ -57,6 +57,11 @@ internal class AddReportControllerTest @Autowired constructor(private val mvc: M
         )
     }
 
-    private fun aDto() = AddReportDto(AddReportModuleTypeDto.Npm, "", AddReportProjectDto("", ""), AddReportGitDto("", ""), listOf())
+    private fun aDto() = AddReportDto(
+            timestamp = "1",
+            project = AddReportProjectDto("", "", AddReportModuleTypeDto.Npm),
+            git = AddReportGitDto("", ""),
+            modules = listOf()
+    )
 
 }

@@ -23,9 +23,9 @@ enum class ArtifactType {
     Npm, Maven, Gradle
 }
 
-data class GenerationDate(val timestamp: Number)
+data class GenerationDate(val timestamp: Long)
 
-data class ArtifactVersion(val major: Number, val minor: Number, val patch: Number) {
+data class ArtifactVersion(val major: Long, val minor: Long, val patch: Long) {
     fun versionString() = "$major.$minor.$patch"
 }
 

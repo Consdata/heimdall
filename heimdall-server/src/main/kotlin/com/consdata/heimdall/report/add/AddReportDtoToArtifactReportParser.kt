@@ -32,7 +32,7 @@ private class NpmParser : Parser {
             sha = git.sha
     )
 
-    override fun reportDate(timestamp: String) = GenerationDate(timestamp.toFloat())
+    override fun reportDate(timestamp: String) = GenerationDate(timestamp.toLong())
 
     override fun artifactName(raw: String): ArtifactName {
         val parts = raw.split("/")
@@ -49,9 +49,9 @@ private class NpmParser : Parser {
         return when (parts.size) {
             0 -> throw ParserException("Invalid artifactName version, missing segments")
             in 1..3 -> ArtifactVersion(
-                    major = parts.getOrElse(0) { "0" }.toInt(),
-                    minor = parts.getOrElse(1) { "0" }.toInt(),
-                    patch = parts.getOrElse(2) { "0" }.toInt()
+                    major = parts.getOrElse(0) { "0" }.toLong(),
+                    minor = parts.getOrElse(1) { "0" }.toLong(),
+                    patch = parts.getOrElse(2) { "0" }.toLong()
             )
             else -> throw ParserException("Invalid artifactName version, to many segments")
         }

@@ -6,7 +6,7 @@ class ArtifactReportTestSupport {
 
     companion object {
 
-        fun anArtifactDependency(group: String, artifact: String, major: Number, minor: Number, patch: Number) = ArtifactDependency(
+        fun anArtifactDependency(group: String, artifact: String, major: Long, minor: Long, patch: Long) = ArtifactDependency(
                 name = ArtifactName(
                         artifact = artifact,
                         group = group
