@@ -3,10 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'libraries-panel',
   template: `
-    <div class="navbar-wrapper">
-      <div class="navbar-logo"></div>
-      <div class="navbar-text">Heinmdall</div>
-    </div>
+        Tutaj będzie zajebiście skomplikowana tabelka, storzona przez najlepszych ludzi w oparciu o najnowsze technologie.
   `,
 })
 export class LibrariesPanelComponent {
