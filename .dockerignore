@@ -1,0 +1,9 @@
+.idea
+gradle
+.gradle
+*/.gradle
+build
+*/build
+*/out
+*/dist
+*/node_modules
