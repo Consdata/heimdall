@@ -27,6 +27,7 @@ dependencies {
 
     implementation project(':heimdall-events')
     implementation project(':heimdall-report-api')
+    implementation project(':heimdall-front')
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
