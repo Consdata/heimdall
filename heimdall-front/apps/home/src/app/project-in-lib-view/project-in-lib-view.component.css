@@ -1,0 +1,32 @@
+.project-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  flex-shrink: 1;
+}
+.project-view_version {
+  width: 50%;
+  height: 100%;
+  padding-bottom: 10px;
+  border-left: 2px solid blue;
+  justify-content: center;
+  align-self: center;
+  padding-top: 10px;
+}
+.project-view_name {
+  justify-content: center;
+  align-self: center;
+  width: 50%;
+}
+.veryold {
+  background: red;
+}
+.old {
+  background: orange;
+}
+.ok {
+  background: lightblue;
+}
+.good {
+  background: green;
+}

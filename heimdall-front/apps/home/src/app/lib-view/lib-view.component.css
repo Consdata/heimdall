@@ -1,0 +1,16 @@
+.lib-container {
+  margin: 30px;
+  background: greenyellow;
+  opacity: 0.3;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+hr {
+  margin-bottom: 0;
+}
+
+.lib-view-label_name {
+ padding-top: 10px;
+ padding-bottom: 10px;
+}

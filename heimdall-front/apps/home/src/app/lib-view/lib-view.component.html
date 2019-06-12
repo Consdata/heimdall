@@ -1,0 +1,9 @@
+<div class="lib-container">
+  <div class="lib-view-label_name">{{libView.name}}</div>
+  <div class="lib-view-label_current_version">{{libView.currentVersion}}</div>
+  <hr>
+  <heimdall-front-project-in-lib-view
+    *ngFor="let project of libView.libs"
+    [project]="project"
+  ></heimdall-front-project-in-lib-view>
+</div>
