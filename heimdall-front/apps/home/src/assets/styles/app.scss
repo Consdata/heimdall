@@ -4,4 +4,11 @@ body {
   font-family: 'Oswald', serif;
   margin: 0;
 }
+navbar {
+  color: $clouds-color;
+}
+.heimdall-front-libs-dash-board {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+}
 
