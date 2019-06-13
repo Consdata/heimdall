@@ -1,0 +1,19 @@
+navbar {
+  .navbar-wrapper {
+    background-color: $midnight-blue-color;
+    display: flex;
+  }
+
+  .navbar-logo {
+    width: 40px;
+    padding: 0 4px;
+    mask: url($img-dir + "logo.svg") center center no-repeat;
+    mask-size: 40px 40px;
+    background-color: $clouds-color;
+    margin: 0 20px;
+  }
+
+  .navbar-text {
+    font-size: 28px;
+  }
+}

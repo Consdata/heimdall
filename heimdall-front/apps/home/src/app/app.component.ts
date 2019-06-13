@@ -3,8 +3,7 @@ import {RestApiService} from '../../../../libs/rest-api/src/lib/rest-api.service
 
 @Component({
   selector: 'heimdall-front-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: "app.component.html",
 })
 export class AppComponent implements OnInit {
 
