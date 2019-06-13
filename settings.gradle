@@ -15,8 +15,8 @@ pluginManagement {
 
 rootProject.name = 'heimdall'
 
-include 'heimdall-events'
-include 'heimdall-report-api'
-include 'heimdall-dependency-api'
-include 'heimdall-server'
-include 'heimdall-front'
+include 'service-util'
+include 'reports-api'
+include 'reports'
+include 'reports-list'
+include 'frontend'

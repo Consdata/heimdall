@@ -73,3 +73,7 @@ pids
 
 # Node
 node_modules
+
+# Axon Server
+AxonServer/
+data/
