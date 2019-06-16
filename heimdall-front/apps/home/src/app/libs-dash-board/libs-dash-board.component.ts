@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {LibDashBoardViewService, LibView} from "../lib-dashboard-view-services/lib-dash-board-view.service";
 
 @Component({
@@ -6,15 +6,24 @@ import {LibDashBoardViewService, LibView} from "../lib-dashboard-view-services/l
   templateUrl: './libs-dash-board.component.html',
   styleUrls: ['./libs-dash-board.component.css']
 })
-export class LibsDashBoardComponent implements OnInit {
+export class LibsDashBoardComponent implements OnInit, OnChanges {
 
   public libViews: LibView[];
-
+  @Input() filterValue: string;
   constructor(private libDashBoardViewService: LibDashBoardViewService) {
     this.libViews = libDashBoardViewService.getLibsDashBoardView();
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.filterLibs(this.filterValue);
+  }
+
+  private filterLibs(searchValueFilter: string) {
+    this.libViews = this.libDashBoardViewService.getLibsDashBoardView()
+      .filter(value => value.name.includes(searchValueFilter));
   }
 
 }
