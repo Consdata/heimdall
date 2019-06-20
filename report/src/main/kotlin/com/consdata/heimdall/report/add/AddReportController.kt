@@ -14,7 +14,7 @@ internal class AddReportController(
         private val parser: AddReportDtoToArtifactReportParser
 ) {
 
-    @PostMapping("")
+    @PostMapping
     internal fun addDependencyReport(@RequestBody addReportDto: AddReportDto) = commandGateway.sendAndWait<String>(AddReportCommand(
             report = parser.of(addReportDto)
     ))

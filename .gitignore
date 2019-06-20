@@ -77,3 +77,4 @@ node_modules
 # Axon Server
 AxonServer/
 data/
+*.trace.db
