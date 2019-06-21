@@ -1,0 +1,37 @@
+version: '3'
+services:
+  gateway:
+    build: gateway
+    ports:
+      - "8200:80"
+  frontend:
+    build: frontend
+  axonserver:
+    image: axoniq/axonserver
+    hostname: axonserver
+    environment:
+      - AXONSERVER_HOSTNAME=axonserver
+    volumes:
+      - axonserver-data:/opt/axonserver/data
+  monitor:
+    build: monitor
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=f911507619ad
+  monitor-tracking:
+    build: monitor-tracking
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=8b26fbd665f7
+  report:
+    build: report
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=7a784ff31438
+  report-list:
+    build: report-list
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=281eaa492d17
+volumes:
+  axonserver-data:

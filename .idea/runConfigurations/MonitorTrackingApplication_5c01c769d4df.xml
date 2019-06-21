@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MonitorTrackingApplication-5c01c769d4df" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="heimdall.monitor-tracking.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.consdata.heimdall.monitor.MonitorTrackingApplication" />
+    <option name="PROGRAM_PARAMETERS" value="--spring.datasource.url=jdbc:h2:file:./monitor-tracking-5c01c769d4df;DB_CLOSE_ON_EXIT=FALSE --app.instance.uuid=5c01c769d4df" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

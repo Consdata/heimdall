@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ReportApplication-5fafa5256c83" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="heimdall.report.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.consdata.heimdall.report.ReportApplication" />
+    <option name="PROGRAM_PARAMETERS" value="--app.instance.uuid=5fafa5256c83" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
