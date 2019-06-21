@@ -3,7 +3,7 @@ services:
   gateway:
     build: gateway
     ports:
-      - "8090:80"
+      - "8200:80"
   frontend:
     build: frontend
   axonserver:
