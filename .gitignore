@@ -28,14 +28,14 @@ out
 .sts4-cache
 
 # IDEs and editors
-.idea
+.idea/*
+!.idea/runConfigurations
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
-.idea
 *.iws
 *.iml
 *.ipr
