@@ -1,11 +1,9 @@
 # Heimdall
 
-#### Docker
-Build:
-```shell
-docker build -t consdata/heimdall .
-```
-Run:
-```shell
-docker run --name heimdall -d -p 8080:8080 consdata/heimdall
-```
+### Local development
+- Start services via Intellij configs.
+- yarn start --proxy-config proxy.local.dev.conf.json 
+
+### Local build
+- Start services via docker compose
+- yarn start --proxy-config proxy.local.compose.conf.json 
