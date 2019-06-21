@@ -1,4 +1,4 @@
-package com.consdata.heimdal.report.list
+package com.consdata.heimdall.report.list
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

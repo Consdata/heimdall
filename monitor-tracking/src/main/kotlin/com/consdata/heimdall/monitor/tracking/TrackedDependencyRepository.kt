@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface TrackedDependencyRepository : JpaRepository<TrackedDependencyEntity, Long> {
 
-    fun existsByScopeAndGroupAndArtifact(scope: ArtifactScope, groupId: String?, artifact: String): Boolean
+    fun existsByScopeAndGroupIdAndArtifact(scope: ArtifactScope, groupId: String?, artifact: String): Boolean
+    fun findByScopeAndGroupIdAndArtifact(artifactScope: ArtifactScope, group: String?, artifact: String): TrackedDependencyEntity
 
 }

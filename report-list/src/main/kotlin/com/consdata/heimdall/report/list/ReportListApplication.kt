@@ -1,7 +1,7 @@
-package com.consdata.heimdall.monitor
+package com.consdata.heimdall.report.list
 
-import com.consdata.heimdall.projections.EnvironmentApplicationInstanceUuid
 import com.consdata.heimdall.projections.MultiNodeProjectionConfiguration
+import com.consdata.heimdall.projections.EnvironmentApplicationInstanceUuid
 import org.springframework.boot.Banner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import
 
 @SpringBootApplication
 @Import(MultiNodeProjectionConfiguration::class)
-internal class MonitorTrackingApplication {
+internal class ReportListApplication {
 
     @Bean
     fun applicationInstanceUuid() = EnvironmentApplicationInstanceUuid()
@@ -18,7 +18,7 @@ internal class MonitorTrackingApplication {
 }
 
 fun main(args: Array<String>) {
-    runApplication<MonitorTrackingApplication>(*args) {
+    runApplication<ReportListApplication>(*args) {
         setBannerMode(Banner.Mode.OFF)
     }
 }

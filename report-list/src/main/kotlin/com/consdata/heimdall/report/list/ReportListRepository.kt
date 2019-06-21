@@ -1,4 +1,4 @@
-package com.consdata.heimdal.report.list
+package com.consdata.heimdall.report.list
 
 import org.springframework.data.jpa.repository.JpaRepository
 

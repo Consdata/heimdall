@@ -1,5 +1,7 @@
 package com.consdata.heimdall.monitor.overview
 
+import com.consdata.heimdall.monitor.ArtifactScope
+
 data class Version(
         var major: Long,
         var minor: Long,
@@ -7,7 +9,7 @@ data class Version(
 )
 
 data class Dependency(
-        var scope: DependencyScope,
+        var scope: ArtifactScope,
         var group: String?,
         var artifact: String,
         var latest: Version

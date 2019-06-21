@@ -1,4 +1,4 @@
-package com.consdata.heimdal.report.list
+package com.consdata.heimdall.report.list
 
 import com.consdata.heimdall.logging.logger
 import com.consdata.heimdall.report.ReportAddedEvent
