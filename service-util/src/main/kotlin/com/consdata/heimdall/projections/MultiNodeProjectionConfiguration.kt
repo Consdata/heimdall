@@ -20,7 +20,10 @@ open class MultiNodeProjectionConfiguration {
 
     @PostConstruct
     fun overrideMultiNodeProjectionGroupNames() {
-        eventProcessingModule.assignProcessingGroup { processingGroup: String -> "$applicationName.$processingGroup.${applicationInstanceUuid.uuid()}"}
+        eventProcessingModule.byDefaultAssignHandlerInstancesTo { o -> processingGroupMapper(o) }
     }
+
+    private fun processingGroupMapper(handler: Any) =
+            if (handler is MultiNodeProjection) "$applicationName:${handler.projectionName()}:${applicationInstanceUuid.uuid()}" else handler.javaClass.getPackage().name
 
 }

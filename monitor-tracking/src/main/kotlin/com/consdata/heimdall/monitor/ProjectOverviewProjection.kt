@@ -8,6 +8,7 @@ import com.consdata.heimdall.monitor.project.ProjectEntity
 import com.consdata.heimdall.monitor.project.ProjectRepository
 import com.consdata.heimdall.monitor.tracking.TrackedDependencyEntity
 import com.consdata.heimdall.monitor.tracking.TrackedDependencyRepository
+import com.consdata.heimdall.projections.MultiNodeProjection
 import com.consdata.heimdall.report.*
 import org.axonframework.eventhandling.EventHandler
 import org.springframework.stereotype.Component
@@ -20,7 +21,9 @@ class ProjectOverviewProjection(
         private val tracking: TrackedDependencyRepository,
         private val projects: ProjectRepository,
         private val dependencies: DependencyOverviewRepository
-) {
+) : MultiNodeProjection {
+
+    override fun projectionName() = "ProjectOverviewProjection"
 
     private val log by logger()
 
@@ -57,7 +60,7 @@ class ProjectOverviewProjection(
 
         updateKnownTrackedDependencies(report, artifactScope)
         if (existingProject == null || project.compare(existingProject) >= 0) {
-            updateProjectDependencyTracking(report, artifactScope, project, existingProject);
+            updateProjectDependencyTracking(report, artifactScope, project, existingProject)
         }
     }
 

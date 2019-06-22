@@ -15,7 +15,7 @@ internal class AddDependencyTrackingController(
 ) {
 
     @PostMapping
-    internal fun addDependencyReport(@RequestBody dto: AddDependencyTrackingDto) = commandGateway.sendAndWait<String>(AddDependencyTrackingCommand(
+    internal fun addDependencyTracking(@RequestBody dto: AddDependencyTrackingDto) = commandGateway.sendAndWait<String>(AddDependencyTrackingCommand(
             group = dto.group,
             artifact = dto.artifact,
             scope = asScope(dto.scope)

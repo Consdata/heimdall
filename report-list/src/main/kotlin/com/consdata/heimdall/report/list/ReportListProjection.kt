@@ -1,12 +1,15 @@
 package com.consdata.heimdall.report.list
 
 import com.consdata.heimdall.logging.logger
+import com.consdata.heimdall.projections.MultiNodeProjection
 import com.consdata.heimdall.report.ReportAddedEvent
 import org.axonframework.eventhandling.EventHandler
 import org.springframework.stereotype.Component
 
 @Component
-internal class ReportAddedHandler(private val repository: ReportListRepository) {
+internal class ReportListProjection(private val repository: ReportListRepository) : MultiNodeProjection {
+
+    override fun projectionName() = "ReportListProjection"
 
     private val log by logger()
 
