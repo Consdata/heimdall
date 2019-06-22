@@ -34,7 +34,7 @@ internal class ReportListProjectionItTest @Autowired constructor(
                         name = ArtifactName("artifact", "group"),
                         version = ArtifactVersion(1, 2, 3),
                         date = GenerationDate(1),
-                        modules = listOf(),
+                        dependencies = listOf(),
                         type = ArtifactType.Npm
                 )
         )

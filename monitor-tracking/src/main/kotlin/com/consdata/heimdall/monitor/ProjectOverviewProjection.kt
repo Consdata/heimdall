@@ -65,8 +65,7 @@ class ProjectOverviewProjection(
     }
 
     private fun updateKnownTrackedDependencies(report: ArtifactReport, artifactScope: ArtifactScope) {
-        report.modules
-                .flatMap { it.dependencies }
+        report.dependencies
                 .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.name.group, it.name.artifact) }
                 .forEach {
                     val existing = tracking.findByScopeAndGroupIdAndArtifact(artifactScope, it.name.group, it.name.artifact)
@@ -93,8 +92,7 @@ class ProjectOverviewProjection(
 
         val projectId = existingProject?.id ?: project.id ?: throw IllegalStateException("Missing project id!")
 
-        val projectDependencies = report.modules
-                .flatMap { it.dependencies }
+        val projectDependencies = report.dependencies
                 .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.name.group, it.name.artifact) }
                 .map {
                     asOverviewEntity(projectId, artifactScope, it, project)

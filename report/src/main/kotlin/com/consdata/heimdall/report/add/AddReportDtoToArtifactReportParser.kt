@@ -71,20 +71,10 @@ class AddReportDtoToArtifactReportParser {
                 version = parser.artifactVersion(dto.project.version),
                 date = parser.reportDate(dto.timestamp),
                 git = if (dto.git != null) parser.gitCommit(dto.git!!) else null,
-                modules = ofModules(dto.modules ?: listOf()),
+                dependencies = ofDependencies(parser, dto.dependencies ?: listOf()),
                 type = parser.artifactType(dto.project.type)
         )
     }
-
-    private fun ofModules(modules: List<AddReportModuleDto>) = modules.map {
-        val parser = parser(it.type)
-        ArtifactModule(
-                name = parser.artifactName(it.name),
-                type = parser.artifactType(it.type),
-                dependencies = ofDependencies(parser, it.dependencies ?: listOf())
-        )
-    }
-
 
     private fun ofDependencies(parser: Parser, dependencies: List<AddReportModuleDependencyDto>): List<ArtifactDependency> = dependencies.map {
         ArtifactDependency(

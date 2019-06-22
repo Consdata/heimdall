@@ -1,21 +1,14 @@
-export interface ModuleDependency {
+export interface Dependency {
     name: string,
     version: string,
     resolution?: string,
-    dependencies?: ModuleDependency[];
+    dependencies?: Dependency[];
 }
 
 export enum ModuleType {
     npm = 'Npm',
     maven = 'Maven',
     gradle = 'Gradle'
-}
-
-export interface ReportModule {
-    name: string; // empty for single module projects
-    path?: string; //  empty for single module projects
-    type: ModuleType;
-    dependencies?: ModuleDependency[];
 }
 
 export interface Report {
@@ -29,5 +22,5 @@ export interface Report {
         sha: string
     },
     timestamp: string,
-    modules?: ReportModule[];
+    dependencies?: Dependency[];
 }

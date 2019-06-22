@@ -5,15 +5,13 @@ data class ArtifactReport(
         val version: ArtifactVersion,
         val date: GenerationDate,
         val git: GitCommit? = null,
-        val modules: List<ArtifactModule>,
+        val dependencies: List<ArtifactDependency>,
         val type: ArtifactType
 )
 
 data class GitCommit(val branch: GitBranch, val sha: String)
 
 data class GitBranch(val name: String)
-
-data class ArtifactModule(val name: ArtifactName? = null, val type: ArtifactType, val dependencies: List<ArtifactDependency>)
 
 data class ArtifactDependency(val name: ArtifactName, val version: DependencyVersion, val dependencies: List<ArtifactDependency>)
 
@@ -31,7 +29,6 @@ data class ArtifactVersion(val major: Long, val minor: Long, val patch: Long) {
 
 data class ArtifactVersionRange(val range: String)
 
-// do i need artifactGroup for npm artifactGroup and maven groupId?
 data class ArtifactName(val artifact: String, val group: String? = null) {
     fun nameString(): String = if (group != null) "$group/$artifact" else artifact
 }
