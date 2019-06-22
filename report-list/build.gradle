@@ -49,6 +49,10 @@ dependencies {
     testRuntime 'org.junit.vintage:junit-vintage-engine'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 allOpen {
     annotation 'javax.persistence.Entity'
     annotation 'javax.persistence.Embeddable'

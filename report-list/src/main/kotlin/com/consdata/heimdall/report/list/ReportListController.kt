@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController
 internal class ReportListController(private val repository: ReportListRepository) {
 
     @GetMapping
-    fun getReportList(): Iterable<ReportListEntity> = repository.findAll()
+    fun getReportList(): ReportListDto = ReportListDto(
+            repository.findAll()
+    )
 
 }
