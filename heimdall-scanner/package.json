@@ -1,6 +1,6 @@
 {
   "name": "@consdata/heimdall-scanner",
-  "version": "1.6.0",
+  "version": "1.10.0",
   "main": "dist/index.js",
   "bin": "dist/run.js",
   "author": "Grzegorz Lipecki",
