@@ -29,7 +29,7 @@ internal class ReportListProjectionItTest @Autowired constructor(
     fun shouldListAddedReport() {
         val reportAdded = ReportAddedEvent(
                 id = "report-uuid",
-                timestamp = 1,
+                timestamp = 999,
                 report = ArtifactReport(
                         name = ArtifactName("artifact", "group"),
                         version = ArtifactVersion(1, 2, 3),
@@ -46,6 +46,7 @@ internal class ReportListProjectionItTest @Autowired constructor(
                         MockMvcRequestBuilders.get("/report")
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk)
+                .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].timestamp", contains(999)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].reportUuid", contains("report-uuid")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].artifact", contains("npm:group/artifact@1.2.3")))
     }
