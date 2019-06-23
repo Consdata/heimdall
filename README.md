@@ -18,12 +18,17 @@
 ### Send dependency report
 
 ```bash
-npx @consdata/heimdall-scanner | curl -H "Content-Type: application/json" -X POST
-d @- http://localhost:8081/report
+npx @consdata/heimdall-scanner | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8081/report
+```
+```bash
+npx @consdata/heimdall-scanner | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8200/api/report/v1/report
 ```
 
 ### Mark dependency as tracked
 
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "artifact": "core", "scope": "Npm" }' http://localhost:8083/monitor/tracking
+```
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "artifact": "core", "scope": "Npm" }' http://localhost:8200/api/monitor/v1/monitor/tracking
 ```
