@@ -26,5 +26,12 @@
     "pathRewrite": {
       "^/api/report-list/v1/": ""
     }
+  },
+  "/api/dependency-list/v1/": {
+    "target": "http://localhost:8085/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/dependency-list/v1/": ""
+    }
   }
 }

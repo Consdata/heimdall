@@ -33,5 +33,10 @@ services:
     environment:
       - AXON_AXONSERVER_SERVERS=axonserver
       - APP_INSTANCE_UUID=281eaa492d17
+  dependency-list:
+    build: dependency-list
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=549a220eba75
 volumes:
   axonserver-data:
