@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
+    implementation 'org.hibernate:hibernate-search-orm:5.11.2.Final'
 
     runtimeOnly 'com.h2database:h2'
 
