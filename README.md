@@ -32,3 +32,20 @@ curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "art
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "artifact": "core", "scope": "Npm" }' http://localhost:8200/api/monitor/v1/monitor/tracking
 ```
+
+### Search for dependencies
+
+```bash
+curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://localhost:8085/
+```
+```bash
+curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://localhost:8200/api/dependency-list/v1/
+```
+
+### Tips
+
+#### Memory limits
+
+For memory use:
+- docker-compose with --compatibility flag
+- local swarm
