@@ -2,9 +2,13 @@ import {Component, Input} from '@angular/core';
 import {ProjectView, VersionStatus} from "../lib-dashboard-view-services/lib-dash-board-view.service";
 
 @Component({
-  selector: 'heimdall-front-project-in-lib-view',
-  templateUrl: './project-in-lib-view.component.html',
-  styleUrls: ['./project-in-lib-view.component.css']
+  selector: 'project-libraries',
+  template: `
+    <div class="project-container">
+      <div class="project-view_name">{{project.name}}</div>
+      <div class="project-view_version" [ngClass]="getStatus(project.status)">{{project.projectVersion}}</div>
+    </div>
+  `
 })
 export class ProjectInLibViewComponent {
 

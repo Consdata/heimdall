@@ -1,0 +1,22 @@
+library-view {
+  .lib-container {
+    box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.75);
+    margin: 30px;
+    background: $clouds-color;
+    border-radius: 5px;
+    color: $midnight-blue-color;
+  }
+
+  .library-info-container {
+    padding: 10px 5px;
+  }
+
+  .lib-view-label-name {
+    font-size: 20px;
+    filter: drop-shadow(0 0 1px $asbestos-color);
+  }
+
+  .lib-view-label-current-version {
+    font-size: 14px;
+  }
+}

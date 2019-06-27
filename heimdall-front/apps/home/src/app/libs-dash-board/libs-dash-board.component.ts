@@ -1,14 +1,21 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {LibDashBoardViewService, LibView} from "../lib-dashboard-view-services/lib-dash-board-view.service";
+import {LibDashBoardViewService, LibView} from '../lib-dashboard-view-services/lib-dash-board-view.service';
 
 @Component({
   selector: 'heimdall-front-libs-dash-board',
-  templateUrl: './libs-dash-board.component.html'
+  template: `
+    <library-view
+      class="heimdall-front-lib-view"
+      *ngFor="let libView of libViews"
+      [libView]="libView">
+    </library-view>
+  `
 })
 export class LibsDashBoardComponent implements OnInit, OnChanges {
 
   public libViews: LibView[];
   @Input() filterValue: string;
+
   constructor(private libDashBoardViewService: LibDashBoardViewService) {
     this.libViews = libDashBoardViewService.getLibsDashBoardView();
   }
