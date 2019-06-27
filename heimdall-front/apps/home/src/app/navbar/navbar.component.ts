@@ -13,11 +13,10 @@ import 'rxjs-compat/add/observable/interval';
   `,
 })
 export class NavbarComponent {
-  @Output() filterValueEmitter = new EventEmitter();
+  @Output() filterValueEmitter = new EventEmitter<string>();
 
   onKey(event: any): void {
-    var value = event.target.value;
-    this.filterValueEmitter.emit(value);
+    this.filterValueEmitter.emit(event.target.value.toLocaleLowerCase());
   }
 
 }

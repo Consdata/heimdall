@@ -3,8 +3,7 @@ import {LibDashBoardViewService, LibView} from "../lib-dashboard-view-services/l
 
 @Component({
   selector: 'heimdall-front-libs-dash-board',
-  templateUrl: './libs-dash-board.component.html',
-  styleUrls: ['./libs-dash-board.component.css']
+  templateUrl: './libs-dash-board.component.html'
 })
 export class LibsDashBoardComponent implements OnInit, OnChanges {
 
@@ -23,7 +22,7 @@ export class LibsDashBoardComponent implements OnInit, OnChanges {
 
   private filterLibs(searchValueFilter: string) {
     this.libViews = this.libDashBoardViewService.getLibsDashBoardView()
-      .filter(value => value.name.includes(searchValueFilter));
+      .filter(value => value.name.toLocaleLowerCase().includes(searchValueFilter));
   }
 
 }

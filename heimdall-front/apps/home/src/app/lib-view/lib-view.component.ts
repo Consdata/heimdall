@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {LibView} from "../lib-dashboard-view-services/lib-dash-board-view.service";
 
 @Component({
