@@ -4,19 +4,18 @@ import {RestApiService} from '../../../../libs/rest-api/src/lib/rest-api.service
 @Component({
   selector: 'heimdall-front-root',
   template: `
-    <div style=\"text-align:center\">
-      <navbar
-        (filterValueEmitter)="filterValue($event)"
-      ></navbar>
-      <heimdall-front-libs-dash-board
-        class=\"heimdall-front-libs-dash-board\"
-        [filterValue]="filter"></heimdall-front-libs-dash-board>
-    </div>`,
+    <navbar (filterValueEmitter)="filterValue($event)"></navbar>
+    <libraries-list
+      class=\"heimdall-front-libs-dash-board\"
+      [filterValue]="filter">
+    </libraries-list>
+  `,
 })
 export class AppComponent implements OnInit {
 
   title = '';
   filter: string = '';
+
   constructor(private restApiService: RestApiService) {
   }
 

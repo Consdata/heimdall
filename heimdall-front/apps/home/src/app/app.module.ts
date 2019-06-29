@@ -5,16 +5,17 @@ import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {RestApiModule} from '@heimdall-front/rest-api';
 import {NavbarComponent} from './navbar/navbar.component';
-import {LibsDashBoardComponent} from './libs-dash-board/libs-dash-board.component';
-import {LibViewComponent} from './lib-view/lib-view.component';
-import {ProjectInLibViewComponent} from './project-in-lib-view/project-in-lib-view.component';
+import {LibrariesListComponent} from './libraries/libraries-list.component';
+import {LibraryComponent} from './libraries/library.component';
+import {LibraryProjectDependencyComponent} from './libraries/library-project-dependency.component';
 
 @NgModule({
   declarations: [AppComponent,
-    LibsDashBoardComponent,
-    LibViewComponent,
-    ProjectInLibViewComponent,
-    NavbarComponent],
+    LibrariesListComponent,
+    LibraryComponent,
+    LibraryProjectDependencyComponent,
+    NavbarComponent
+  ],
   imports: [
     BrowserModule,
     RestApiModule,

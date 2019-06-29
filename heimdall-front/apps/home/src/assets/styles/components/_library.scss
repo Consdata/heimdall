@@ -1,7 +1,11 @@
-library-view {
+library {
+
+  display: inline-block;
+
   .lib-container {
-    box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.75);
-    margin: 30px;
+    text-align: center;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+    margin: 16px;
     background: $clouds-color;
     border-radius: 5px;
     color: $midnight-blue-color;
@@ -11,12 +15,12 @@ library-view {
     padding: 10px 5px;
   }
 
-  .lib-view-label-name {
+  .library-info-name {
     font-size: 20px;
     filter: drop-shadow(0 0 1px $asbestos-color);
   }
 
-  .lib-view-label-current-version {
+  .library-info-current-version {
     font-size: 14px;
   }
 }
