@@ -2,6 +2,7 @@
   <configuration default="false" name="ReportApplication-5fafa5256c83" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <module name="heimdall.report.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.consdata.heimdall.report.ReportApplication" />
+    <option name="VM_PARAMETERS" value="-Xmx256m -Xss512k -XX:+UseSerialGC" />
     <option name="PROGRAM_PARAMETERS" value="--app.instance.uuid=5fafa5256c83" />
     <option name="ALTERNATIVE_JRE_PATH" />
     <method v="2">

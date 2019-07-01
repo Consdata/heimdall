@@ -16,7 +16,6 @@ import java.lang.IllegalStateException
 import javax.transaction.Transactional
 
 @Component
-@Transactional
 class ProjectOverviewProjection(
         private val tracking: TrackedDependencyRepository,
         private val projects: ProjectRepository,
@@ -28,6 +27,7 @@ class ProjectOverviewProjection(
     private val log by logger()
 
     @EventHandler
+    @Transactional
     fun on(ev: DependencyTrackingAdded) {
         log.info("New dependency tracking [id={}, dependency={}:{}:{}]", ev.id, ev.scope, ev.group, ev.artifact)
 
@@ -45,6 +45,7 @@ class ProjectOverviewProjection(
     }
 
     @EventHandler
+    @Transactional
     fun on(ev: ReportAddedEvent) {
         log.info("New report added [id={}, artifact={}]", ev.id, ev.report.name)
 

@@ -10,7 +10,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 160M
   gateway:
     build: gateway
     image: consdata/heimdall-gateway:${HEIMDALL_VERSION:-latest}
@@ -20,6 +20,13 @@ services:
       resources:
         limits:
           memory: 24M
+    depends_on:
+      - frontend
+      - monitor
+      - monitor-tracking
+      - report
+      - report-list
+      - dependency-list
   frontend:
     build: frontend
     image: consdata/heimdall-frontend:${HEIMDALL_VERSION:-latest}
@@ -38,7 +45,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 160M
   monitor-tracking:
     build: monitor-tracking
     image: consdata/heimdall-monitor-tracking:${HEIMDALL_VERSION:-latest}
@@ -50,7 +57,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 160M
   report:
     build: report
     image: consdata/heimdall-report:${HEIMDALL_VERSION:-latest}
@@ -62,7 +69,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 160M
   report-list:
     build: report-list
     image: consdata/heimdall-report-list:${HEIMDALL_VERSION:-latest}
@@ -74,7 +81,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 160M
   dependency-list:
     build: dependency-list
     image: consdata/heimdall-dependency-list:${HEIMDALL_VERSION:-latest}
@@ -86,6 +93,6 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 160M
 volumes:
   axonserver-data:

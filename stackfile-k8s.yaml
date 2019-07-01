@@ -1,0 +1,412 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: heimdall-axonserver-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-axonserver
+  labels:
+    app: heimdall-axonserver
+spec:
+  ports:
+    - name: http
+      port: 8024
+      protocol: TCP
+    - name: grpc
+      port: 8124
+      protocol: TCP
+  selector:
+    app: heimdall-axonserver
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-axonserver
+  labels:
+    app: heimdall-axonserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-axonserver
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: heimdall-axonserver
+    spec:
+      volumes:
+        - name: heimdall-axonserver-data
+          persistentVolumeClaim:
+            claimName: heimdall-axonserver-data
+      containers:
+        - name: heimdall-axonserver
+          image: axoniq/axonserver:4.1.2-jdk11
+          env:
+            - name: AXONSERVER_HOSTNAME
+              value: heimdall-axonserver
+          volumeMounts:
+            - mountPath: /opt/axonserver/data
+              name: heimdall-axonserver-data
+          ports:
+            - containerPort: 8024
+            - containerPort: 8124
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.5"
+          readinessProbe:
+            tcpSocket:
+              port: 8024
+            initialDelaySeconds: 300
+          livenessProbe:
+            tcpSocket:
+              port: 8024
+            initialDelaySeconds: 300
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-frontend
+  labels:
+    app: heimdall-frontend
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: heimdall-frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-frontend
+  labels:
+    app: heimdall-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-frontend
+  template:
+    metadata:
+      labels:
+        app: heimdall-frontend
+    spec:
+      containers:
+        - name: heimdall-frontend
+          image: consdata/heimdall-frontend:0.1.6
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "24Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-report-list
+  labels:
+    app: heimdall-report-list
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: heimdall-report-list
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-report-list
+  labels:
+    app: heimdall-report-list
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-report-list
+  template:
+    metadata:
+      labels:
+        app: heimdall-report-list
+    spec:
+      containers:
+        - name: heimdall-report-list
+          image: consdata/heimdall-report-list:0.1.6
+          env:
+            - name: APP_INSTANCE_UUID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: AXON_AXONSERVER_SERVERS
+              value: heimdall-axonserver
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.2"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-dependency-list
+  labels:
+    app: heimdall-dependency-list
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: heimdall-dependency-list
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-dependency-list
+  labels:
+    app: heimdall-dependency-list
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-dependency-list
+  template:
+    metadata:
+      labels:
+        app: heimdall-dependency-list
+    spec:
+      containers:
+        - name: heimdall-dependency-list
+          image: consdata/heimdall-dependency-list:0.1.6
+          env:
+            - name: APP_INSTANCE_UUID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: AXON_AXONSERVER_SERVERS
+              value: heimdall-axonserver
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.2"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-monitor
+  labels:
+    app: heimdall-monitor
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: heimdall-monitor
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-monitor
+  labels:
+    app: heimdall-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-monitor
+  template:
+    metadata:
+      labels:
+        app: heimdall-monitor
+    spec:
+      containers:
+        - name: heimdall-monitor
+          image: consdata/heimdall-monitor:0.1.6
+          env:
+            - name: APP_INSTANCE_UUID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: AXON_AXONSERVER_SERVERS
+              value: heimdall-axonserver
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.2"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-monitor-tracking
+  labels:
+    app: heimdall-monitor-tracking
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: heimdall-monitor-tracking
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-monitor-tracking
+  labels:
+    app: heimdall-monitor-tracking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-monitor-tracking
+  template:
+    metadata:
+      labels:
+        app: heimdall-monitor-tracking
+    spec:
+      containers:
+        - name: heimdall-monitor-tracking
+          image: consdata/heimdall-monitor-tracking:0.1.6
+          env:
+            - name: APP_INSTANCE_UUID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: AXON_AXONSERVER_SERVERS
+              value: heimdall-axonserver
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.2"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-report
+  labels:
+    app: heimdall-report
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: heimdall-report
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-report
+  labels:
+    app: heimdall-report
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-report
+  template:
+    metadata:
+      labels:
+        app: heimdall-report
+    spec:
+      containers:
+        - name: heimdall-report
+          image: consdata/heimdall-report:0.1.6
+          env:
+            - name: APP_INSTANCE_UUID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: AXON_AXONSERVER_SERVERS
+              value: heimdall-axonserver
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.2"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10

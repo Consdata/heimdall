@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component
 import javax.transaction.Transactional
 
 @Component
-@Transactional
 internal class DependencyListProjection(private val repository: DependencyRepository) {
 
     private val log by logger()
 
     @EventHandler
+    @Transactional
     fun on(ev: ReportAddedEvent) {
         log.info("New report added [id={}, artifact={}]", ev.id, ev.report.name)
 
