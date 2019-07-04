@@ -1,13 +1,13 @@
 package com.consdata.heimdall.projections
 
 import org.axonframework.config.EventProcessingModule
+import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
-import javax.annotation.PostConstruct
 
 @Configuration
-open class MultiNodeProjectionConfiguration {
+open class MultiNodeProjectionConfiguration : InitializingBean {
 
     @Autowired
     lateinit var eventProcessingModule: EventProcessingModule
@@ -18,8 +18,7 @@ open class MultiNodeProjectionConfiguration {
     @Value("\${spring.application.name}")
     lateinit var applicationName: String
 
-    @PostConstruct
-    fun overrideMultiNodeProjectionGroupNames() {
+    override fun afterPropertiesSet() {
         eventProcessingModule.byDefaultAssignHandlerInstancesTo { o -> processingGroupMapper(o) }
     }
 
