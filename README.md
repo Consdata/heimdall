@@ -49,3 +49,16 @@ curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://l
 For memory use:
 - docker-compose with --compatibility flag
 - local swarm
+
+
+### Containers
+
+gateway              20   MiB
+monitor              180  MiB
+report-list          250  MiB
+report               200  MiB
+monitor-tracking     250  MiB
+frontend             20   MiB
+dependency-list      250  MiB
+axonserver           600  MiB
+
