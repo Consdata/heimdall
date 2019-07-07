@@ -5,6 +5,7 @@ import com.consdata.heimdall.projections.MultiNodeProjection
 import com.consdata.heimdall.report.ReportAddedEvent
 import org.axonframework.eventhandling.EventHandler
 import org.springframework.stereotype.Component
+import javax.transaction.Transactional
 
 @Component
 internal class ReportListProjection(private val repository: ReportListRepository) : MultiNodeProjection {
@@ -14,6 +15,7 @@ internal class ReportListProjection(private val repository: ReportListRepository
     private val log by logger()
 
     @EventHandler
+    @Transactional
     fun on(ev: ReportAddedEvent) {
         log.info("New report added [id={}, artifact={}]", ev.id, ev.report.name)
 
