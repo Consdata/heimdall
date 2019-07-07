@@ -1,5 +1,5 @@
 {
-  "npmScope": "heimdall-front",
+  "npmScope": "heimdall-frontend",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",

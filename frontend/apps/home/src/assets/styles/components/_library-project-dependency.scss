@@ -1,0 +1,35 @@
+library-project-dependency {
+
+  .project-container {
+    display: flex;
+  }
+
+  .project-version {
+    width: 80px;
+  }
+
+  .project-name {
+    width: 120px;
+  }
+
+  .project-name, .project-version {
+    padding: 6px 0;
+    justify-content: center;
+    align-self: center;
+    font-weight: 500;
+    filter: drop-shadow(0 0 3px $silver-color);
+  }
+
+  .project-version-status-very-old {
+    color: $pomegranate-color;
+    background: $pomegranate-color + 120;
+  }
+
+  .project-version-status-old {
+    color: $carrot-color;
+  }
+
+  .project-version-status-good, .project-version-status-ok {
+    color: $green-sea-color;
+  }
+}

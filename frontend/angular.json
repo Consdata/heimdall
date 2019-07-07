@@ -7,7 +7,7 @@
       "root": "apps/home/",
       "sourceRoot": "apps/home/src",
       "projectType": "application",
-      "prefix": "heimdall-front",
+      "prefix": "hmd",
       "schematics": {
         "@nrwl/schematics:component": {
           "style": "scss"
@@ -27,7 +27,7 @@
               "apps/home/src/assets"
             ],
             "styles": [
-              "apps/home/src/styles.scss"
+              "apps/home/src/assets/styles/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -132,7 +132,7 @@
       "root": "libs/rest-api",
       "sourceRoot": "libs/rest-api/src",
       "projectType": "library",
-      "prefix": "heimdall-front",
+      "prefix": "hmd",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
