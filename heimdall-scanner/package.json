@@ -1,6 +1,6 @@
 {
   "name": "@consdata/heimdall-scanner",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "main": "dist/index.js",
   "bin": "dist/run.js",
   "author": "Grzegorz Lipecki",
@@ -11,7 +11,7 @@
     "postbuild": "rimraf .build",
     "build:compile": "tsc -p src/tsconfig.json && copyfiles -u 1 src/run.js dist",
     "build": "yarn build:compile",
-    "release": "yarn build && yarn publish --minor --access public && git push && git push --tags"
+    "release": "yarn build && yarn publish --minor --non-interactive --access public && git push && git push --tags"
   },
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
