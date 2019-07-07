@@ -5,7 +5,7 @@ import {LibraryService, LibView} from './library.service';
   selector: 'libraries-list',
   template: `
     <library
-      class="heimdall-front-lib-view"
+      class="hmd-lib-view"
       *ngFor="let libView of libViews"
       [libView]="libView">
     </library>

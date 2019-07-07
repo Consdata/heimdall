@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@heimdall-front/rest-api": ["libs/rest-api/src/index.ts"]
+      "@heimdall-frontend/rest-api": ["libs/rest-api/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,31 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {ReportDto, ReportItemDto} from '../../../../libs/rest-api/src/lib/report-dto';
 import {RestApiService} from '../../../../libs/rest-api/src/lib/rest-api.service';
-import {map} from "rxjs/operators";
 
 @Component({
-  selector: 'heimdall-front-root',
+  selector: 'hmd-root',
   template: `
-      <div *ngFor="let report of reports$ | async">
-          <div>
-              {{report | json}}
-          </div>
-      </div>
+    <navbar (filterValueEmitter)="filterValue($event)"></navbar>
+    <libraries-list
+      class="hmd-libs-dash-board"
+      [filterValue]="filter">
+    </libraries-list>
   `,
-  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  reports$: Observable<ReportItemDto[]>;
+  filter: string = '';
 
   constructor(private restApiService: RestApiService) {
   }
 
-  ngOnInit(): void {
-    this.reports$ = this.restApiService.reports$().pipe(
-      map(report => report.items)
-    )
+  filterValue(filter) {
+    this.filter = filter;
   }
 
 }
