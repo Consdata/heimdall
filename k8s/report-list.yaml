@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: heimdall-report-list
-          image: consdata/heimdall-report-list:0.1.7
+          image: consdata/heimdall-report-list:0.1.8
           env:
             - name: APP_INSTANCE_UUID
               valueFrom:

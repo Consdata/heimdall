@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: heimdall-frontend
-          image: consdata/heimdall-frontend:0.1.7
+          image: consdata/heimdall-frontend:0.1.8
           ports:
             - containerPort: 80
           resources:
