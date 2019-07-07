@@ -15,7 +15,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@heimdall-frontend/rest-api": ["libs/rest-api/src/index.ts"]
+      "@heimdall-frontend/rest-api": ["libs/rest-api/src/index.ts"],
+      "@heimdall-frontend/heimdall/monitor-tracking/api": [
+        "libs/heimdall/monitor-tracking/api/src/index.ts"
+      ],
+      "@heimdall-frontend/heimdall/monitor-tracking/rest": [
+        "libs/heimdall/monitor-tracking/rest/src/index.ts"
+      ],
+      "@heimdall-frontend/heimdall/monitor-tracking/feature": [
+        "libs/heimdall/monitor-tracking/feature/src/index.ts"
+      ]
     },
     "rootDir": "."
   },

@@ -17,14 +17,16 @@ export class LibrariesListComponent implements OnInit, OnChanges {
   @Input() filterValue: string;
 
   constructor(private libDashBoardViewService: LibraryService) {
-    this.libViews = libDashBoardViewService.getLibsDashBoardView();
   }
 
   ngOnInit() {
+    this.libViews = this.libDashBoardViewService.getLibsDashBoardView();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.filterLibs(this.filterValue);
+    if (changes.filterValue && !changes.filterValue.isFirstChange()) {
+      this.filterLibs(this.filterValue);
+    }
   }
 
   private filterLibs(searchValueFilter: string) {

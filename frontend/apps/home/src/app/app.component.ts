@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {RestApiService} from '../../../../libs/rest-api/src/lib/rest-api.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'hmd-root',
@@ -14,9 +13,6 @@ import {RestApiService} from '../../../../libs/rest-api/src/lib/rest-api.service
 export class AppComponent {
 
   filter: string = '';
-
-  constructor(private restApiService: RestApiService) {
-  }
 
   filterValue(filter) {
     this.filter = filter;

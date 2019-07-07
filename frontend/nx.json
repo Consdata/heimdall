@@ -16,6 +16,15 @@
     },
     "rest-api": {
       "tags": ["rest-api"]
+    },
+    "heimdall-monitor-tracking-api": {
+      "tags": ["type:api scope:monitor-tracking"]
+    },
+    "heimdall-monitor-tracking-rest": {
+      "tags": ["type:infra scope:monitor-tracking"]
+    },
+    "heimdall-monitor-tracking-feature": {
+      "tags": ["type:feature scope:monitor-tracking"]
     }
   }
 }

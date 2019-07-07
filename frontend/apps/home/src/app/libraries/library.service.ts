@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {MonitorTrackingService} from '@heimdall-frontend/heimdall/monitor-tracking/api';
 
 
 export enum VersionStatus {
@@ -31,31 +32,36 @@ export class LibraryService {
   private static FORMSTORE = 'FORMSTORE';
   private static IBIZNES = 'IBIZNES';
 
-  constructor() { }
+  constructor(private monitorTrackingService: MonitorTrackingService) {
+  }
 
   getLibsDashBoardView(): LibView[] {
+    this.monitorTrackingService.overview().subscribe(result => console.log(result));
     return [
       {
         name: LibraryService.TYPE_SCRIPT,
         currentVersion: '3.2.11',
-        libs:[
+        libs: [
           {name: LibraryService.EXIMEE, projectVersion: '2.10.11', status: VersionStatus.VERYOLD},
           {name: LibraryService.FORMSTORE, projectVersion: '3.1.16', status: VersionStatus.OLD},
-          {name: LibraryService.IBIZNES, projectVersion: '3.2.11', status: VersionStatus.GOOD}]},
+          {name: LibraryService.IBIZNES, projectVersion: '3.2.11', status: VersionStatus.GOOD}]
+      },
       {
         name: LibraryService.ANGULAR,
         currentVersion: '6.22.21',
-        libs:[
+        libs: [
           {name: LibraryService.EXIMEE, projectVersion: '6.22.11', status: VersionStatus.OK},
           {name: LibraryService.FORMSTORE, projectVersion: '6.12.21', status: VersionStatus.OLD},
-          {name: LibraryService.IBIZNES, projectVersion: '6.24.21', status: VersionStatus.GOOD}]},
+          {name: LibraryService.IBIZNES, projectVersion: '6.24.21', status: VersionStatus.GOOD}]
+      },
       {
         name: LibraryService.SCSS,
         currentVersion: '8.32.31',
-        libs:[
+        libs: [
           {name: LibraryService.EXIMEE, projectVersion: '8.33.31', status: VersionStatus.GOOD},
           {name: LibraryService.FORMSTORE, projectVersion: '9.32.31', status: VersionStatus.GOOD},
-          {name: LibraryService.IBIZNES, projectVersion: '8.32.34', status: VersionStatus.GOOD}]}
+          {name: LibraryService.IBIZNES, projectVersion: '8.32.34', status: VersionStatus.GOOD}]
+      }
     ];
   }
 

@@ -149,6 +149,99 @@
           "styleext": "scss"
         }
       }
+    },
+    "heimdall-monitor-tracking-api": {
+      "projectType": "library",
+      "root": "libs/heimdall/monitor-tracking/api",
+      "sourceRoot": "libs/heimdall/monitor-tracking/api/src",
+      "prefix": "heimdall-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/heimdall/monitor-tracking/api/tsconfig.lib.json",
+              "libs/heimdall/monitor-tracking/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/heimdall/monitor-tracking/api/jest.config.js",
+            "tsConfig": "libs/heimdall/monitor-tracking/api/tsconfig.spec.json",
+            "setupFile": "libs/heimdall/monitor-tracking/api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "heimdall-monitor-tracking-rest": {
+      "projectType": "library",
+      "root": "libs/heimdall/monitor-tracking/rest",
+      "sourceRoot": "libs/heimdall/monitor-tracking/rest/src",
+      "prefix": "heimdall-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/heimdall/monitor-tracking/rest/tsconfig.lib.json",
+              "libs/heimdall/monitor-tracking/rest/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/heimdall/monitor-tracking/rest/jest.config.js",
+            "tsConfig": "libs/heimdall/monitor-tracking/rest/tsconfig.spec.json",
+            "setupFile": "libs/heimdall/monitor-tracking/rest/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "heimdall-monitor-tracking-feature": {
+      "projectType": "library",
+      "root": "libs/heimdall/monitor-tracking/feature",
+      "sourceRoot": "libs/heimdall/monitor-tracking/feature/src",
+      "prefix": "heimdall-frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/heimdall/monitor-tracking/feature/tsconfig.lib.json",
+              "libs/heimdall/monitor-tracking/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/heimdall/monitor-tracking/feature/jest.config.js",
+            "tsConfig": "libs/heimdall/monitor-tracking/feature/tsconfig.spec.json",
+            "setupFile": "libs/heimdall/monitor-tracking/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
