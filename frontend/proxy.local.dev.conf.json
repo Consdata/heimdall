@@ -1,0 +1,37 @@
+{
+  "/api/monitor/v1/": {
+    "target": "http://localhost:8083/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/monitor/v1/": ""
+    }
+  },
+  "/api/monitor-tracking/v1/": {
+    "target": "http://localhost:8084/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/monitor-tracking/v1/": ""
+    }
+  },
+  "/api/report/v1/": {
+    "target": "http://localhost:8081/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/report/v1/": ""
+    }
+  },
+  "/api/report-list/v1/": {
+    "target": "http://localhost:8082/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/report-list/v1/": ""
+    }
+  },
+  "/api/dependency-list/v1/": {
+    "target": "http://localhost:8085/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/dependency-list/v1/": ""
+    }
+  }
+}

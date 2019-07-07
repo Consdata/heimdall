@@ -1,7 +1,7 @@
-import {ModuleDependency, ModuleType, Report} from './api';
+import {Dependency, ModuleType, Report} from './api';
 import {PackageFile} from './package-file';
 
-export function dependency(resolutions: any, name: string, version: string): ModuleDependency {
+export function dependency(resolutions: any, name: string, version: string): Dependency {
     const nameWithVersion = `${name}@${version}`;
     const resolved = resolutions[nameWithVersion];
     return {
@@ -23,13 +23,7 @@ export function parse(packageFile: PackageFile, yarnLock: any): Report {
             type: ModuleType.npm
         },
         timestamp: `${timestamp}`,
-        modules: [
-            {
-                type: ModuleType.npm,
-                name: packageFile.name,
-                dependencies: Object.keys(dependencies)
-                    .map(name => dependency(yarnLock, name, dependencies[name]))
-            }
-        ]
+        dependencies: Object.keys(dependencies)
+            .map(name => dependency(yarnLock, name, dependencies[name]))
     };
 }

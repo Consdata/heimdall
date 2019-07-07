@@ -1,0 +1,98 @@
+version: '3'
+services:
+  axonserver:
+    image: axoniq/axonserver:4.1.2-jdk11
+    hostname: axonserver
+    environment:
+      - AXONSERVER_HOSTNAME=axonserver
+    volumes:
+      - axonserver-data:/opt/axonserver/data
+    deploy:
+      resources:
+        limits:
+          memory: 160M
+  gateway:
+    build: gateway
+    image: consdata/heimdall-gateway:${HEIMDALL_VERSION:-latest}
+    ports:
+      - "8200:80"
+    deploy:
+      resources:
+        limits:
+          memory: 24M
+    depends_on:
+      - frontend
+      - monitor
+      - monitor-tracking
+      - report
+      - report-list
+      - dependency-list
+  frontend:
+    build: frontend
+    image: consdata/heimdall-frontend:${HEIMDALL_VERSION:-latest}
+    deploy:
+      resources:
+        limits:
+          memory: 24M
+  monitor:
+    build: monitor
+    image: consdata/heimdall-monitor:${HEIMDALL_VERSION:-latest}
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=f911507619ad
+    depends_on:
+      - axonserver
+    deploy:
+      resources:
+        limits:
+          memory: 160M
+  monitor-tracking:
+    build: monitor-tracking
+    image: consdata/heimdall-monitor-tracking:${HEIMDALL_VERSION:-latest}
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=8b26fbd665f7
+    depends_on:
+      - axonserver
+    deploy:
+      resources:
+        limits:
+          memory: 160M
+  report:
+    build: report
+    image: consdata/heimdall-report:${HEIMDALL_VERSION:-latest}
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=7a784ff31438
+    depends_on:
+      - axonserver
+    deploy:
+      resources:
+        limits:
+          memory: 160M
+  report-list:
+    build: report-list
+    image: consdata/heimdall-report-list:${HEIMDALL_VERSION:-latest}
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=281eaa492d17
+    depends_on:
+      - axonserver
+    deploy:
+      resources:
+        limits:
+          memory: 160M
+  dependency-list:
+    build: dependency-list
+    image: consdata/heimdall-dependency-list:${HEIMDALL_VERSION:-latest}
+    environment:
+      - AXON_AXONSERVER_SERVERS=axonserver
+      - APP_INSTANCE_UUID=549a220eba75
+    depends_on:
+      - axonserver
+    deploy:
+      resources:
+        limits:
+          memory: 160M
+volumes:
+  axonserver-data:

@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ReportListApplication-39ddcde1b80e" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="heimdall.report-list.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.consdata.heimdall.report.list.ReportListApplication" />
+    <option name="VM_PARAMETERS" value="-Xmx256m -Xss512k -XX:+UseSerialGC" />
+    <option name="PROGRAM_PARAMETERS" value="--app.instance.uuid=39ddcde1b80e" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

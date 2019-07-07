@@ -1,0 +1,26 @@
+apply plugin: 'kotlin'
+
+sourceCompatibility = '1.8'
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'org.slf4j:slf4j-api:1.7.26'
+    implementation 'org.axonframework:axon-configuration:4.0.3'
+    implementation 'org.springframework:spring-context:5.2.0.M2'
+//    implementation 'org.springframework:spring-beans:5.2.0.M2'
+}
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = '1.8'
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = '1.8'
+    }
+}

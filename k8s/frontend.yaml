@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: heimdall-frontend
+  labels:
+    app: heimdall-frontend
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: heimdall-frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-frontend
+  labels:
+    app: heimdall-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall-frontend
+  template:
+    metadata:
+      labels:
+        app: heimdall-frontend
+    spec:
+      containers:
+        - name: heimdall-frontend
+          image: consdata/heimdall-frontend:0.1.7
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: 10Mi
+            limits:
+              memory: 20Mi
