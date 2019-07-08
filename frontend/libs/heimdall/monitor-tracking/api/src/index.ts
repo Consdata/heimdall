@@ -4,3 +4,4 @@ export * from './lib/monitor-tracking-overview-entry';
 export * from './lib/monitor-tracking-overview';
 export * from './lib/monitor-tracking-status';
 export * from './lib/monitor-tracking.service';
+export {ArtifactVersion} from './lib/artifact-version';
