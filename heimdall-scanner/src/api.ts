@@ -1,11 +1,3 @@
-export interface Dependency {
-    name: string,
-    version: string,
-    resolution?: string,
-    dependencies?: Dependency[],
-    cyclicDep: boolean
-}
-
 export enum ModuleType {
     npm = 'Npm',
     maven = 'Maven',
@@ -23,5 +15,7 @@ export interface Report {
         sha: string
     },
     timestamp: string,
-    dependencies?: Dependency[];
+    libs: {
+        [key: string]: string[]
+    }
 }
