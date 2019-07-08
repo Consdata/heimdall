@@ -10,14 +10,6 @@ internal enum class AddReportModuleTypeDto {
     Npm, Maven, Gradle
 }
 
-internal data class AddReportModuleDependencyDto(
-        var name: String,
-        var version: String,
-        var resolution: String?,
-        var cyclicDep: Boolean,
-        var dependencies: List<AddReportModuleDependencyDto>?
-)
-
 internal data class AddReportProjectDto(
         var name: String,
         var version: String,
@@ -30,8 +22,8 @@ internal data class AddReportGitDto(
 )
 
 internal data class AddReportDto(
-        var timestamp: String,
         var project: AddReportProjectDto,
         var git: AddReportGitDto?,
-        var dependencies: List<AddReportModuleDependencyDto>?
+        var timestamp: String,
+        var libs: Map<String, List<String>>
 )

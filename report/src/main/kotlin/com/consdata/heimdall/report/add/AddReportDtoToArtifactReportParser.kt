@@ -11,15 +11,10 @@ private interface Parser {
     fun reportDate(timestamp: String): GenerationDate
     fun gitCommit(git: AddReportGitDto): GitCommit
     fun artifactType(type: AddReportModuleTypeDto): ArtifactType
-    fun dependencyVersion(requested: String, resolved: String): DependencyVersion
+    fun dependencies(dependencies: Map<String, List<String>>): Map<String, List<ArtifactDependency>>
 }
 
 private class NpmParser : Parser {
-
-    override fun dependencyVersion(requested: String, resolved: String) = DependencyVersion(
-            requested = ArtifactVersionRange(requested),
-            resolved = artifactVersion(resolved)
-    )
 
     override fun artifactType(type: AddReportModuleTypeDto) = when (type) {
         AddReportModuleTypeDto.Gradle -> ArtifactType.Gradle
@@ -57,6 +52,25 @@ private class NpmParser : Parser {
         }
     }
 
+    override fun dependencies(dependencies: Map<String, List<String>>) =
+            dependencies.mapValues { entry ->
+                entry.value
+                        .map { it.split(":") }
+                        .map { artifactDependency(it) }
+            }
+
+    private fun artifactDependency(it: List<String>): ArtifactDependency {
+        val version = it[2].split(".")
+        return ArtifactDependency(
+                scope = ArtifactType.Npm,
+                group = it[0],
+                name = it[1],
+                major = version[0].toLong(),
+                minor = version[0].toLong(),
+                patch = version[0].toLong()
+        )
+    }
+
 }
 
 @Component
@@ -71,20 +85,10 @@ class AddReportDtoToArtifactReportParser {
                 version = parser.artifactVersion(dto.project.version),
                 date = parser.reportDate(dto.timestamp),
                 git = if (dto.git != null) parser.gitCommit(dto.git!!) else null,
-                dependencies = ofDependencies(parser, dto.dependencies ?: listOf()),
+                dependencies = parser.dependencies(dto.libs),
                 type = parser.artifactType(dto.project.type)
         )
     }
-
-    private fun ofDependencies(parser: Parser, dependencies: List<AddReportModuleDependencyDto>): List<ArtifactDependency> = dependencies.map {
-        ArtifactDependency(
-                name = parser.artifactName(it.name),
-                version = parser.dependencyVersion(it.version, it.resolution ?: it.version),
-                dependencies = ofDependencies(parser, it.dependencies ?: listOf()),
-                cyclicDep = it.cyclicDep
-        )
-    }
-
 
     private fun parser(type: AddReportModuleTypeDto) = when (type) {
         AddReportModuleTypeDto.Npm -> npmParser

@@ -35,7 +35,8 @@ export class YarnLockParser {
             ...this.pkgDeps(this.pkg.devDependencies)
         ];
 
-        this.dependencies(`${this.pkg.name}@${this.pkg.version}`, dependencies);
+        let appName = `${this.parseName(this.pkg.name + '@')}:${this.pkg.version}`;
+        this.dependencies(appName, dependencies);
 
         this.parsed = true;
     }
@@ -48,26 +49,39 @@ export class YarnLockParser {
 
     private dependencies(lib: string, dependencies: string[]) {
         if (this.report.libs[lib]) {
-            console.log(`Dependency already checked, skipping [name=${lib}]`);
+            // console.log(`Dependency already checked, skipping [name=${lib}]`);
             return;
         }
 
         const libDeps: string[] = this.report.libs[lib] = [];
 
         const resolved = dependencies.map(dep => ({
-            name: dep.substr(0, dep.indexOf('@', 1)),
+            name: this.parseName(dep),
             version: this.lock[dep].version,
             requested: dep,
             dependencies: Object.keys((this.lock[dep].dependencies || [])).map(name => `${name}@${this.lock[dep].dependencies[name]}`)
         }));
 
         resolved
-            .map(tuple => `${tuple.name}@${tuple.version}`)
+            .map(tuple => `${tuple.name}:${this.trimVersion(tuple.version)}`)
             .filter(dependency => libDeps.indexOf(dependency) < 0)
             .forEach(dependency => libDeps.push(dependency));
         resolved
             .filter(tuple => tuple.dependencies.length > 0)
-            .forEach(tuple => this.dependencies(`${tuple.name}@${tuple.version}`, tuple.dependencies));
+            .forEach(tuple => this.dependencies(`${tuple.name}:${this.trimVersion(tuple.version)}`, tuple.dependencies));
+    }
+
+    private parseName(dep: string): string {
+        if (dep.indexOf('/') >= 0) {
+            return dep.substr(0, dep.indexOf('@', 1)).replace('/', ':');
+        } else {
+            return ':' + dep.substr(0, dep.indexOf('@', 1));
+        }
+    }
+
+    private trimVersion(raw: string): string {
+        const [, second, third, fourth] = /^([0-9]*).([0-9]*).([0-9]*)(.*)$/.exec(raw) || [, 0, 0, 0];
+        return `${second}.${third}.${fourth}`;
     }
 
 }
