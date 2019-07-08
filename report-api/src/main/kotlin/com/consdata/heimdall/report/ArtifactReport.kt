@@ -13,7 +13,7 @@ data class GitCommit(val branch: GitBranch, val sha: String)
 
 data class GitBranch(val name: String)
 
-data class ArtifactDependency(val name: ArtifactName, val version: DependencyVersion, val dependencies: List<ArtifactDependency>)
+data class ArtifactDependency(val name: ArtifactName, val version: DependencyVersion, val dependencies: List<ArtifactDependency>, val cyclicDep: Boolean)
 
 data class DependencyVersion(val requested: ArtifactVersionRange, val resolved: ArtifactVersion)
 

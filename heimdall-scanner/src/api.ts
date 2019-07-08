@@ -2,7 +2,8 @@ export interface Dependency {
     name: string,
     version: string,
     resolution?: string,
-    dependencies?: Dependency[];
+    dependencies?: Dependency[],
+    cyclicDep: boolean
 }
 
 export enum ModuleType {

@@ -14,6 +14,7 @@ internal data class AddReportModuleDependencyDto(
         var name: String,
         var version: String,
         var resolution: String?,
+        var cyclicDep: Boolean,
         var dependencies: List<AddReportModuleDependencyDto>?
 )
 

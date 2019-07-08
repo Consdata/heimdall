@@ -80,8 +80,9 @@ class AddReportDtoToArtifactReportParser {
         ArtifactDependency(
                 name = parser.artifactName(it.name),
                 version = parser.dependencyVersion(it.version, it.resolution ?: it.version),
-                dependencies = ofDependencies(parser, it.dependencies ?: listOf()))
-
+                dependencies = ofDependencies(parser, it.dependencies ?: listOf()),
+                cyclicDep = it.cyclicDep
+        )
     }
 
 
