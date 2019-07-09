@@ -66,8 +66,8 @@ private class NpmParser : Parser {
                 group = it[0],
                 name = it[1],
                 major = version[0].toLong(),
-                minor = version[0].toLong(),
-                patch = version[0].toLong()
+                minor = version[1].toLong(),
+                patch = version[2].toLong()
         )
     }
 
