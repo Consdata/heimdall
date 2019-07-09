@@ -22,7 +22,7 @@ library-project-dependency {
 
   .project-version-status-very-old {
     color: $pomegranate-color;
-    background: $pomegranate-color + 120;
+    background: lighten($pomegranate-color, 40%);
   }
 
   .project-version-status-old {

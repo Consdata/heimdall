@@ -1,6 +1,6 @@
 import {Report} from './api';
 import {PackageFile} from './package-file';
-import {parse} from './parser';
+import {YarnLockParser} from './parser';
 
 const fs = require('file-system');
 const lockfile = require('@yarnpkg/lockfile');
@@ -26,7 +26,9 @@ if (missingPaths.length > 0) {
 const packageFile = JSON.parse(fs.readFileSync(paths.packageJson)) as PackageFile;
 const yarnLock = lockfile.parse(fs.readFileSync(paths.yarnLock, 'utf8')).object;
 
-const report: Report = parse(packageFile, yarnLock);
+const parser = new YarnLockParser(packageFile, yarnLock);
+parser.parse();
+const report: Report = parser.getReport();
 
 // console.log(JSON.stringify(compressJson(report)));
-console.log(JSON.stringify(report));
+console.log(JSON.stringify(report, null, 2));

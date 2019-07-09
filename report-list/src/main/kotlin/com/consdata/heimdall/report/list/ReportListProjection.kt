@@ -25,7 +25,7 @@ internal class ReportListProjection(private val repository: ReportListRepository
         val version = ev.report.version.versionString()
 
         repository.save(ReportListEntity(
-                artifact = "$type:$name@$version".toLowerCase(),
+                artifact = "$type:$name:$version".toLowerCase(),
                 timestamp = ev.timestamp,
                 reportUuid = ev.id
         ))

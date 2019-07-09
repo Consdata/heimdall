@@ -68,3 +68,9 @@ curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://l
 ```bash
 curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://localhost:8200/api/dependency-list/v1/
 ```
+
+## Tips
+
+### Intellij with WSL on Windows
+
+Disable 'safe write' to enable Angular CLI detect code changes.

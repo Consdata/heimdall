@@ -6,4 +6,5 @@ export interface PackageFile {
     name: string;
     version: string;
     dependencies: PackageFileDependencies;
+    devDependencies: PackageFileDependencies;
 }

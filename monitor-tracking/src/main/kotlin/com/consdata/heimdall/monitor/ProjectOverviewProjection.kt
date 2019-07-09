@@ -66,16 +66,15 @@ class ProjectOverviewProjection(
     }
 
     private fun updateKnownTrackedDependencies(report: ArtifactReport, artifactScope: ArtifactScope) {
-        report.dependencies
-                .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.name.group, it.name.artifact) }
+        report.rootDependencies()
+                .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name) }
                 .forEach {
-                    val existing = tracking.findByScopeAndGroupIdAndArtifact(artifactScope, it.name.group, it.name.artifact)
-                    val newVersion = it.version.resolved
-                    if (existing.compare(newVersion.major, newVersion.minor, newVersion.patch) < 0) {
-                        existing.setVersion(newVersion.major, newVersion.minor, newVersion.patch)
+                    val existing = tracking.findByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name)
+                    if (existing.compare(it.major, it.minor, it.patch) < 0) {
+                        existing.setVersion(it.major, it.minor, it.patch)
                         tracking.save(existing)
                         dependencies.setLatestDependency(
-                                newVersion.major, newVersion.minor, newVersion.patch,
+                                it.major, it.minor, it.patch,
                                 existing.id ?: throw IllegalStateException("Missing tracking id")
                         )
                     }
@@ -93,8 +92,8 @@ class ProjectOverviewProjection(
 
         val projectId = existingProject?.id ?: project.id ?: throw IllegalStateException("Missing project id!")
 
-        val projectDependencies = report.dependencies
-                .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.name.group, it.name.artifact) }
+        val projectDependencies = report.rootDependencies()
+                .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name) }
                 .map {
                     asOverviewEntity(projectId, artifactScope, it, project)
                 }
@@ -102,13 +101,13 @@ class ProjectOverviewProjection(
     }
 
     private fun asOverviewEntity(projectId: Long, artifactScope: ArtifactScope, it: ArtifactDependency, project: ProjectEntity): DependencyOverviewEntity {
-        val tracking = tracking.findByScopeAndGroupIdAndArtifact(artifactScope, it.name.group, it.name.artifact)
+        val tracking = tracking.findByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name)
         return DependencyOverviewEntity(
                 projectId = projectId,
                 trackingId = tracking.id ?: throw IllegalStateException("Missing tracking id"),
                 dependencyScope = artifactScope,
-                dependencyGroup = it.name.group,
-                dependencyArtifact = it.name.artifact,
+                dependencyGroup = it.group,
+                dependencyArtifact = it.name,
                 dependencyLatestMajor = tracking.latestMajor,
                 dependencyLatestMinor = tracking.latestMinor,
                 dependencyLatestPatch = tracking.latestPatch,
@@ -117,10 +116,10 @@ class ProjectOverviewProjection(
                 projectVersionMajor = project.versionMajor,
                 projectVersionMinor = project.versionMinor,
                 projectVersionPatch = project.versionPatch,
-                versionMajor = it.version.resolved.major,
-                versionMinor = it.version.resolved.minor,
-                versionPatch = it.version.resolved.patch,
-                status = dependencyStatus(it.version.resolved, tracking)
+                versionMajor = it.major,
+                versionMinor = it.minor,
+                versionPatch = it.patch,
+                status = dependencyStatus(ArtifactVersion(it.major, it.minor, it.patch), tracking)
         )
     }
 

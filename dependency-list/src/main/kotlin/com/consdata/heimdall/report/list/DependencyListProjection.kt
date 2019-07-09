@@ -18,12 +18,12 @@ internal class DependencyListProjection(private val repository: DependencyReposi
 
         val dependencies = ev
                 .report
-                .dependencies
+                .rootDependencies()
                 .map {
                     DependencyEntity(
                             scope = ev.report.type.name,
-                            groupId = it.name.group ?: "",
-                            artifactId = it.name.artifact
+                            groupId = it.group,
+                            artifactId = it.name
                     )
                 }
                 .filter {

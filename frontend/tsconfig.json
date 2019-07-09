@@ -7,16 +7,26 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es5",
-    "module": "es2015",
+    "target": "es2015",
+    "module": "esnext",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@heimdall-frontend/rest-api": ["libs/rest-api/src/index.ts"]
-    }
+      "@heimdall-frontend/rest-api": ["libs/rest-api/src/index.ts"],
+      "@heimdall-frontend/heimdall/monitor-tracking/api": [
+        "libs/heimdall/monitor-tracking/api/src/index.ts"
+      ],
+      "@heimdall-frontend/heimdall/monitor-tracking/rest": [
+        "libs/heimdall/monitor-tracking/rest/src/index.ts"
+      ],
+      "@heimdall-frontend/heimdall/monitor-tracking/feature": [
+        "libs/heimdall/monitor-tracking/feature/src/index.ts"
+      ]
+    },
+    "rootDir": "."
   },
   "exclude": ["node_modules", "tmp"]
 }
