@@ -1,14 +1,13 @@
-library {
-
-  display: inline-block;
+:host {
 
   .lib-container {
     text-align: center;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
     margin: 16px;
-    background: $clouds-color;
+    //background: $clouds-color;
+    background: white;
     border-radius: 5px;
-    color: $midnight-blue-color;
+    //color: $midnight-blue-color;
   }
 
   .library-info-container {
@@ -17,7 +16,7 @@ library {
 
   .library-info-name {
     font-size: 20px;
-    filter: drop-shadow(0 0 1px $asbestos-color);
+    //filter: drop-shadow(0 0 1px $asbestos-color);
   }
 
   .library-info-current-version {

@@ -10,7 +10,10 @@ import {LibraryService, LibView} from './library.service';
               *ngFor="let libView of libs$ | async"
               [libView]="libView">
       </library>
-  `
+  `,
+  styleUrls: [
+    'libraries-list.component.scss'
+  ]
 })
 export class LibrariesListComponent implements OnInit, OnChanges {
 

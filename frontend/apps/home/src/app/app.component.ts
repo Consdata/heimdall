@@ -4,11 +4,12 @@ import {Component} from '@angular/core';
   selector: 'hmd-root',
   template: `
     <navbar (filterValueEmitter)="filterValue($event)"></navbar>
-    <libraries-list
-      class="hmd-libs-dash-board"
-      [filterValue]="filter">
+    <libraries-list [filterValue]="filter">
     </libraries-list>
   `,
+  styleUrls: [
+    'app.component.scss'
+  ]
 })
 export class AppComponent {
 

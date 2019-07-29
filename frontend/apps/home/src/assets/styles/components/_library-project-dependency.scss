@@ -1,15 +1,20 @@
 library-project-dependency {
 
+  display: block;
+
   .project-container {
     display: flex;
+    padding: 0 16px;
   }
 
   .project-version {
     width: 80px;
+    text-align: right;
   }
 
   .project-name {
-    width: 120px;
+    flex: 1;
+    text-align: left;
   }
 
   .project-name, .project-version {

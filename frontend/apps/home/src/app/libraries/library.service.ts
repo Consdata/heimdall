@@ -61,10 +61,12 @@ export class LibraryService {
   }
 
   private depednencyStatus(item: MonitorTrackingOverviewEntry): VersionStatus {
-    if (item.status === MonitorTrackingStatus.Current) {
+    if (item.dependency.version.major === item.latestDependency.version.major && item.dependency.version.minor === item.latestDependency.version.minor) {
       return VersionStatus.GOOD;
+    } else if (item.dependency.version.major === item.latestDependency.version.major) {
+      return VersionStatus.OLD;
     } else {
-      return item.dependency.version.major === item.latestDependency.version.major ? VersionStatus.OLD : VersionStatus.VERYOLD;
+      return VersionStatus.VERYOLD
     }
   }
 

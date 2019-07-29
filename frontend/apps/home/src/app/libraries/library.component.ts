@@ -15,6 +15,9 @@ import {LibView} from './library.service';
       </library-project-dependency>
     </div>
   `,
+  styleUrls: [
+    'library.component.scss'
+  ]
 })
 export class LibraryComponent {
 

@@ -6,7 +6,7 @@
 
 ### Local via Intellij
 - Start services via Intellij configs.
-- $ yarn start --proxy-config proxy.local.dev.conf.json 
+- $ yarn start --proxy-config proxy.local.dev.conf.json
 - Open: http://localhost:4200/
 
 ### Local via docker-compose
