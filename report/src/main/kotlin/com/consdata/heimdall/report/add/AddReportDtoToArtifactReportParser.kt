@@ -14,7 +14,7 @@ private interface Parser {
     fun dependencies(dependencies: Map<String, List<String>>): Map<String, List<ArtifactDependency>>
 }
 
-private class NpmParser : Parser {
+private class DefaultParser : Parser {
 
     override fun artifactType(type: AddReportModuleTypeDto) = when (type) {
         AddReportModuleTypeDto.Gradle -> ArtifactType.Gradle
@@ -42,13 +42,13 @@ private class NpmParser : Parser {
     override fun artifactVersion(raw: String): ArtifactVersion {
         val parts = raw.split(".")
         return when (parts.size) {
-            0 -> throw ParserException("Invalid artifactName version, missing segments")
+            0 -> throw ParserException("Invalid artifactVersion version, missing segments")
             in 1..3 -> ArtifactVersion(
                     major = parts.getOrElse(0) { "0" }.toLong(),
                     minor = parts.getOrElse(1) { "0" }.toLong(),
                     patch = parts.getOrElse(2) { "0" }.toLong()
             )
-            else -> throw ParserException("Invalid artifactName version, to many segments")
+            else -> throw ParserException("Invalid artifactVersion version, to many segments")
         }
     }
 
@@ -76,7 +76,7 @@ private class NpmParser : Parser {
 @Component
 class AddReportDtoToArtifactReportParser {
 
-    private val npmParser = NpmParser()
+    private val defaultParser = DefaultParser()
 
     internal fun of(dto: AddReportDto): ArtifactReport {
         val parser = parser(dto.project.type)
@@ -91,9 +91,9 @@ class AddReportDtoToArtifactReportParser {
     }
 
     private fun parser(type: AddReportModuleTypeDto) = when (type) {
-        AddReportModuleTypeDto.Npm -> npmParser
-        AddReportModuleTypeDto.Gradle -> throw ParserException("Not supported artifactName type")
-        AddReportModuleTypeDto.Maven -> throw ParserException("Not supported artifactName type")
+        AddReportModuleTypeDto.Npm -> defaultParser
+        AddReportModuleTypeDto.Gradle -> throw ParserException("Not supported artifact type: $type")
+        AddReportModuleTypeDto.Maven -> throw ParserException("Not supported artifact type: $type")
     }
 
 }

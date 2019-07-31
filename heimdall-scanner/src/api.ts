@@ -1,7 +1,12 @@
+/**
+ * Report REST endpoint models.
+ * @com.consdata.heimdall.report.add.AddReportDto
+ */
+
 export enum ModuleType {
-    npm = 'npm',
-    maven = 'maven',
-    gradle = 'gradle'
+    npm = 'Npm',
+    maven = 'Maven',
+    gradle = 'Gradle'
 }
 
 export interface Report {

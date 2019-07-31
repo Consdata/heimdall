@@ -9,18 +9,17 @@ export class MavenDependencyTreeParser implements Parser {
     getReport(): Report {
         return {
             project: {
-                name: 'project name TODO',
-                version: 'project version TODO',
+                name: 'nazwa projektu TODO',
+                version: 'version TODO',
                 type: ModuleType.maven
             },
             timestamp: `${new Date().getTime()}`,
-            libs: {}
+            libs: this.parseDependencyTree(this.dependencyTreeExecutionResult)
         };
     }
 
-    // TODO ta metoda moze od razu zwracac report? albo przeniesc to do getReport i usunac parse() z interfejsu
     private parseDependencyTree(dependencyTreeExecutionResult: string): {[key: string]: string[]} {
-        const dependencyTree = this.dependencyTreeExecutionResult.match(/{(.|[\r\n])*}/g);
+        const dependencyTree = dependencyTreeExecutionResult.match(/{(.|[\r\n])*}/g);
         if (dependencyTree) {
             const filtered =
                 dependencyTree[0]
@@ -36,17 +35,11 @@ export class MavenDependencyTreeParser implements Parser {
                         }),
                         {}
                     );
-
-            console.log(JSON.stringify(filtered, null, 2));
             return filtered;
         } else {
             throw Error('Could not parse dependency tree');
         }
     }
-
-    parse(): void {
-
-    } // TODO usunac
 
     private extractNameAndVersion(raw: string) {
         const split = raw.split(':');

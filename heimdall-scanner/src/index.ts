@@ -7,11 +7,11 @@ const moduleType = args[0];
 const pathToProject = args[1] || './';
 
 switch (moduleType.toLowerCase()) {
-    case ModuleType.npm: {
+    case ModuleType.npm.toLowerCase(): {
         console.log(new NpmScanner().scan(pathToProject));
         break;
     }
-    case ModuleType.maven: {
+    case ModuleType.maven.toLowerCase(): {
         console.log(new MavenScanner().scan(pathToProject));
         break;
     }

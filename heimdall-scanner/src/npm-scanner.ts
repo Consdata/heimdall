@@ -23,7 +23,7 @@ export class NpmScanner implements Scanner {
 
         const packageFile = JSON.parse(fs.readFileSync(paths.packageJson)) as PackageFile;
         const yarnLock = lockfile.parse(fs.readFileSync(paths.yarnLock, 'utf8')).object;
-        const parser = new YarnLockParser(packageFile, yarnLock);
+        const parser: YarnLockParser = new YarnLockParser(packageFile, yarnLock);
 
         parser.parse();
         const report: Report = parser.getReport();
