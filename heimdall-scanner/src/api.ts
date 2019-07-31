@@ -1,7 +1,7 @@
 export enum ModuleType {
-    npm = 'Npm',
-    maven = 'Maven',
-    gradle = 'Gradle'
+    npm = 'npm',
+    maven = 'maven',
+    gradle = 'gradle'
 }
 
 export interface Report {
