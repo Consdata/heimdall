@@ -4,21 +4,40 @@
 
 ## Running app
 
-### Local via Intellij
+- Start Axon Server
+- Start modules if needed
+- Start frontend if needed
+
+### Running Axon Server
+
+#### Axon Server via jar
+
+- Download AxonServer standalone jar & unzip it to AxonServer directory
+- $ java -jar AxonServer/axonserver.jar
+
+#### Axon Server via Docker
+
+- $ docker run -d --name axonserver -p 8024:8024 -p 8124:8124 axoniq/axonserver
+
+### Running app modules
+
+You can run any number of modules, neither is required to run others.
+
+#### Local via Intellij
 - Start services via Intellij configs.
 - $ yarn start --proxy-config proxy.local.dev.conf.json
 - Open: http://localhost:4200/
 
-### Local via docker-compose
+#### Local via docker-compose
 - $ docker-compose up
 - $ yarn start --proxy-config proxy.local.compose.conf.json
 - Open: http://localhost:4200/
 
-### Build via docker-compose
+#### Build via docker-compose
 - $ docker-compose up
 - Open: http://localhost:8200/
 
-### Build via k8s
+#### Build via k8s
 - Create ingress.yaml based on ingress.yaml.tpl (change hostname to virtual host pointing k8s)
   - (alt) $ HOSTNAME="heimdall.k8s.lan" envsubst < k8s/ingress.yaml.tpl | kubectl apply -f -
 - $ kubectl apply -f k8s
