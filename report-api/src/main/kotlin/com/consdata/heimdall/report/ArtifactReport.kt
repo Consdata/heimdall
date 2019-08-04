@@ -1,13 +1,22 @@
 package com.consdata.heimdall.report
 
+import java.lang.IllegalStateException
+
 data class ArtifactDependency(
+        val scope: ArtifactType,
         val group: String,
         val name: String,
-        val major: Long,
-        val minor: Long,
-        val patch: Long,
-        val scope: ArtifactType
-)
+        val major: Long? = null,
+        val minor: Long? = null,
+        val patch: Long? = null,
+        val artifactVersion: ArtifactVersion?
+) {
+    fun version() = artifactVersion ?: ArtifactVersion(
+            major ?: throw IllegalStateException("Neither ArtifactVersion, nither"),
+            minor ?: 0,
+            patch ?: 0
+    )
+}
 
 data class ArtifactReport(
         val name: ArtifactName,
@@ -15,11 +24,8 @@ data class ArtifactReport(
         val date: GenerationDate,
         val git: GitCommit? = null,
         val dependencies: Map<String, List<ArtifactDependency>>,
-        val type: ArtifactType
-) {
-
+        val type: ArtifactType) {
     fun rootDependencies() = dependencies["${name.nameString()}:${version.versionString()}"] ?: listOf()
-
 }
 
 data class GitCommit(val branch: GitBranch, val sha: String)
@@ -32,7 +38,13 @@ enum class ArtifactType {
 
 data class GenerationDate(val timestamp: Long)
 
-data class ArtifactVersion(val major: Long, val minor: Long, val patch: Long) {
+data class ArtifactVersion(
+        val major: Long,
+        val minor: Long = 0,
+        val patch: Long = 0,
+        val buildNumber: Long = 0,
+        val qualifier: String = "",
+        val raw: String = "$major.$minor.$patch") {
     fun versionString() = "$major.$minor.$patch"
 }
 
