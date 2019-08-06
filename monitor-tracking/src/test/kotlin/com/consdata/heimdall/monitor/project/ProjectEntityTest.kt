@@ -29,7 +29,7 @@ internal class ProjectEntityTest {
 
     private fun version(major: Long, minor: Long, patch: Long): ProjectEntity {
         return ProjectEntity(
-                scope = ArtifactScope.Gradle,
+                scope = ArtifactScope.Maven,
                 groupId = "",
                 artifact = "",
                 versionMajor = major,

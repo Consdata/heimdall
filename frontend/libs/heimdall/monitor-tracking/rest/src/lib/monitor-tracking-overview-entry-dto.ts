@@ -2,7 +2,7 @@ export interface MonitorTrackingOverviewEntryDto {
   id: number,
   projectId: number,
   trackingId: number,
-  dependencyScope: "Npm" | "Maven" | "Gradle",
+  dependencyScope: "Npm" | "Maven",
   dependencyGroup: string,
   dependencyArtifact: string,
   dependencyLatestMajor: number,

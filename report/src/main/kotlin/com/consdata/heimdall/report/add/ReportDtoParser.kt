@@ -8,5 +8,5 @@ internal interface ReportDtoParser {
     fun reportDate(timestamp: String): GenerationDate
     fun gitCommit(git: AddReportGitDto): GitCommit
     fun artifactType(type: AddReportModuleTypeDto): ArtifactType
-    fun dependencies(dependencies: Map<String, List<String>>): Map<String, List<ArtifactDependency>>
+    fun dependencies(dependencies: Map<String, List<String>>, artifactType: ArtifactType): Map<String, List<ArtifactDependency>>
 }

@@ -28,7 +28,7 @@ internal class TrackedDependencyEntityTest {
 
     private fun version(major: Long, minor: Long, patch: Long): TrackedDependencyEntity {
         return TrackedDependencyEntity(
-                scope = ArtifactScope.Gradle,
+                scope = ArtifactScope.Maven,
                 groupId = "",
                 artifact = "",
                 latestMajor = major,

@@ -12,19 +12,19 @@ class AddReportDtoToArtifactReportParser {
 
     internal fun of(dto: AddReportDto): ArtifactReport {
         val parser = parser(dto.project.type)
+        val artifactType = parser.artifactType(dto.project.type)
         return ArtifactReport(
                 name = parser.artifactName(dto.project.name),
                 version = parser.artifactVersion(dto.project.version),
                 date = parser.reportDate(dto.timestamp),
                 git = if (dto.git != null) parser.gitCommit(dto.git!!) else null,
-                dependencies = parser.dependencies(dto.libs),
-                type = parser.artifactType(dto.project.type)
+                dependencies = parser.dependencies(dto.libs, artifactType),
+                type = artifactType
         )
     }
 
     private fun parser(type: AddReportModuleTypeDto) = when (type) {
         AddReportModuleTypeDto.Npm -> defaultParser
-        AddReportModuleTypeDto.Gradle -> throw ParserException("Not supported artifactName type")
         AddReportModuleTypeDto.Maven -> defaultParser
     }
 

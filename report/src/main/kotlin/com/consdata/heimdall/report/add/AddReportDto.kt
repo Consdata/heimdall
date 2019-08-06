@@ -7,7 +7,7 @@ package com.consdata.heimdall.report.add
  */
 
 internal enum class AddReportModuleTypeDto {
-    Npm, Maven, Gradle
+    Npm, Maven
 }
 
 internal data class AddReportProjectDto(

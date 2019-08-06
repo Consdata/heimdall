@@ -24,7 +24,6 @@ internal class AddDependencyTrackingController(
     private fun asScope(scope: String) = when (scope) {
         "Npm" -> ArtifactScope.Npm
         "Maven" -> ArtifactScope.Maven
-        "Gradle" -> ArtifactScope.Gradle
         else -> throw IllegalArgumentException("Unknown scope name")
     }
 

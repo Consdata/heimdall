@@ -8,7 +8,6 @@ internal class DefaultReportDtoParser : ReportDtoParser {
     private val versionPattern = Pattern.compile("^([0-9]+)(?:[.-]([0-9]+))?(?:[.-]([0-9]+))?(?:[.-]([0-9]+))?(?:[._-](.*))?\$").toRegex()
 
     override fun artifactType(type: AddReportModuleTypeDto) = when (type) {
-        AddReportModuleTypeDto.Gradle -> ArtifactType.Gradle
         AddReportModuleTypeDto.Maven -> ArtifactType.Maven
         AddReportModuleTypeDto.Npm -> ArtifactType.Npm
     }
@@ -21,7 +20,7 @@ internal class DefaultReportDtoParser : ReportDtoParser {
     override fun reportDate(timestamp: String) = GenerationDate(timestamp.toLong())
 
     override fun artifactName(raw: String): ArtifactName {
-        val parts = raw.split("/")
+        val parts = if (raw.contains("/")) raw.split("/") else raw.split(":")
         return when (parts.size) {
             0 -> throw ParserException("Invalid artifactName name, missing parts")
             1 -> ArtifactName(artifact = parts[0])
@@ -46,16 +45,16 @@ internal class DefaultReportDtoParser : ReportDtoParser {
                 } ?: throw ParserException("Unknown artifact version, not matching pattern")
     }
 
-    override fun dependencies(dependencies: Map<String, List<String>>) =
+    override fun dependencies(dependencies: Map<String, List<String>>, artifactType: ArtifactType) =
             dependencies.mapValues { entry ->
                 entry.value
                         .map { it.split(":") }
-                        .map { artifactDependency(it) }
+                        .map { artifactDependency(it, artifactType) }
             }
 
-    private fun artifactDependency(it: List<String>): ArtifactDependency {
+    private fun artifactDependency(it: List<String>, artifactType: ArtifactType): ArtifactDependency {
         return ArtifactDependency(
-                scope = ArtifactType.Npm,
+                scope = artifactType,
                 group = it[0],
                 name = it[1],
                 artifactVersion = artifactVersion(it[2])

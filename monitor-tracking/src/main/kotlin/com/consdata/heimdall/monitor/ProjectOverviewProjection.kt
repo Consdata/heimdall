@@ -143,7 +143,6 @@ class ProjectOverviewProjection(
     private fun asArtifactScope(type: ArtifactType) = when (type) {
         ArtifactType.Npm -> ArtifactScope.Npm
         ArtifactType.Maven -> ArtifactScope.Maven
-        ArtifactType.Gradle -> ArtifactScope.Gradle
         else -> throw IllegalArgumentException("Unknown scope name")
     }
 

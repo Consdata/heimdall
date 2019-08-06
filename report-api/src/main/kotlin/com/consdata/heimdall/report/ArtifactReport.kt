@@ -6,13 +6,13 @@ data class ArtifactDependency(
         val scope: ArtifactType,
         val group: String,
         val name: String,
-        val major: Long? = null,
-        val minor: Long? = null,
-        val patch: Long? = null,
+        private val major: Long? = null,
+        private val minor: Long? = null,
+        private val patch: Long? = null,
         val artifactVersion: ArtifactVersion?
 ) {
     fun version() = artifactVersion ?: ArtifactVersion(
-            major ?: throw IllegalStateException("Neither ArtifactVersion, nither"),
+            major ?: throw IllegalStateException("Neither ArtifactVersion, neither major version provided"),
             minor ?: 0,
             patch ?: 0
     )
@@ -33,7 +33,7 @@ data class GitCommit(val branch: GitBranch, val sha: String)
 data class GitBranch(val name: String)
 
 enum class ArtifactType {
-    Npm, Maven, Gradle
+    Npm, Maven
 }
 
 data class GenerationDate(val timestamp: Long)
@@ -45,7 +45,7 @@ data class ArtifactVersion(
         val buildNumber: Long = 0,
         val qualifier: String = "",
         val raw: String = "$major.$minor.$patch") {
-    fun versionString() = "$major.$minor.$patch"
+    fun versionString() = raw
 }
 
 data class ArtifactName(val artifact: String, val group: String? = null) {
