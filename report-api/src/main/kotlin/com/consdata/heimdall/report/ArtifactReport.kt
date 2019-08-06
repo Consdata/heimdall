@@ -44,8 +44,8 @@ data class ArtifactVersion(
         val patch: Long = 0,
         val buildNumber: Long = 0,
         val qualifier: String = "",
-        val raw: String = "$major.$minor.$patch") {
-    fun versionString() = raw
+        val raw: String? = "$major.$minor.$patch") {
+    fun versionString() = raw ?: "$major.$minor.$patch"
 }
 
 data class ArtifactName(val artifact: String, val group: String? = null) {
