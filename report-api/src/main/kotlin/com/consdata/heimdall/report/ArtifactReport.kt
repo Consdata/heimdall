@@ -6,9 +6,9 @@ data class ArtifactDependency(
         val scope: ArtifactType,
         val group: String,
         val name: String,
-        private val major: Long? = null,
-        private val minor: Long? = null,
-        private val patch: Long? = null,
+        val major: Long? = null,
+        val minor: Long? = null,
+        val patch: Long? = null,
         val artifactVersion: ArtifactVersion?
 ) {
     fun version() = artifactVersion ?: ArtifactVersion(
