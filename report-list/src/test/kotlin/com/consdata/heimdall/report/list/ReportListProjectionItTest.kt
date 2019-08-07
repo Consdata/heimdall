@@ -32,7 +32,7 @@ internal class ReportListProjectionItTest @Autowired constructor(
                 timestamp = 999,
                 report = ArtifactReport(
                         name = ArtifactName("artifact", "group"),
-                        version = ArtifactVersion(1, 2, 3),
+                        version = ArtifactVersion(1, 2, 3, raw = "1.2.3"),
                         date = GenerationDate(1),
                         dependencies = mapOf(),
                         type = ArtifactType.Npm

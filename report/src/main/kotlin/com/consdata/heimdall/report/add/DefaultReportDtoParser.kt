@@ -57,7 +57,7 @@ internal class DefaultReportDtoParser : ReportDtoParser {
                 scope = artifactType,
                 group = it[0],
                 name = it[1],
-                artifactVersion = artifactVersion(it[2])
+                version = artifactVersion(it[2])
         )
     }
 

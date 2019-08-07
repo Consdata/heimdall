@@ -1,22 +1,11 @@
 package com.consdata.heimdall.report
 
-import java.lang.IllegalStateException
-
 data class ArtifactDependency(
         val scope: ArtifactType,
         val group: String,
         val name: String,
-        val major: Long? = null,
-        val minor: Long? = null,
-        val patch: Long? = null,
-        val artifactVersion: ArtifactVersion?
-) {
-    fun version() = artifactVersion ?: ArtifactVersion(
-            major ?: throw IllegalStateException("Neither ArtifactVersion, neither major version provided"),
-            minor ?: 0,
-            patch ?: 0
-    )
-}
+        val version: ArtifactVersion
+)
 
 data class ArtifactReport(
         val name: ArtifactName,
@@ -25,7 +14,7 @@ data class ArtifactReport(
         val git: GitCommit? = null,
         val dependencies: Map<String, List<ArtifactDependency>>,
         val type: ArtifactType) {
-    fun rootDependencies() = dependencies["${name.nameString()}:${version.versionString()}"] ?: listOf()
+    fun rootDependencies() = dependencies["${name.nameString()}:${version.raw}"] ?: listOf()
 }
 
 data class GitCommit(val branch: GitBranch, val sha: String)
@@ -44,10 +33,20 @@ data class ArtifactVersion(
         val patch: Long = 0,
         val buildNumber: Long = 0,
         val qualifier: String = "",
-        val raw: String? = "$major.$minor.$patch") {
-    fun versionString() = raw ?: "$major.$minor.$patch"
+        val raw: String) {
+
+    fun versionString(): String {
+        val version = listOfNotNull(major, minor, patch, buildNumber, qualifier).joinToString(separator = ".")
+        return if (qualifier.isNotBlank()) {
+            "$version=$qualifier"
+        } else {
+            version
+        }
+    }
+
 }
 
 data class ArtifactName(val artifact: String, val group: String? = null) {
     fun nameString(): String = "${group ?: ""}:$artifact"
 }
+

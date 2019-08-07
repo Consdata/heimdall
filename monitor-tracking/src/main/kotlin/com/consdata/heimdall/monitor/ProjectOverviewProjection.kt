@@ -70,12 +70,11 @@ class ProjectOverviewProjection(
                 .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name) }
                 .forEach {
                     val existing = tracking.findByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name)
-                    val version = it.version()
-                    if (existing.compare(version.major, version.minor, version.patch) < 0) {
-                        existing.setVersion(version.major, version.minor, version.patch)
+                    if (existing.compare(it.version.major, it.version.minor, it.version.patch) < 0) {
+                        existing.setVersion(it.version.major, it.version.minor, it.version.patch)
                         tracking.save(existing)
                         dependencies.setLatestDependency(
-                                version.major, version.minor, version.patch,
+                                it.version.major, it.version.minor, it.version.patch,
                                 existing.id ?: throw IllegalStateException("Missing tracking id")
                         )
                     }
@@ -117,10 +116,10 @@ class ProjectOverviewProjection(
                 projectVersionMajor = project.versionMajor,
                 projectVersionMinor = project.versionMinor,
                 projectVersionPatch = project.versionPatch,
-                versionMajor = it.version().major,
-                versionMinor = it.version().minor,
-                versionPatch = it.version().patch,
-                status = dependencyStatus(ArtifactVersion(it.version().major, it.version().minor, it.version().patch), tracking)
+                versionMajor = it.version.major,
+                versionMinor = it.version.minor,
+                versionPatch = it.version.patch,
+                status = dependencyStatus(it.version, tracking)
         )
     }
 
