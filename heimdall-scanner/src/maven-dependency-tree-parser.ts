@@ -1,25 +1,7 @@
-import {Parser} from './parser';
-import {ModuleType, Report} from './api';
+export class MavenDependencyTreeParser {
 
-export class MavenDependencyTreeParser implements Parser {
-
-    constructor(private dependencyTreeExecutionResult: string) {
-    }
-
-    getReport(): Report {
-        return {
-            project: {
-                name: 'nazwa projektu TODO',
-                version: 'version TODO',
-                type: ModuleType.maven
-            },
-            timestamp: `${new Date().getTime()}`,
-            libs: this.parseDependencyTree(this.dependencyTreeExecutionResult)
-        };
-    }
-
-    private parseDependencyTree(dependencyTreeExecutionResult: string): {[key: string]: string[]} {
-        const dependencyTree = dependencyTreeExecutionResult.match(/{(.|[\r\n])*}/g);
+    public getDependencyTree(dependencyTreeBashExecutionResult: string): {[key: string]: string[]} {
+        const dependencyTree = dependencyTreeBashExecutionResult.match(/{(.|[\r\n])*}/g);
         if (dependencyTree) {
             const filtered =
                 dependencyTree[0]
