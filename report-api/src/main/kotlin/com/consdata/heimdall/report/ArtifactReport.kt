@@ -36,9 +36,9 @@ data class ArtifactVersion(
         val raw: String) {
 
     fun versionString(): String {
-        val version = listOfNotNull(major, minor, patch, buildNumber, qualifier).joinToString(separator = ".")
+        val version = listOfNotNull(major, minor, patch, buildNumber).joinToString(separator = ".")
         return if (qualifier.isNotBlank()) {
-            "$version=$qualifier"
+            "$version-$qualifier"
         } else {
             version
         }

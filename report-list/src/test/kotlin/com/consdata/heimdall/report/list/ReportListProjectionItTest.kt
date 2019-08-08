@@ -48,7 +48,7 @@ internal class ReportListProjectionItTest @Autowired constructor(
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].timestamp", contains(999)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].reportUuid", contains("report-uuid")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].artifact", contains("npm:group:artifact:1.2.3")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].artifact", contains("npm:group:artifact:1.2.3.0")))
     }
 
 }
