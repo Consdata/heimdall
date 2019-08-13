@@ -1,12 +1,10 @@
 package com.consdata.heimdall.report
 
 data class ArtifactDependency(
+        val scope: ArtifactType,
         val group: String,
         val name: String,
-        val major: Long,
-        val minor: Long,
-        val patch: Long,
-        val scope: ArtifactType
+        val version: ArtifactVersion
 )
 
 data class ArtifactReport(
@@ -15,11 +13,8 @@ data class ArtifactReport(
         val date: GenerationDate,
         val git: GitCommit? = null,
         val dependencies: Map<String, List<ArtifactDependency>>,
-        val type: ArtifactType
-) {
-
-    fun rootDependencies() = dependencies["${name.nameString()}:${version.versionString()}"] ?: listOf()
-
+        val type: ArtifactType) {
+    fun rootDependencies() = dependencies["${name.nameString()}:${version.raw}"] ?: listOf()
 }
 
 data class GitCommit(val branch: GitBranch, val sha: String)
@@ -27,15 +22,31 @@ data class GitCommit(val branch: GitBranch, val sha: String)
 data class GitBranch(val name: String)
 
 enum class ArtifactType {
-    Npm, Maven, Gradle
+    Npm, Maven
 }
 
 data class GenerationDate(val timestamp: Long)
 
-data class ArtifactVersion(val major: Long, val minor: Long, val patch: Long) {
-    fun versionString() = "$major.$minor.$patch"
+data class ArtifactVersion(
+        val major: Long,
+        val minor: Long = 0,
+        val patch: Long = 0,
+        val buildNumber: Long = 0,
+        val qualifier: String = "",
+        val raw: String) {
+
+    fun versionString(): String {
+        val version = listOfNotNull(major, minor, patch, buildNumber).joinToString(separator = ".")
+        return if (qualifier.isNotBlank()) {
+            "$version-$qualifier"
+        } else {
+            version
+        }
+    }
+
 }
 
 data class ArtifactName(val artifact: String, val group: String? = null) {
     fun nameString(): String = "${group ?: ""}:$artifact"
 }
+

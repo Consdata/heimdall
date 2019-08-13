@@ -32,7 +32,7 @@ internal class ReportListProjectionItTest @Autowired constructor(
                 timestamp = 999,
                 report = ArtifactReport(
                         name = ArtifactName("artifact", "group"),
-                        version = ArtifactVersion(1, 2, 3),
+                        version = ArtifactVersion(1, 2, 3, raw = "1.2.3"),
                         date = GenerationDate(1),
                         dependencies = mapOf(),
                         type = ArtifactType.Npm
@@ -48,7 +48,7 @@ internal class ReportListProjectionItTest @Autowired constructor(
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].timestamp", contains(999)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].reportUuid", contains("report-uuid")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].artifact", contains("npm:group:artifact:1.2.3")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.items[*].artifact", contains("npm:group:artifact:1.2.3.0")))
     }
 
 }

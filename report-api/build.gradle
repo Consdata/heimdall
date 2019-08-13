@@ -4,6 +4,9 @@ sourceCompatibility = '1.8'
 
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'org.axonframework:axon-messaging:4.0.3'
+    implementation 'org.dom4j:dom4j:2.1.1'
+    implementation 'jaxen:jaxen:1.2.0'
 }
 
 compileKotlin {
