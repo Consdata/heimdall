@@ -70,11 +70,11 @@ class ProjectOverviewProjection(
                 .filter { tracking.existsByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name) }
                 .forEach {
                     val existing = tracking.findByScopeAndGroupIdAndArtifact(artifactScope, it.group, it.name)
-                    if (existing.compare(it.major, it.minor, it.patch) < 0) {
-                        existing.setVersion(it.major, it.minor, it.patch)
+                    if (existing.compare(it.version.major, it.version.minor, it.version.patch) < 0) {
+                        existing.setVersion(it.version.major, it.version.minor, it.version.patch)
                         tracking.save(existing)
                         dependencies.setLatestDependency(
-                                it.major, it.minor, it.patch,
+                                it.version.major, it.version.minor, it.version.patch,
                                 existing.id ?: throw IllegalStateException("Missing tracking id")
                         )
                     }
@@ -116,10 +116,10 @@ class ProjectOverviewProjection(
                 projectVersionMajor = project.versionMajor,
                 projectVersionMinor = project.versionMinor,
                 projectVersionPatch = project.versionPatch,
-                versionMajor = it.major,
-                versionMinor = it.minor,
-                versionPatch = it.patch,
-                status = dependencyStatus(ArtifactVersion(it.major, it.minor, it.patch), tracking)
+                versionMajor = it.version.major,
+                versionMinor = it.version.minor,
+                versionPatch = it.version.patch,
+                status = dependencyStatus(it.version, tracking)
         )
     }
 
@@ -142,7 +142,6 @@ class ProjectOverviewProjection(
     private fun asArtifactScope(type: ArtifactType) = when (type) {
         ArtifactType.Npm -> ArtifactScope.Npm
         ArtifactType.Maven -> ArtifactScope.Maven
-        ArtifactType.Gradle -> ArtifactScope.Gradle
         else -> throw IllegalArgumentException("Unknown scope name")
     }
 
