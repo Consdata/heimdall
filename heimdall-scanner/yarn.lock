@@ -603,6 +603,11 @@ pify@^3.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
+pixl-xml@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/pixl-xml/-/pixl-xml-1.0.13.tgz#5ba71408bdf37994c239dd01251c10c53c0587e3"
+  integrity sha1-W6cUCL3zeZTCOd0BJRwQxTwFh+M=
+
 process-nextick-args@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"

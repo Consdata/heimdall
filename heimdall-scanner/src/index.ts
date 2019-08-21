@@ -1,34 +1,21 @@
-import {Report} from './api';
-import {PackageFile} from './package-file';
-import {YarnLockParser} from './parser';
-
-const fs = require('file-system');
-const lockfile = require('@yarnpkg/lockfile');
+import {NpmScanner} from './npm-scanner';
+import {ModuleType} from './api';
+import {MavenScanner} from './maven-scanner';
 
 const [, , ...args] = process.argv;
-const pathToProject = args[0] || './';
-const paths: { [key: string]: string } = {
-    packageJson: `${pathToProject}/package.json`,
-    yarnLock: `${pathToProject}/yarn.lock`
-};
+const moduleType = args[0];
+const pathToProject = args[1] || './';
 
-// console.log(`Running Heimdall scanner in ${pathToProject}`);
-
-const missingPaths = Object.keys(paths)
-    .map(key => paths[key])
-    .filter(path => !fs.existsSync(path));
-if (missingPaths.length > 0) {
-    throw Error(`Expected files not found [paths=${JSON.stringify(missingPaths)}]`);
+switch (moduleType.toLowerCase()) {
+    case ModuleType.npm.toLowerCase(): {
+        console.log(new NpmScanner().scan(pathToProject));
+        break;
+    }
+    case ModuleType.maven.toLowerCase(): {
+        console.log(new MavenScanner().scan(pathToProject));
+        break;
+    }
+    default: {
+        throw Error(`Unsupported module type[moduleType=${moduleType}]`);
+    }
 }
-
-// const confFile = JSON.parse(fs.readFileSync('../../foxy-news/.heimdall.json'));
-// - path mapping for modules (effectively white list to scan)
-const packageFile = JSON.parse(fs.readFileSync(paths.packageJson)) as PackageFile;
-const yarnLock = lockfile.parse(fs.readFileSync(paths.yarnLock, 'utf8')).object;
-
-const parser = new YarnLockParser(packageFile, yarnLock);
-parser.parse();
-const report: Report = parser.getReport();
-
-// console.log(JSON.stringify(compressJson(report)));
-console.log(JSON.stringify(report, null, 2));
