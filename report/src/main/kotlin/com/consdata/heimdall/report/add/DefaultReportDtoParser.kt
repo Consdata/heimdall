@@ -5,7 +5,7 @@ import java.util.regex.Pattern
 
 internal class DefaultReportDtoParser : ReportDtoParser {
 
-    private val versionPattern = Pattern.compile("^([0-9]+)(?:[.-]([0-9]+))?(?:[.-]([0-9]+))?(?:[.-]([0-9]+))?(?:[._-](.*))?\$").toRegex()
+    private val versionPattern = Pattern.compile("^([0-9]+)?(?:[.-]([0-9]+))?(?:[.-]([0-9]+))?(?:[.-]([0-9]+))?(?:[._-]?(.*))?\$").toRegex()
 
     override fun artifactType(type: AddReportModuleTypeDto) = when (type) {
         AddReportModuleTypeDto.Maven -> ArtifactType.Maven
@@ -42,7 +42,7 @@ internal class DefaultReportDtoParser : ReportDtoParser {
                             qualifier = qualifier
                     )
 
-                } ?: throw ParserException("Unknown artifact version, not matching pattern")
+                } ?: throw ParserException(String.format("Unknown artifact version, not matching pattern [version=%s]", raw))
     }
 
     override fun dependencies(dependencies: Map<String, List<String>>, artifactType: ArtifactType) =

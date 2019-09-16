@@ -37,7 +37,8 @@ internal class ArtifactVersionParserTest {
                 Arguments.of("1.2.3.SNAPSHOT", ArtifactVersion(1, 2, 3, 0, "SNAPSHOT", "1.2.3.SNAPSHOT")),
                 Arguments.of("2.1_1", ArtifactVersion(2, 1, 0, 0, "1", "2.1_1")),
                 Arguments.of("1.1.2_1", ArtifactVersion(1, 1, 2, 0, "1", "1.1.2_1")),
-                Arguments.of("1.2.3.4_3", ArtifactVersion(1, 2, 3, 4, "3", "1.2.3.4_3"))
+                Arguments.of("1.2.3.4_3", ArtifactVersion(1, 2, 3, 4, "3", "1.2.3.4_3")),
+                Arguments.of("jdk15", ArtifactVersion(0, 0, 0, 0, "jdk15", "jdk15"))
         )
     }
 
