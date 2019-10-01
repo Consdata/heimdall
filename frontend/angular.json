@@ -79,7 +79,7 @@
               "apps/home/tsconfig.app.json",
               "apps/home/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!apps/home/**"]
           }
         },
         "test": {
@@ -114,7 +114,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/home-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!apps/home-e2e/**"]
           }
         }
       }
@@ -132,7 +132,7 @@
               "libs/rest-api/tsconfig.lib.json",
               "libs/rest-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/rest-api/**"]
           }
         },
         "test": {
@@ -163,7 +163,7 @@
               "libs/heimdall/monitor-tracking/api/tsconfig.lib.json",
               "libs/heimdall/monitor-tracking/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/heimdall/monitor-tracking/api/**"]
           }
         },
         "test": {
@@ -194,7 +194,7 @@
               "libs/heimdall/monitor-tracking/rest/tsconfig.lib.json",
               "libs/heimdall/monitor-tracking/rest/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/heimdall/monitor-tracking/rest/**"]
           }
         },
         "test": {
@@ -225,7 +225,7 @@
               "libs/heimdall/monitor-tracking/feature/tsconfig.lib.json",
               "libs/heimdall/monitor-tracking/feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/heimdall/monitor-tracking/feature/**"]
           }
         },
         "test": {
