@@ -26,7 +26,6 @@ internal class MatrixMapper {
             val columnIndex = getColumnIndex(it.dependencyArtifact, columns)
             val rowIndex = getRowIndex(it.projectArtifact, rows)
             val cell = DependencyOverviewMatrixCell(
-                    it.projectId,
                     it.trackingId,
                     it.projectVersionMajor,
                     it.projectVersionMinor,
@@ -45,7 +44,8 @@ internal class MatrixMapper {
         val rows = entityList.map {
             DependencyOverviewMatrixRow(
                     it.projectGroup,
-                    it.projectArtifact
+                    it.projectArtifact,
+                    it.projectId
             )
         }
         return rows.distinct()

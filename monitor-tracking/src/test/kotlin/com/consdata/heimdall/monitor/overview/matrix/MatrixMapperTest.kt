@@ -10,7 +10,7 @@ internal class MatrixMapperTest {
     private var mapper: MatrixMapper = MatrixMapper()
 
     @Test
-    fun shouldMap() {
+    fun shouldMapEntityListToMatrix() {
         // given
         val entity1 = getEntity(ANGULAR, PROJECT_A, 1)
         val entity2 = getEntity(ANGULAR, PROJECT_B, 2)
