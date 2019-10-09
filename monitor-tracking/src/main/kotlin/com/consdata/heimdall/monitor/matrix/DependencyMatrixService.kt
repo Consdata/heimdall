@@ -8,31 +8,6 @@ internal class DependencyMatrixService(
         private val rowRepository: DependencyMatrixRowRepository,
         private val cellRepository: DependencyMatrixCellRepository) {
 
-
-//    private fun mapRows(entityList: List<DependencyOverviewEntity>): List<DependencyMatrixRowEntity> {
-//        val rows = entityList.map {
-//            DependencyMatrixRowEntity(
-//                    it.projectArtifact,
-//                    it.projectGroup,
-//                    it.projectId
-//            )
-//        }
-//        return rows.distinct()
-//    }
-//
-//    private fun mapColumns(entityList: List<DependencyOverviewEntity>): List<DependencyMatrixColumnEntity> {
-//        val columns = entityList.map {
-//            DependencyMatrixColumnEntity(
-//                    it.dependencyArtifact,
-//                    it.dependencyScope,
-//                    it.dependencyGroup,
-//                    it.dependencyLatestMajor,
-//                    it.dependencyLatestMinor,
-//                    it.dependencyLatestPatch)
-//        }
-//        return columns.distinct()
-//    }
-
     fun getMatrix(): DependencyMatrixDto {
         val columns = columnRepository.findAll()
         val rows = rowRepository.findAll()
