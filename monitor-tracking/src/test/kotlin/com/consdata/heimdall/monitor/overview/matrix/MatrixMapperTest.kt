@@ -23,31 +23,31 @@ internal class MatrixMapperTest {
         val map = mapper.map(dependencyOverviewEntityList)
 
         // then
-        assertThat(map.columns).hasSize(4)
-        assertThat(map.columns).extracting("dependencyArtifact").containsExactly(ANGULAR, SPRING, TYPE_SCRIPT, JAVA)
+        assertThat(map.columnEntities).hasSize(4)
+        assertThat(map.columnEntities).extracting("dependencyArtifact").containsExactly(ANGULAR, SPRING, TYPE_SCRIPT, JAVA)
 
-        assertThat(map.rows).hasSize(3)
-        assertThat(map.rows).extracting("projectArtifact").containsExactly(PROJECT_A, PROJECT_B, PROJECT_C)
+        assertThat(map.rowEntities).hasSize(3)
+        assertThat(map.rowEntities).extracting("projectArtifact").containsExactly(PROJECT_A, PROJECT_B, PROJECT_C)
 
         // Angular
-        assertThat(map.matrix[0][0]!!.versionMajor).isEqualTo(1)
-        assertThat(map.matrix[0][1]!!.versionMajor).isEqualTo(2)
-        assertThat(map.matrix[0][2]).isNull()
+        assertThat(map.cellEntities[0][0]!!.versionMajor).isEqualTo(1)
+        assertThat(map.cellEntities[0][1]!!.versionMajor).isEqualTo(2)
+        assertThat(map.cellEntities[0][2]).isNull()
 
         // Spring
-        assertThat(map.matrix[1][0]).isNull()
-        assertThat(map.matrix[1][1]).isNull()
-        assertThat(map.matrix[1][2]!!.versionMajor).isEqualTo(3)
+        assertThat(map.cellEntities[1][0]).isNull()
+        assertThat(map.cellEntities[1][1]).isNull()
+        assertThat(map.cellEntities[1][2]!!.versionMajor).isEqualTo(3)
 
         // TypeScript
-        assertThat(map.matrix[2][0]).isNull()
-        assertThat(map.matrix[2][1]).isNull()
-        assertThat(map.matrix[2][2]!!.versionMajor).isEqualTo(4)
+        assertThat(map.cellEntities[2][0]).isNull()
+        assertThat(map.cellEntities[2][1]).isNull()
+        assertThat(map.cellEntities[2][2]!!.versionMajor).isEqualTo(4)
 
         // Java
-        assertThat(map.matrix[3][0]).isNull()
-        assertThat(map.matrix[3][1]!!.versionMajor).isEqualTo(5)
-        assertThat(map.matrix[3][2]).isNull()
+        assertThat(map.cellEntities[3][0]).isNull()
+        assertThat(map.cellEntities[3][1]!!.versionMajor).isEqualTo(5)
+        assertThat(map.cellEntities[3][2]).isNull()
     }
 
     private fun getEntity(dependency: String, project: String, version: Long): DependencyOverviewEntity {

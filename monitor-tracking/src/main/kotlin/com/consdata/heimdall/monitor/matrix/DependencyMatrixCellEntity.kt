@@ -1,9 +1,12 @@
-package com.consdata.heimdall.monitor.overview.matrix
+package com.consdata.heimdall.monitor.matrix
 
 import com.consdata.heimdall.monitor.overview.TrackingStatus
+import javax.persistence.Id
 
-data class DependencyOverviewMatrixCell(
-        var trackingId: Long,
+data class DependencyMatrixCellEntity(
+        @Id var trackingId: Long,
+        var dependencyArtifact: String,
+        var projectArtifact: String,
         var projectVersionMajor: Long,
         var projectVersionMinor: Long,
         var projectVersionPatch: Long,
