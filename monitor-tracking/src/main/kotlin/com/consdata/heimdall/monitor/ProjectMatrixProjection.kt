@@ -25,7 +25,7 @@ class ProjectMatrixProjection(
     @Transactional
     fun on(ev: DependencyTrackingAdded) {
         log.info("New dependency tracking [id={}, dependency={}:{}:{}]", ev.id, ev.scope, ev.group, ev.artifact)
-        // TODO zapisanie jako matrix column
+        // TODO zapisanie zalezności do tabeli zawierającej definicję kolumn, jeśli zależność już istnieje to update wersji (dependencyLatest*) jeśli jest nowsza
 
     }
 
@@ -33,8 +33,10 @@ class ProjectMatrixProjection(
     @Transactional
     fun on(ev: ReportAddedEvent) {
         log.info("New report added [id={}, artifact={}]", ev.id, ev.report.name)
-        // TODO zapisanie projektów jako matrix row, wartości jako matrix cell, wersji artefaktu w matrix column (jeśli jest wyższa od aktualnej)
+        // TODO zapisanie projektów do tabeli zawierającej definicję wierszy, jeśli projekt już istnieje, to update wersji (projectVersion*) jeśli jest nowsza
 
+        // TODO zapisanie wersji do tabeli zawierającej przecięcia wierszy i kolumn, jeśli istnieje to aktualizacja wersji
+        // TODO (niezależnie czy jest nowsza czy nie, bo ktoś mógł zmienić wersję zależności na starszą w nowszej wersji projektu)
     }
 
 }

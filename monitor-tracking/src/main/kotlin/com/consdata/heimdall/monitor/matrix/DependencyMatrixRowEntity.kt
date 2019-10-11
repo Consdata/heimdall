@@ -7,5 +7,8 @@ import javax.persistence.Id
 data class DependencyMatrixRowEntity(
         @Id var projectArtifact: String,
         var projectGroup: String?,
-        var projectId: Long
+        var projectId: Long,
+        var projectVersionMajor: Long,
+        var projectVersionMinor: Long,
+        var projectVersionPatch: Long
 )
