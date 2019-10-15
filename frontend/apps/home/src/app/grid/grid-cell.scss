@@ -1,0 +1,13 @@
+@import "../../assets/styles/palette";
+
+:host {
+  display: flex;
+
+  .grid-cell{
+    width: 160px;
+    height: 80px;
+    background-color: $silver-color;
+    box-sizing: border-box;
+    border: 1px solid $wet-asphalt-color;
+  }
+}

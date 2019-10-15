@@ -9,12 +9,18 @@ import {LibraryProjectDependencyComponent} from './libraries/library-project-dep
 import {LibraryComponent} from './libraries/library.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {HeimdallMonitorTrackingRestModule} from '@heimdall-frontend/heimdall/monitor-tracking/rest';
+import {GridView} from './grid/grid-view';
+import {GridCell} from './grid/grid-cell';
+import {GridContentVersions} from './grid/grid-content-versions';
 
 @NgModule({
   declarations: [AppComponent,
     LibrariesListComponent,
     LibraryComponent,
     LibraryProjectDependencyComponent,
+    GridView,
+    GridCell,
+    GridContentVersions,
     NavbarComponent
   ],
   imports: [

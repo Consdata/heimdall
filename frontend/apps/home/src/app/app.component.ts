@@ -4,8 +4,9 @@ import {Component} from '@angular/core';
   selector: 'hmd-root',
   template: `
     <navbar (filterValueEmitter)="filterValue($event)"></navbar>
-    <libraries-list [filterValue]="filter">
-    </libraries-list>
+<!--    <libraries-list [filterValue]="filter">-->
+<!--    </libraries-list>-->
+    <grid-view></grid-view>
   `,
   styleUrls: [
     'app.component.scss'

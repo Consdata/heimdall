@@ -1,0 +1,15 @@
+@import "../../assets/styles/palette";
+
+:host {
+  display: flex;
+
+
+  .grid-top-row{
+    display: flex;
+  }
+
+  .grid-center {
+    display: flex;
+
+  }
+}
