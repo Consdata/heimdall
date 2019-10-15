@@ -4,14 +4,14 @@ import org.springframework.stereotype.Service
 
 @Service
 internal class DependencyMatrixService(
-        private val columnRepository: DependencyMatrixColumnRepository,
-        private val rowRepository: DependencyMatrixRowRepository,
-        private val cellRepository: DependencyMatrixCellRepository) {
+        private val dependencyRepository: DependencyMatrixDependencyRepository,
+        private val projectRepository: DependencyMatrixProjectRepository,
+        private val versionRepository: DependencyMatrixVersionRepository) {
 
     fun getMatrix(): DependencyMatrixDto {
-        val columns = columnRepository.findAll()
-        val rows = rowRepository.findAll()
-        val cells = cellRepository.findAll()
+        val columns = dependencyRepository.findAll()
+        val rows = projectRepository.findAll()
+        val cells = versionRepository.findAll()
         return DependencyMatrixDto(columns, rows, cells)
     }
 }

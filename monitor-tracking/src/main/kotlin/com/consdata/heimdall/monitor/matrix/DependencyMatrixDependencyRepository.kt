@@ -3,4 +3,4 @@ package com.consdata.heimdall.monitor.matrix
 import org.springframework.data.jpa.repository.JpaRepository
 
 
-interface DependencyMatrixColumnRepository : JpaRepository<DependencyMatrixDependencyEntity, String>
+interface DependencyMatrixDependencyRepository : JpaRepository<DependencyMatrixDependencyEntity, String>

@@ -5,10 +5,11 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-data class DependencyMatrixColumnEntity(
-        @Id var dependencyArtifact: String,
-        var dependencyScope: ArtifactScope,
+data class DependencyMatrixDependencyEntity(
+        @Id var dependencyId: Long,
+        var dependencyArtifact: String,
         var dependencyGroup: String?,
+        var dependencyScope: ArtifactScope,
         var dependencyLatestMajor: Long,
         var dependencyLatestMinor: Long,
         var dependencyLatestPatch: Long

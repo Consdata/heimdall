@@ -1,9 +1,9 @@
 package com.consdata.heimdall.monitor
 
 import com.consdata.heimdall.logging.logger
-import com.consdata.heimdall.monitor.matrix.DependencyMatrixCellRepository
-import com.consdata.heimdall.monitor.matrix.DependencyMatrixColumnRepository
-import com.consdata.heimdall.monitor.matrix.DependencyMatrixRowRepository
+import com.consdata.heimdall.monitor.matrix.DependencyMatrixVersionRepository
+import com.consdata.heimdall.monitor.matrix.DependencyMatrixDependencyRepository
+import com.consdata.heimdall.monitor.matrix.DependencyMatrixProjectRepository
 import com.consdata.heimdall.projections.MultiNodeProjection
 import com.consdata.heimdall.report.ReportAddedEvent
 import org.axonframework.eventhandling.EventHandler
@@ -12,9 +12,9 @@ import javax.transaction.Transactional
 
 @Component
 class ProjectMatrixProjection(
-        private val columnRepository: DependencyMatrixColumnRepository,
-        private val rowRepository: DependencyMatrixRowRepository,
-        private val cellRepository: DependencyMatrixCellRepository
+        private val dependencyRepository: DependencyMatrixDependencyRepository,
+        private val projectRepository: DependencyMatrixProjectRepository,
+        private val versionRepository: DependencyMatrixVersionRepository
 ) : MultiNodeProjection {
 
     override fun projectionName() = "ProjectMatrixProjection"

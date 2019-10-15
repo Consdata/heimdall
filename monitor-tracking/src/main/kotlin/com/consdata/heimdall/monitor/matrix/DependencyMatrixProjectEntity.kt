@@ -4,10 +4,10 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-data class DependencyMatrixRowEntity(
-        @Id var projectArtifact: String,
+data class DependencyMatrixProjectEntity(
+        @Id var projectId: Long,
+        var projectArtifact: String,
         var projectGroup: String?,
-        var projectId: Long,
         var projectVersionMajor: Long,
         var projectVersionMinor: Long,
         var projectVersionPatch: Long
