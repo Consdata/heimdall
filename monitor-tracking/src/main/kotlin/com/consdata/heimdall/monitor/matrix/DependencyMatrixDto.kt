@@ -3,5 +3,5 @@ package com.consdata.heimdall.monitor.matrix
 data class DependencyMatrixDto(
         var dependencyEntities: List<DependencyMatrixDependencyEntity>,
         var projectEntities: List<DependencyMatrixProjectEntity>,
-        var cellEntities: List<DependencyMatrixVersionEntity>
+        var versionEntities: List<DependencyMatrixVersionEntity>
 )
