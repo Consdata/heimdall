@@ -26,7 +26,11 @@ import {GridService, GridViewEntity} from './grid.service';
           </grid-cell>
         </div>
         <div class="grid-center-version">
-          <grid-content-versions></grid-content-versions>
+          <grid-content-versions 
+            [columns]="gridView$.projectEntities"
+            [rows]="gridView$.dependencyEntities"
+            [versions]="gridView$.versionEntities">
+          </grid-content-versions>
         </div>
       </div>
     </div>

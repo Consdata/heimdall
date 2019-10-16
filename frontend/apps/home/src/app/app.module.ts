@@ -12,6 +12,7 @@ import {HeimdallMonitorTrackingRestModule} from '@heimdall-frontend/heimdall/mon
 import {GridView} from './grid/grid-view';
 import {GridCell} from './grid/grid-cell';
 import {GridContentVersions} from './grid/grid-content-versions';
+import {GridCellVersion} from './grid/grid-cell-version';
 
 @NgModule({
   declarations: [AppComponent,
@@ -21,6 +22,7 @@ import {GridContentVersions} from './grid/grid-content-versions';
     GridView,
     GridCell,
     GridContentVersions,
+    GridCellVersion,
     NavbarComponent
   ],
   imports: [

@@ -4,9 +4,9 @@ import {Component, Input} from '@angular/core';
   selector: 'grid-cell',
   template: `
     <div class="grid-cell">
-        <div class="grid-cell-main-text">{{mainText}}</div>
-        <div class="grid-cell-major-description-text">{{majorDescription}}</div>
-        <div class="grid-cell-minor-description-text">{{minorDescription}}</div>
+        <div class="grid-cell-text grid-cell-main-text">{{mainText}}</div>
+        <div class="grid-cell-text grid-cell-major-description-text">{{majorDescription}}</div>
+        <div class="grid-cell-text grid-cell-minor-description-text">{{minorDescription}}</div>
     </div>
   `,
   styleUrls: [
