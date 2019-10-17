@@ -1,11 +1,11 @@
-import {Component, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
-import {VersionStatus} from './grid.service';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {VersionEntity, VersionStatus} from './grid.service';
 
 @Component({
   selector: 'grid-cell-version',
   template: `
-    <div class="grid-cell-version">
-      <div class="grid-cell-status">{{status}}</div>
+    <div class="grid-cell-version" [ngClass]="versionClass">
+      <div class="grid-cell-status">{{versionNumber}}</div>
     </div>
   `,
   styleUrls: [
@@ -20,13 +20,34 @@ export class GridCellVersion implements OnInit {
   @HostBinding('style.grid-row-start')
   @Input() public row: number;
 
-  @Input() public status: number;
+  @Input() public version: VersionEntity;
 
-  statusText: string;
+  versionNumber: string;
+  versionText: string;
+  versionClass: string;
 
   ngOnInit(): void {
-    console.log(status);
-    console.log(VersionStatus[status]);
-    this.statusText = VersionStatus[status];
+    this.setStatusInfo();
+    this.concatVersionText();
+  }
+
+  setStatusInfo(): void {
+    if (this.version.status === VersionStatus.VERYOLD) {
+      this.versionClass = 'project-version-status-very-old';
+      this.versionText = 'Very old';
+    } else if (this.version.status === VersionStatus.OLD) {
+      this.versionClass = 'project-version-status-old';
+      this.versionText = 'Old';
+    } else if (this.version.status === VersionStatus.OK) {
+      this.versionClass = 'project-version-status-ok';
+      this.versionText = 'Ok';
+    } else {
+      this.versionClass = 'project-version-status-good';
+      this.versionText = 'Good';
+    }
+  }
+
+  private concatVersionText() {
+    this.versionNumber = `${this.version.versionMajor}.${this.version.versionMinor}.${this.version.versionPatch}`
   }
 }

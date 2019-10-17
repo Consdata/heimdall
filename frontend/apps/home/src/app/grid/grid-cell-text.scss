@@ -1,4 +1,5 @@
 @import "../../assets/styles/palette";
+@import "../../assets/styles/variables";
 
 :host {
   display: flex;
@@ -8,20 +9,20 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 160px;
-    height: 80px;
-    background-color: $silver-color;
+    width: $grid-cell-width;
+    height: $grid-cell-height;
+    background-color: $dark-midnight-blue-color;
     box-sizing: border-box;
-    border: 3px solid $dark-midnight-blue-color;
-    border-radius: 10px;
+    border: 1px solid $darker-midnight-blue-color;
+    color: $clouds-color;
   }
 
   .grid-cell-text {
-    filter: drop-shadow(0 0 3px $clouds-color);
+    filter: drop-shadow(0 0 2px $asbestos-color);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
-    width: 150px;
+    width: calc(#{$grid-cell-width} - 10px);
   }
 }

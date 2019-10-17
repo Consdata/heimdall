@@ -1,0 +1,24 @@
+@import "../../assets/styles/palette";
+@import "../../assets/styles/variables";
+
+:host {
+
+  .grid-cell-background {
+    filter: drop-shadow(0 0 3px $asbestos-color);
+    margin: auto;
+    display: flex;
+    height: $grid-cell-height;
+    width: $grid-cell-width;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .grid-cell-background-item {
+    width: 40px;
+    height: 40px;
+    mask: url($img-dir + "cross-mark.svg") center center no-repeat;
+    mask-size: 40px 40px;
+    background-color: $clouds-color;
+  }
+}

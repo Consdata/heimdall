@@ -2,13 +2,16 @@
 
 :host {
   display: flex;
-
-
+  margin: 20px;
   .grid-top-row{
     display: flex;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
   }
 
   .grid-center {
+    background-color: $lighter-wet-asphalt-color;
     display: flex;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
   }
 }

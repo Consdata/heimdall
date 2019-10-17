@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'grid-cell',
+  selector: 'grid-cell-text',
   template: `
     <div class="grid-cell">
         <div class="grid-cell-text grid-cell-main-text">{{mainText}}</div>
@@ -10,18 +10,15 @@ import {Component, Input} from '@angular/core';
     </div>
   `,
   styleUrls: [
-    'grid-cell.scss'
+    'grid-cell-text.scss'
   ]
 })
-export class GridCell {
+export class GridCellText {
 
   @Input() mainText: string;
 
   @Input() majorDescription: string;
 
   @Input() minorDescription: string;
-
-  constructor() {
-  }
 
 }

@@ -1,18 +1,51 @@
 @import "../../assets/styles/palette";
+@import "../../assets/styles/variables";
+
+$very-old-color: $pomegranate-color;
+$old-color: $pomegranate-color;
+$ok-color: $carrot-color;
+$good-color: $nephritis-color;
 
 :host {
   display: flex;
+  font-size: 22px;
+  justify-content: center;
+  align-items: center;
 
   .grid-cell-version {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 160px;
-    height: 80px;
+    width: calc(#{$grid-cell-width} - 5px);
+    height: calc(#{$grid-cell-height} - 5px);
     background-color: $clouds-color;
-    box-sizing: border-box;
-    border: 3px solid $dark-midnight-blue-color;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+    z-index: 20;
+  }
+
+  .grid-cell-status {
+    filter: drop-shadow(0 0 2px $dark-midnight-blue-color);
+  }
+
+  .project-version-status-old, .project-version-status-very-old {
+    color: $dark-midnight-blue-color;
+    filter: drop-shadow(0 0 2px $pomegranate-color);
+    background-color: $pomegranate-color;
+  }
+
+  .project-version-status-ok{
+    color: $ok-color;
+    .grid-cell-status {
+      filter: drop-shadow(0 0 5px $ok-color);
+    }
+  }
+
+  .project-version-status-good{
+    color: $good-color;
+    .grid-cell-status {
+      filter: drop-shadow(0 0 5px $good-color);
+    }
   }
 }

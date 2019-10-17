@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {DependencyEntity, ProjectEntity, VersionEntity} from './grid.service';
+import {DependencyEntity, ProjectEntity, VersionEntity, VersionStatus} from './grid.service';
 
 @Component({
   selector: 'grid-content-versions',
@@ -13,8 +13,16 @@ import {DependencyEntity, ProjectEntity, VersionEntity} from './grid.service';
         *ngFor="let version of this.versions"
         [column]="getColumnNumberBasedOnId(version)"
         [row]="getRowNumberBasedOnId(version)"
-        [status]="version.status">
+        [version]="version">
       </grid-cell-version>
+      <ng-container
+        *ngFor="let item of this.columns; let x = index" [attr.data-index]="x">
+        <grid-cell-background
+          *ngFor="let item of this.rows; let y = index" [attr.data-index]="y"
+          [column]="x+1"
+          [row]="y+1">
+        </grid-cell-background>
+      </ng-container>
     </div>
   `,
   styleUrls: [
@@ -38,30 +46,24 @@ export class GridContentVersions implements OnInit {
   gridTemplateColumnProperty: string;
   gridTemplateRowProperty: string;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    this.gridTemplateColumnProperty = this.calculateColumnGridSize(this.columns.length);
-    this.gridTemplateRowProperty = this.calculateRowGridSize(this.rows.length);
-  }
-
-  calculateColumnGridSize(numberOfColumns: number): string {
+  static calculateColumnGridSize(numberOfColumns: number): string {
     return `repeat(${numberOfColumns}, 160px)`;
   }
 
-  calculateRowGridSize(numberOfRows: number): string {
+  static calculateRowGridSize(numberOfRows: number): string {
     return `repeat(${numberOfRows}, 80px)`;
   }
 
-  getColumnNumberBasedOnId(version: VersionEntity): number{
+  ngOnInit(): void {
+    this.gridTemplateColumnProperty = GridContentVersions.calculateColumnGridSize(this.columns.length);
+    this.gridTemplateRowProperty = GridContentVersions.calculateRowGridSize(this.rows.length);
+  }
+
+  getColumnNumberBasedOnId(version: VersionEntity): number {
     return this.columns.map(y => y.projectId).indexOf(version.projectId) + 1;
   }
 
-  getRowNumberBasedOnId(version: VersionEntity): number{
+  getRowNumberBasedOnId(version: VersionEntity): number {
     return this.rows.map(y => y.dependencyId).indexOf(version.dependencyId) + 1;
-  }
-
-  getStatusTextBasedOnStatusEnum(version: VersionEntity): void{
   }
 }

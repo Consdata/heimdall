@@ -7,23 +7,22 @@ import {GridService, GridViewEntity} from './grid.service';
   template: `
     <div class="grid-container">
       <div class="grid-top-row">
-        <grid-cell>
-        </grid-cell>
-        <grid-cell
+        <grid-cell-text></grid-cell-text>
+        <grid-cell-text
           *ngFor="let libView of gridView$.projectEntities"
           [mainText]='libView.projectArtifact'
           [majorDescription]='libView.projectGroup'
           [minorDescription]='gridService.artifactVersion(libView)'>
-        </grid-cell>
+        </grid-cell-text>
       </div>
       <div class="grid-center">
         <div class="grid-center-column">
-          <grid-cell
+          <grid-cell-text
             *ngFor="let libView of gridView$.dependencyEntities"
             [mainText]='libView.dependencyArtifact'
             [majorDescription]='libView.dependencyGroup'
             [minorDescription]='gridService.artifactVersion(libView)'>
-          </grid-cell>
+          </grid-cell-text>
         </div>
         <div class="grid-center-version">
           <grid-content-versions 

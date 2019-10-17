@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {of} from 'rxjs';
-import {ArtifactVersion} from '@heimdall-frontend/heimdall/monitor-tracking/api';
+
 
 export enum VersionStatus {
   VERYOLD, OLD, OK, GOOD
@@ -72,8 +70,32 @@ export class GridService {
       {
         projectId: 2,
         projectArtifact: 'eximee-console-model-mapper',
-        projectGroup: 'null',
+        projectGroup: '',
         versionMajor: 4,
+        versionMinor: 4,
+        versionPatch: 1,
+      },
+      {
+        projectId: 3,
+        projectArtifact: 'example 3',
+        projectGroup: '',
+        versionMajor: 5,
+        versionMinor: 4,
+        versionPatch: 1,
+      },
+      {
+        projectId: 4,
+        projectArtifact: 'example 4',
+        projectGroup: 'example',
+        versionMajor: 4,
+        versionMinor: 2,
+        versionPatch: 1,
+      },
+      {
+        projectId: 5,
+        projectArtifact: 'example 5',
+        projectGroup: '',
+        versionMajor: 1,
         versionMinor: 4,
         versionPatch: 1,
       }
@@ -83,7 +105,7 @@ export class GridService {
   mockDependencyEntities(): DependencyEntity[] {
     return [
       {
-        dependencyId: 3,
+        dependencyId: 1,
         dependencyArtifact: 'typescript',
         dependencyGroup: '',
         dependencyScope: 'Npm',
@@ -92,8 +114,53 @@ export class GridService {
         versionPatch: 3,
       },
       {
-        dependencyId: 4,
+        dependencyId: 2,
         dependencyArtifact: 'tslint-config',
+        dependencyGroup: '@consdata',
+        dependencyScope: 'Npm',
+        versionMajor: 1,
+        versionMinor: 13,
+        versionPatch: 0,
+      },
+      {
+        dependencyId: 3,
+        dependencyArtifact: 'example 3',
+        dependencyGroup: '@consdata',
+        dependencyScope: 'Npm',
+        versionMajor: 1,
+        versionMinor: 13,
+        versionPatch: 0,
+      },
+      {
+        dependencyId: 4,
+        dependencyArtifact: 'example 4',
+        dependencyGroup: '@consdata',
+        dependencyScope: 'Npm',
+        versionMajor: 1,
+        versionMinor: 13,
+        versionPatch: 0,
+      },
+      {
+        dependencyId: 5,
+        dependencyArtifact: 'example 5',
+        dependencyGroup: '@consdata',
+        dependencyScope: 'Npm',
+        versionMajor: 1,
+        versionMinor: 13,
+        versionPatch: 0,
+      },
+      {
+        dependencyId: 6,
+        dependencyArtifact: 'example 6',
+        dependencyGroup: '@consdata',
+        dependencyScope: 'Npm',
+        versionMajor: 1,
+        versionMinor: 13,
+        versionPatch: 0,
+      },
+      {
+        dependencyId: 7,
+        dependencyArtifact: 'example 7',
         dependencyGroup: '@consdata',
         dependencyScope: 'Npm',
         versionMajor: 1,
@@ -123,11 +190,83 @@ export class GridService {
       },
       {
         projectId: 2,
-        dependencyId: 4,
+        dependencyId: 1,
         versionMajor: 3,
         versionMinor: 5,
         versionPatch: 3,
         status: VersionStatus.OLD,
+      },
+      {
+        projectId: 2,
+        dependencyId: 2,
+        versionMajor: 3,
+        versionMinor: 3,
+        versionPatch: 2,
+        status: VersionStatus.OK,
+      },
+      {
+        projectId: 2,
+        dependencyId: 4,
+        versionMajor: 1,
+        versionMinor: 5,
+        versionPatch: 3,
+        status: VersionStatus.OK,
+      },
+      {
+        projectId: 3,
+        dependencyId: 4,
+        versionMajor: 1,
+        versionMinor: 1,
+        versionPatch: 3,
+        status: VersionStatus.OK,
+      },
+      {
+        projectId: 4,
+        dependencyId: 4,
+        versionMajor: 3,
+        versionMinor: 4,
+        versionPatch: 3,
+        status: VersionStatus.OLD,
+      },
+      {
+        projectId: 4,
+        dependencyId: 5,
+        versionMajor: 7,
+        versionMinor: 5,
+        versionPatch: 3,
+        status: VersionStatus.GOOD,
+      },
+      {
+        projectId: 4,
+        dependencyId: 6,
+        versionMajor: 3,
+        versionMinor: 2,
+        versionPatch: 1,
+        status: VersionStatus.GOOD,
+      },
+      {
+        projectId: 4,
+        dependencyId: 7,
+        versionMajor: 3,
+        versionMinor: 1,
+        versionPatch: 3,
+        status: VersionStatus.OLD,
+      },
+      {
+        projectId: 5,
+        dependencyId: 1,
+        versionMajor: 1,
+        versionMinor: 2,
+        versionPatch: 6,
+        status: VersionStatus.OK,
+      },
+      {
+        projectId: 5,
+        dependencyId: 3,
+        versionMajor: 6,
+        versionMinor: 5,
+        versionPatch: 3,
+        status: VersionStatus.OK,
       }
     ];
   }
