@@ -33,7 +33,8 @@
     transition: 0.5s background-color;
   }
 
-  .grid-cell:hover::after {
+  .grid-cell-text-columns:hover::after,
+  .grid-cell-text-rows:hover::after {
     background-color: $clouds-color;
   }
 
@@ -45,10 +46,9 @@
     mask: url($img-dir + "arrow-up.svg") center center no-repeat;
   }
 
-  .grid-cell-text-raws::after {
+  .grid-cell-text-rows::after {
     mask: url($img-dir + "arrow-left.svg") center center no-repeat;
   }
-
 
   .grid-cell-text {
     filter: drop-shadow(0 0 2px $asbestos-color);

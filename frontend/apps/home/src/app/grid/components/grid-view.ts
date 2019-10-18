@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {DependencyEntity, GridService, GridViewEntity, ProjectEntity} from '../services/grid.service';
+import {DependencyEntity, GridService, GridViewEntity, ProjectEntity, VersionStatus} from '../services/grid.service';
 
 @Component({
   selector: 'grid-view',
@@ -24,7 +24,7 @@ import {DependencyEntity, GridService, GridViewEntity, ProjectEntity} from '../s
             [mainText]='libView.dependencyArtifact'
             [majorDescription]='libView.dependencyGroup'
             [minorDescription]='gridService.artifactVersion(libView)'
-            [typeClass]="'grid-cell-text-raws'"
+            [typeClass]="'grid-cell-text-rows'"
             (click)="sortByDependency(libView)">
           </grid-cell-text>
         </div>
@@ -56,7 +56,8 @@ export class GridView implements OnInit {
   sortByProject(projectEntity: ProjectEntity): void {
     let dependenciesList = this.gridView$.dependencyEntities;
     let versionList = this.gridView$.versionEntities;
-    let usedDependencies = versionList.filter(dependency => dependency.projectId === projectEntity.projectId)
+    let usedDependencies = versionList.filter(dependency => dependency.projectId === projectEntity.projectId);
+    usedDependencies.sort((a, b) => b.status - a.status);
     usedDependencies.forEach(
       dependency => this.pushElementOnListHead(dependenciesList, dependenciesList.map(e => e.dependencyId).indexOf(dependency.dependencyId))
     );
@@ -65,7 +66,8 @@ export class GridView implements OnInit {
   sortByDependency(dependencyEntity: DependencyEntity): void {
     let projectList = this.gridView$.projectEntities;
     let versionList = this.gridView$.versionEntities;
-    let usedProjects = versionList.filter(project => project.dependencyId === dependencyEntity.dependencyId)
+    let usedProjects = versionList.filter(project => project.dependencyId === dependencyEntity.dependencyId);
+    usedProjects.sort((a, b) => b.status - a.status);
     usedProjects.forEach(
       project => this.pushElementOnListHead(projectList, projectList.map(e => e.projectId).indexOf(project.projectId))
     );
@@ -80,5 +82,4 @@ export class GridView implements OnInit {
     }
     list.splice(0, 0, list.splice(oldIndex, 1)[0]);
   };
-
 }

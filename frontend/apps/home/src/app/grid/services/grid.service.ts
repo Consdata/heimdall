@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 
-
 export enum VersionStatus {
   VERYOLD, OLD, OK, GOOD
 }
