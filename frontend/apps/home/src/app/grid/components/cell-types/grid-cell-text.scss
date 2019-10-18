@@ -5,6 +5,8 @@
   display: flex;
 
   .grid-cell {
+    position: relative;
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -15,7 +17,38 @@
     box-sizing: border-box;
     border: 1px solid $darker-midnight-blue-color;
     color: $clouds-color;
+    cursor: pointer;
+    transition: 0.5s background-color;
   }
+
+  .grid-cell::after {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    content: "";
+    width: 18px;
+    height: 18px;
+    mask-size: 18px 18px;
+    background-color: transparent;
+    transition: 0.5s background-color;
+  }
+
+  .grid-cell:hover::after {
+    background-color: $clouds-color;
+  }
+
+  .grid-cell:hover {
+    background-color: $midnight-blue-color;
+  }
+
+  .grid-cell-text-columns::after {
+    mask: url($img-dir + "arrow-up.svg") center center no-repeat;
+  }
+
+  .grid-cell-text-raws::after {
+    mask: url($img-dir + "arrow-left.svg") center center no-repeat;
+  }
+
 
   .grid-cell-text {
     filter: drop-shadow(0 0 2px $asbestos-color);
