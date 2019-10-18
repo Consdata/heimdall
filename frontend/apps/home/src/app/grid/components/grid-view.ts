@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {GridService, GridViewEntity, ProjectEntity} from '../services/grid.service';
+import {DependencyEntity, GridService, GridViewEntity, ProjectEntity} from '../services/grid.service';
 
 @Component({
   selector: 'grid-view',
@@ -24,7 +24,8 @@ import {GridService, GridViewEntity, ProjectEntity} from '../services/grid.servi
             [mainText]='libView.dependencyArtifact'
             [majorDescription]='libView.dependencyGroup'
             [minorDescription]='gridService.artifactVersion(libView)'
-            [typeClass]="'grid-cell-text-raws'">
+            [typeClass]="'grid-cell-text-raws'"
+            (click)="sortByDependency(libView)">
           </grid-cell-text>
         </div>
         <div class="grid-center-version">
@@ -58,6 +59,15 @@ export class GridView implements OnInit {
     let usedDependencies = versionList.filter(dependency => dependency.projectId === projectEntity.projectId)
     usedDependencies.forEach(
       dependency => this.pushElementOnListHead(dependenciesList, dependenciesList.map(e => e.dependencyId).indexOf(dependency.dependencyId))
+    );
+  }
+
+  sortByDependency(dependencyEntity: DependencyEntity): void {
+    let projectList = this.gridView$.projectEntities;
+    let versionList = this.gridView$.versionEntities;
+    let usedProjects = versionList.filter(project => project.dependencyId === dependencyEntity.dependencyId)
+    usedProjects.forEach(
+      project => this.pushElementOnListHead(projectList, projectList.map(e => e.projectId).indexOf(project.projectId))
     );
   }
 
