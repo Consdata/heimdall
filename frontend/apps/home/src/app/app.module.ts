@@ -10,13 +10,15 @@ import {LibraryComponent} from './libraries/library.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {HeimdallMonitorTrackingRestModule} from '@heimdall-frontend/heimdall/monitor-tracking/rest';
 import {GridModule} from './grid/grid.module';
+import {ViewSwitch} from './navbar/view-switch';
 
 @NgModule({
   declarations: [AppComponent,
     LibrariesListComponent,
     LibraryComponent,
     LibraryProjectDependencyComponent,
-    NavbarComponent
+    NavbarComponent,
+    ViewSwitch
   ],
   imports: [
     BrowserModule,

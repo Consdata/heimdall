@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {VersionEntity, VersionStatus} from '../services/grid.service';
+import {VersionEntity, VersionStatus} from '../../services/grid.service';
 
 @Component({
   selector: 'grid-cell-version',

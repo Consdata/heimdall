@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {GridView} from './components/grid-view';
-import {GridCellText} from './components/grid-cell-text';
+import {GridCellText} from './components/cell-types/grid-cell-text';
 import {GridContentVersions} from './components/grid-content-versions';
-import {GridCellVersion} from './components/grid-cell-version';
-import {GridCellBackground} from './components/grid-cell-background';
+import {GridCellVersion} from './components/cell-types/grid-cell-version';
+import {GridCellBackground} from './components/cell-types/grid-cell-background';
 import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
