@@ -9,29 +9,21 @@ import {LibraryProjectDependencyComponent} from './libraries/library-project-dep
 import {LibraryComponent} from './libraries/library.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {HeimdallMonitorTrackingRestModule} from '@heimdall-frontend/heimdall/monitor-tracking/rest';
-import {GridView} from './grid/grid-view';
-import {GridContentVersions} from './grid/grid-content-versions';
-import {GridCellVersion} from './grid/grid-cell-version';
-import {GridCellBackground} from './grid/grid-cell-background';
-import {GridCellText} from './grid/grid-cell-text';
+import {GridModule} from './grid/grid.module';
 
 @NgModule({
   declarations: [AppComponent,
     LibrariesListComponent,
     LibraryComponent,
     LibraryProjectDependencyComponent,
-    GridView,
-    GridCellText,
-    GridContentVersions,
-    GridCellVersion,
-    GridCellBackground,
     NavbarComponent
   ],
   imports: [
     BrowserModule,
     RestApiModule,
     RouterModule.forRoot([], {initialNavigation: 'enabled'}),
-    HeimdallMonitorTrackingRestModule.forRoot()
+    HeimdallMonitorTrackingRestModule.forRoot(),
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

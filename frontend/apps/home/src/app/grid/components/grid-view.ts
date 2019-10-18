@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {GridService, GridViewEntity} from './grid.service';
+import {GridService, GridViewEntity} from '../services/grid.service';
 
 @Component({
   selector: 'grid-view',
