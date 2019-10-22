@@ -1,10 +1,10 @@
 package com.consdata.heimdall.monitor
 
 import com.consdata.heimdall.logging.logger
-import com.consdata.heimdall.monitor.matrix.DependencyMatrixVersionRepository
-import com.consdata.heimdall.monitor.matrix.DependencyMatrixDependencyRepository
-import com.consdata.heimdall.monitor.matrix.DependencyMatrixProjectRepository
+import com.consdata.heimdall.monitor.matrix.*
+import com.consdata.heimdall.monitor.overview.TrackingStatus
 import com.consdata.heimdall.projections.MultiNodeProjection
+import com.consdata.heimdall.report.ArtifactDependency
 import com.consdata.heimdall.report.ReportAddedEvent
 import org.axonframework.eventhandling.EventHandler
 import org.springframework.stereotype.Component
@@ -16,27 +16,106 @@ class ProjectMatrixProjection(
         private val projectRepository: DependencyMatrixProjectRepository,
         private val versionRepository: DependencyMatrixVersionRepository
 ) : MultiNodeProjection {
-
     override fun projectionName() = "ProjectMatrixProjection"
-
     private val log by logger()
 
     @EventHandler
     @Transactional
     fun on(ev: DependencyTrackingAdded) {
         log.info("New dependency tracking [id={}, dependency={}:{}:{}]", ev.id, ev.scope, ev.group, ev.artifact)
-        // TODO zapisanie zalezności do tabeli zawierającej definicję kolumn, jeśli zależność już istnieje to update wersji (dependencyLatest*) jeśli jest nowsza
-
+        addDependency(ev)
     }
 
     @EventHandler
     @Transactional
     fun on(ev: ReportAddedEvent) {
         log.info("New report added [id={}, artifact={}]", ev.id, ev.report.name)
-        // TODO zapisanie projektów do tabeli zawierającej definicję wierszy, jeśli projekt już istnieje, to update wersji (projectVersion*) jeśli jest nowsza
+        val projectId: Long = addProject(ev)
+        val dependencies = ev.report.rootDependencies()
+        dependencies.forEach {
+            val existingDependency = dependencyRepository.findByDependencyArtifactAndDependencyGroup(it.name, it.group)
+            existingDependency?.let { existing ->
+                {
+                    // Add version only if dependency is tracked
+                    addVersion(projectId, existingDependency, it)
 
-        // TODO zapisanie wersji do tabeli zawierającej przecięcia wierszy i kolumn, jeśli istnieje to aktualizacja wersji
-        // TODO (niezależnie czy jest nowsza czy nie, bo ktoś mógł zmienić wersję zależności na starszą w nowszej wersji projektu)
+                    // Update dependency only if dependency is tracked
+                    updateDependency(it, existing)
+                }
+            }
+        }
     }
 
+    private fun updateDependency(it: ArtifactDependency, existing: DependencyMatrixDependencyEntity) {
+        if (it.version.major > existing.dependencyLatestMajor ||
+                it.version.minor > existing.dependencyLatestMinor ||
+                it.version.patch > existing.dependencyLatestPatch) {
+            dependencyRepository.save(
+                    DependencyMatrixDependencyEntity(
+                            dependencyArtifact = existing.dependencyArtifact,
+                            dependencyGroup = existing.dependencyGroup,
+                            dependencyScope = existing.dependencyScope,
+                            dependencyLatestMajor = it.version.major,
+                            dependencyLatestMinor = it.version.minor,
+                            dependencyLatestPatch = it.version.patch
+                    )
+            )
+        }
+    }
+
+    private fun addVersion(projectId: Long, existingDependency: DependencyMatrixDependencyEntity, it: ArtifactDependency) {
+        versionRepository.save(
+                DependencyMatrixVersionEntity(
+                        projectId = projectId,
+                        dependencyId = existingDependency.dependencyId!!,
+                        versionMajor = it.version.major,
+                        versionMinor = it.version.minor,
+                        versionPatch = it.version.patch,
+                        status = TrackingStatus.Unknown // TODO
+                )
+        )
+    }
+
+    private fun addProject(ev: ReportAddedEvent): Long {
+        val existingProject = projectRepository.findByProjectArtifactAndProjectGroup(ev.report.name.artifact, ev.report.name.group)
+        val projectFromRaport = DependencyMatrixProjectEntity(
+                projectArtifact = ev.report.name.artifact,
+                projectGroup = ev.report.name.group,
+                projectVersionMajor = ev.report.version.major,
+                projectVersionMinor = ev.report.version.minor,
+                projectVersionPatch = ev.report.version.patch
+        )
+        if (existingProject == null) {
+            // Add project if not exist
+            return projectRepository.save(projectFromRaport).projectId!!
+        } else {
+            // Update project if exist and is newer
+            if (projectFromRaport.projectVersionMajor > existingProject.projectVersionMajor ||
+                    projectFromRaport.projectVersionMinor > existingProject.projectVersionMinor ||
+                    projectFromRaport.projectVersionPatch > existingProject.projectVersionPatch) {
+                projectRepository.delete(existingProject)
+                projectFromRaport.projectId = existingProject.projectId
+                projectRepository.delete(existingProject)
+                return projectRepository.save(projectFromRaport).projectId!!
+            }
+            return existingProject.projectId!!
+        }
+    }
+
+    private fun addDependency(ev: DependencyTrackingAdded) {
+        val existingDependency = dependencyRepository.findByDependencyArtifactAndDependencyGroup(ev.artifact, ev.group)
+        if (existingDependency == null) {
+            // Add dependency only if not exist
+            dependencyRepository.save(
+                    DependencyMatrixDependencyEntity(
+                            dependencyArtifact = ev.artifact,
+                            dependencyGroup = ev.group,
+                            dependencyScope = ev.scope,
+                            dependencyLatestMajor = 0,
+                            dependencyLatestMinor = 0,
+                            dependencyLatestPatch = 0
+                    )
+            )
+        }
+    }
 }
