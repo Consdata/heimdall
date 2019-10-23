@@ -8,7 +8,7 @@ $good-color: $nephritis-color;
 
 :host {
   display: flex;
-  font-size: 22px;
+  font-size: 1.6rem;
   justify-content: center;
   align-items: center;
 
@@ -17,8 +17,8 @@ $good-color: $nephritis-color;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: calc(#{$grid-cell-width} - 5px);
-    height: calc(#{$grid-cell-height} - 5px);
+    width: calc(#{$grid-cell-width} - 8px);
+    height: calc(#{$grid-cell-height} - 8px);
     background-color: $clouds-color;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
@@ -30,8 +30,7 @@ $good-color: $nephritis-color;
   }
 
   .project-version-status-old, .project-version-status-very-old {
-    color: $dark-midnight-blue-color;
-    filter: drop-shadow(0 0 2px $pomegranate-color);
+    color: $clouds-color;
     background-color: $pomegranate-color;
   }
 

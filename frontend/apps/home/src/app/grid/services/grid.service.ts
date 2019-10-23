@@ -206,9 +206,9 @@ export class GridService {
       {
         projectId: 2,
         dependencyId: 4,
-        versionMajor: 1,
-        versionMinor: 5,
-        versionPatch: 3,
+        versionMajor: 10,
+        versionMinor: 556,
+        versionPatch: 389,
         status: VersionStatus.OK,
       },
       {
