@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 export enum ViewState {
   GRID, CARDS
@@ -12,7 +12,7 @@ export enum ViewState {
         <div class="view-switch-icon-grid"></div>
       </div>
       <label class="view-switch-label">
-        <input type="checkbox" (change)="changeView($event)">
+        <input type="checkbox" (change)="changeView($event)" checked="true">
         <span class="view-switch-slider-round"></span>
       </label>
       <div class="view-switch-icon">
@@ -31,7 +31,7 @@ export class ViewSwitch {
   @Output() viewStateEmitter = new EventEmitter<ViewState>();
 
   constructor() {
-    this.viewState = ViewState.GRID
+    this.viewState = ViewState.CARDS
   }
 
   changeView(event: any): void {

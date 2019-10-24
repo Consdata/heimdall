@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {NavbarComponent} from './navbar/navbar.component';
+import {Component} from '@angular/core';
 import {ViewState} from './navbar/view-switch';
 
 @Component({
@@ -22,10 +21,9 @@ import {ViewState} from './navbar/view-switch';
   ]
 })
 export class AppComponent {
-
-  filter: string = '';
+  filter = '';
   ViewState = ViewState;
-  currentViewState: ViewState = ViewState.GRID;
+  currentViewState: ViewState = ViewState.CARDS;
 
   filterValue(filter) {
     this.filter = filter;
