@@ -32,6 +32,13 @@
     flex-basis: 200px;
   }
 
+  .navbar-switch-wrapper {
+    flex:1;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+  }
+
   .navbar-search-wrapper {
     flex:1;
     display: flex;

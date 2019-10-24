@@ -5,7 +5,8 @@
 
   .view-switch-container {
     display: flex;
-    margin: 0 30px;
+    margin: 0 20px;
+    height: 40px;
   }
 
   .view-switch-icon {
@@ -38,6 +39,7 @@
   .view-switch-label {
     position: relative;
     display: inline-block;
+    margin: auto 5px;
     width: 55px;
     height: 28px;
     box-shadow: 0 1px 8px -4px rgba(0, 0, 0, 0.75);
