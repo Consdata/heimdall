@@ -11,6 +11,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {HeimdallMonitorTrackingRestModule} from '@heimdall-frontend/heimdall/monitor-tracking/rest';
 import {GridModule} from './grid/grid.module';
 import {ViewSwitch} from './navbar/view-switch';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent,
@@ -22,6 +23,7 @@ import {ViewSwitch} from './navbar/view-switch';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RestApiModule,
     RouterModule.forRoot([], {initialNavigation: 'enabled'}),
     HeimdallMonitorTrackingRestModule.forRoot(),

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {ViewState} from './navbar/view-switch';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'hmd-root',
@@ -10,14 +11,27 @@ import {ViewState} from './navbar/view-switch';
     </navbar>
     <libraries-list
      *ngIf="isSelectedView(ViewState.CARDS)"
-      [filterValue]="filter">
+      [filterValue]="filter"
+      [@fadeIn]>
     </libraries-list>
     <grid-view
-      *ngIf="isSelectedView(ViewState.GRID)">
+      *ngIf="isSelectedView(ViewState.GRID)"
+      [@fadeIn]>
     </grid-view>
   `,
   styleUrls: [
     'app.component.scss'
+  ],
+  animations: [
+    trigger(
+      'fadeIn',
+      [
+        transition(':enter', [
+          style({opacity: 0}),
+          animate('0.5s ease-in')
+        ])
+      ]
+    )
   ]
 })
 export class AppComponent {
