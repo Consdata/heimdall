@@ -9,11 +9,12 @@ import {ViewState, ViewSwitch} from './view-switch';
         <div class="navbar-logo"></div>
         <div class="navbar-logo-label">Heimdall</div>
       </div>
-      <div class="navbar-search-wrapper">
-        <view-switch
-          (viewStateEmitter)="changeView($event)"></view-switch>
-        <input class="navbar-search" (keyup)="onKey($event)">
+      <div class="navbar-switch-wrapper">
+        <view-switch (viewStateEmitter)="changeView($event)"></view-switch>
       </div>
+<!--      <div class="navbar-search-wrapper">-->
+<!--        <input class="navbar-search" (keyup)="onKey($event)">-->
+<!--      </div>-->
     </div>
   `,
   styleUrls: [
