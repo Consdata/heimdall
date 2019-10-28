@@ -64,10 +64,10 @@ $ HEIMDALL_VERSION="0.1.10" docker-compose push
 ### Send dependency report
 
 ```bash
-npx @consdata/heimdall-scanner | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8081/report
+npx @consdata/heimdall-scanner npm|maven | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8081/report
 ```
 ```bash
-npx @consdata/heimdall-scanner | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8200/api/report/v1/report
+npx @consdata/heimdall-scanner npm|maven | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8200/api/report/v1/report
 ```
 
 ### Mark dependency as tracked
