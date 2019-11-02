@@ -33,25 +33,22 @@ class ProjectMatrixProjection(
         val projectId: Long = addProject(ev)
         val dependencies = ev.report.rootDependencies()
         dependencies.forEach {
-            val existingDependency = dependencyRepository.findByDependencyArtifactAndDependencyGroup(it.name, it.group)
+            val existingDependency = dependencyRepository.findByDependencyArtifactAndDependencyGroupAndDependencyScope(it.name, it.group, ArtifactScope.valueOf(it.scope.name))
             existingDependency?.let { existing ->
-                {
-                    // Add version only if dependency is tracked
-                    addVersion(projectId, existingDependency, it)
-
-                    // Update dependency only if dependency is tracked
-                    updateDependency(it, existing)
-                }
+                addVersion(projectId, existingDependency, it)
+                updateDependency(it, existing)
             }
         }
     }
 
     private fun updateDependency(it: ArtifactDependency, existing: DependencyMatrixDependencyEntity) {
+        // Update dependency version (if newer)
         if (it.version.major > existing.dependencyLatestMajor ||
                 it.version.minor > existing.dependencyLatestMinor ||
                 it.version.patch > existing.dependencyLatestPatch) {
             dependencyRepository.save(
                     DependencyMatrixDependencyEntity(
+                            dependencyId = existing.dependencyId,
                             dependencyArtifact = existing.dependencyArtifact,
                             dependencyGroup = existing.dependencyGroup,
                             dependencyScope = existing.dependencyScope,
@@ -64,8 +61,11 @@ class ProjectMatrixProjection(
     }
 
     private fun addVersion(projectId: Long, existingDependency: DependencyMatrixDependencyEntity, it: ArtifactDependency) {
+        // Update version (override existing)
+        val existingVersion = versionRepository.findByProjectIdAndDependencyId(projectId, existingDependency.dependencyId!!)
         versionRepository.save(
                 DependencyMatrixVersionEntity(
+                        versionId = existingVersion?.versionId,
                         projectId = projectId,
                         dependencyId = existingDependency.dependencyId!!,
                         versionMajor = it.version.major,
@@ -77,35 +77,23 @@ class ProjectMatrixProjection(
     }
 
     private fun addProject(ev: ReportAddedEvent): Long {
+        // Add project (override existing)
         val existingProject = projectRepository.findByProjectArtifactAndProjectGroup(ev.report.name.artifact, ev.report.name.group)
         val projectFromRaport = DependencyMatrixProjectEntity(
+                projectId = existingProject?.projectId,
                 projectArtifact = ev.report.name.artifact,
                 projectGroup = ev.report.name.group,
                 projectVersionMajor = ev.report.version.major,
                 projectVersionMinor = ev.report.version.minor,
                 projectVersionPatch = ev.report.version.patch
         )
-        if (existingProject == null) {
-            // Add project if not exist
-            return projectRepository.save(projectFromRaport).projectId!!
-        } else {
-            // Update project if exist and is newer
-            if (projectFromRaport.projectVersionMajor > existingProject.projectVersionMajor ||
-                    projectFromRaport.projectVersionMinor > existingProject.projectVersionMinor ||
-                    projectFromRaport.projectVersionPatch > existingProject.projectVersionPatch) {
-                projectRepository.delete(existingProject)
-                projectFromRaport.projectId = existingProject.projectId
-                projectRepository.delete(existingProject)
-                return projectRepository.save(projectFromRaport).projectId!!
-            }
-            return existingProject.projectId!!
-        }
+        return projectRepository.save(projectFromRaport).projectId!!
     }
 
     private fun addDependency(ev: DependencyTrackingAdded) {
-        val existingDependency = dependencyRepository.findByDependencyArtifactAndDependencyGroup(ev.artifact, ev.group)
+        // Add dependency (only if not exist)
+        val existingDependency = dependencyRepository.findByDependencyArtifactAndDependencyGroupAndDependencyScope(ev.artifact, ev.group, ev.scope)
         if (existingDependency == null) {
-            // Add dependency only if not exist
             dependencyRepository.save(
                     DependencyMatrixDependencyEntity(
                             dependencyArtifact = ev.artifact,

@@ -9,9 +9,9 @@ internal class DependencyMatrixService(
         private val versionRepository: DependencyMatrixVersionRepository) {
 
     fun getMatrix(): DependencyMatrixDto {
-        val columns = dependencyRepository.findAll()
-        val rows = projectRepository.findAll()
-        val cells = versionRepository.findAll()
-        return DependencyMatrixDto(columns, rows, cells)
+        val dependencies = dependencyRepository.findAll()
+        val projects = projectRepository.findAll()
+        val versions = versionRepository.findAll()
+        return DependencyMatrixDto(dependencies, projects, versions)
     }
 }

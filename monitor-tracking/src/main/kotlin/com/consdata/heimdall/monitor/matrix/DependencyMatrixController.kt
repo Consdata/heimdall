@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/matrix")
 internal class DependencyMatrixController(private val service: DependencyMatrixService) {
 
-    @GetMapping("/matrix")
+    @GetMapping
     fun getOverviewMatrix(): DependencyMatrixDto = service.getMatrix()
 
 }
