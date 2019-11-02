@@ -1,6 +1,5 @@
 package com.consdata.heimdall.monitor.matrix
 
-import com.consdata.heimdall.monitor.overview.TrackingStatus
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -13,6 +12,5 @@ data class DependencyMatrixVersionEntity(
         var dependencyId: Long,
         var versionMajor: Long,
         var versionMinor: Long,
-        var versionPatch: Long,
-        var status: TrackingStatus
+        var versionPatch: Long
 )

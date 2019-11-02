@@ -2,7 +2,6 @@ package com.consdata.heimdall.monitor
 
 import com.consdata.heimdall.logging.logger
 import com.consdata.heimdall.monitor.matrix.*
-import com.consdata.heimdall.monitor.overview.TrackingStatus
 import com.consdata.heimdall.projections.MultiNodeProjection
 import com.consdata.heimdall.report.ArtifactDependency
 import com.consdata.heimdall.report.ReportAddedEvent
@@ -70,8 +69,7 @@ class ProjectMatrixProjection(
                         dependencyId = existingDependency.dependencyId!!,
                         versionMajor = it.version.major,
                         versionMinor = it.version.minor,
-                        versionPatch = it.version.patch,
-                        status = TrackingStatus.Unknown // TODO
+                        versionPatch = it.version.patch
                 )
         )
     }

@@ -1,23 +1,24 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ViewState} from './navbar/view-switch';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'hmd-root',
   template: `
-    <navbar 
-      (filterValueEmitter)="filterValue($event)"
-      (viewStateEmitter)="changeView($event)">
-    </navbar>
-    <libraries-list
-     *ngIf="isSelectedView(ViewState.CARDS)"
-      [filterValue]="filter"
-      [@fadeIn]>
-    </libraries-list>
-    <grid-view
-      *ngIf="isSelectedView(ViewState.GRID)"
-      [@fadeIn]>
-    </grid-view>
+      <navbar
+              (filterValueEmitter)="filterValue($event)"
+              (viewStateEmitter)="changeView($event)"
+              [currentViewState]="currentViewState">
+      </navbar>
+      <libraries-list
+              *ngIf="isSelectedView(ViewState.CARDS)"
+              [filterValue]="filter"
+              [@fadeIn]>
+      </libraries-list>
+      <grid-view
+              *ngIf="isSelectedView(ViewState.GRID)"
+              [@fadeIn]>
+      </grid-view>
   `,
   styleUrls: [
     'app.component.scss'
@@ -34,10 +35,19 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     )
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   filter = '';
   ViewState = ViewState;
-  currentViewState: ViewState = ViewState.CARDS;
+  currentViewState: ViewState;
+
+  ngOnInit(): void {
+    let viewMode = localStorage.getItem('viewMode');
+    if (viewMode) {
+      this.currentViewState = ViewState[viewMode];
+    } else {
+      this.currentViewState = ViewState.CARDS;
+    }
+  }
 
   filterValue(filter) {
     this.filter = filter;
@@ -46,6 +56,7 @@ export class AppComponent {
   changeView(event: ViewState): void {
     this.currentViewState = event;
   }
+
   isSelectedView(view: ViewState): boolean {
     return this.currentViewState === view;
   }

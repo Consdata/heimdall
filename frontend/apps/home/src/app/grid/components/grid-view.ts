@@ -1,42 +1,42 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {DependencyEntity, GridService, GridViewEntity, ProjectEntity, VersionStatus} from '../services/grid.service';
+import {DependencyEntity, GridService, GridViewEntity, ProjectEntity} from '../services/grid.service';
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'grid-view',
   template: `
-    <div class="grid-container">
-      <div class="grid-top-row">
-        <grid-cell-text></grid-cell-text>
-        <grid-cell-text
-          *ngFor="let libView of gridView$.projectEntities"
-          [mainText]='libView.projectArtifact'
-          [majorDescription]='libView.projectGroup'
-          [minorDescription]='gridService.artifactVersion(libView)'
-          [typeClass]="'grid-cell-text-columns'"
-          (click)="sortByProject(libView)">
-        </grid-cell-text>
+      <div class="grid-container">
+          <div class="grid-top-row">
+              <grid-cell-text></grid-cell-text>
+              <grid-cell-text
+                      *ngFor="let project of gridView?.projectEntities"
+                      [mainText]='project.projectArtifact'
+                      [majorDescription]='project.projectGroup'
+                      [minorDescription]='gridService.projectVersion(project)'
+                      [typeClass]="'grid-cell-text-columns'"
+                      (click)="sortByProject(project)">
+              </grid-cell-text>
+          </div>
+          <div class="grid-center">
+              <div class="grid-center-column">
+                  <grid-cell-text
+                          *ngFor="let dependency of gridView?.dependencyEntities"
+                          [mainText]='dependency.dependencyArtifact'
+                          [majorDescription]='dependency.dependencyGroup'
+                          [minorDescription]='gridService.dependencyVersion(dependency)'
+                          [typeClass]="'grid-cell-text-rows'"
+                          (click)="sortByDependency(dependency)">
+                  </grid-cell-text>
+              </div>
+              <div class="grid-center-version" *ngIf="gridView">
+                  <grid-content-versions
+                          [columns]="gridView.projectEntities"
+                          [rows]="gridView.dependencyEntities"
+                          [versions]="gridView.versionEntities">
+                  </grid-content-versions>
+              </div>
+          </div>
       </div>
-      <div class="grid-center">
-        <div class="grid-center-column">
-          <grid-cell-text
-            *ngFor="let libView of gridView$.dependencyEntities"
-            [mainText]='libView.dependencyArtifact'
-            [majorDescription]='libView.dependencyGroup'
-            [minorDescription]='gridService.artifactVersion(libView)'
-            [typeClass]="'grid-cell-text-rows'"
-            (click)="sortByDependency(libView)">
-          </grid-cell-text>
-        </div>
-        <div class="grid-center-version">
-          <grid-content-versions
-            [columns]="gridView$.projectEntities"
-            [rows]="gridView$.dependencyEntities"
-            [versions]="gridView$.versionEntities">
-          </grid-content-versions>
-        </div>
-      </div>
-    </div>
   `,
   styleUrls: [
     'grid-view.scss'
@@ -44,18 +44,18 @@ import {DependencyEntity, GridService, GridViewEntity, ProjectEntity, VersionSta
 })
 export class GridView implements OnInit {
 
-  public gridView$: GridViewEntity;
+  public gridView: GridViewEntity;
 
   constructor(private gridService: GridService) {
   }
 
   ngOnInit() {
-    this.gridView$ = this.gridService.getLibsGridView();
+    this.gridService.getLibsGridView().subscribe(data =>  this.gridView = data);
   }
 
   sortByProject(projectEntity: ProjectEntity): void {
-    let dependenciesList = this.gridView$.dependencyEntities;
-    let versionList = this.gridView$.versionEntities;
+    let dependenciesList = this.gridView.dependencyEntities;
+    let versionList = this.gridView.versionEntities;
     let usedDependencies = versionList.filter(dependency => dependency.projectId === projectEntity.projectId);
     usedDependencies.sort((a, b) => b.status - a.status);
     usedDependencies.forEach(
@@ -64,8 +64,8 @@ export class GridView implements OnInit {
   }
 
   sortByDependency(dependencyEntity: DependencyEntity): void {
-    let projectList = this.gridView$.projectEntities;
-    let versionList = this.gridView$.versionEntities;
+    let projectList = this.gridView.projectEntities;
+    let versionList = this.gridView.versionEntities;
     let usedProjects = versionList.filter(project => project.dependencyId === dependencyEntity.dependencyId);
     usedProjects.sort((a, b) => b.status - a.status);
     usedProjects.forEach(

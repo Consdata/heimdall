@@ -29,19 +29,19 @@ $good-color: $nephritis-color;
     filter: drop-shadow(0 0 2px $dark-midnight-blue-color);
   }
 
-  .project-version-status-old, .project-version-status-very-old {
+  .project-version-status-very-old {
     color: $clouds-color;
     background-color: $pomegranate-color;
   }
 
-  .project-version-status-ok{
+  .project-version-status-old {
     color: $ok-color;
     .grid-cell-status {
       filter: drop-shadow(0 0 5px $ok-color);
     }
   }
 
-  .project-version-status-good{
+  .project-version-status-good, .project-version-status-ok {
     color: $good-color;
     .grid-cell-status {
       filter: drop-shadow(0 0 5px $good-color);

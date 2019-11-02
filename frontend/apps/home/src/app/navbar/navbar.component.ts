@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
-import {ViewState, ViewSwitch} from './view-switch';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ViewState} from './view-switch';
 
 @Component({
   selector: 'navbar',
@@ -13,7 +13,7 @@ import {ViewState, ViewSwitch} from './view-switch';
 <!--          <input class="navbar-search" (keyup)="onKey($event)">-->
 <!--      </div>-->
       <div class="navbar-switch-wrapper">
-        <view-switch (viewStateEmitter)="changeView($event)"></view-switch>
+        <view-switch (viewStateEmitter)="changeView($event)" [viewState]="currentViewState"></view-switch>
       </div>
     </div>
   `,
@@ -22,7 +22,7 @@ import {ViewState, ViewSwitch} from './view-switch';
   ]
 })
 export class NavbarComponent {
-
+  @Input() currentViewState: ViewState = null;
   @Output() filterValueEmitter = new EventEmitter<string>();
   @Output() viewStateEmitter = new EventEmitter<ViewState>();
 
