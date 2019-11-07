@@ -9,19 +9,25 @@ import {LibraryProjectDependencyComponent} from './libraries/library-project-dep
 import {LibraryComponent} from './libraries/library.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {HeimdallMonitorTrackingRestModule} from '@heimdall-frontend/heimdall/monitor-tracking/rest';
+import {GridModule} from './grid/grid.module';
+import {ViewSwitch} from './navbar/view-switch';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent,
     LibrariesListComponent,
     LibraryComponent,
     LibraryProjectDependencyComponent,
-    NavbarComponent
+    NavbarComponent,
+    ViewSwitch
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RestApiModule,
     RouterModule.forRoot([], {initialNavigation: 'enabled'}),
-    HeimdallMonitorTrackingRestModule.forRoot()
+    HeimdallMonitorTrackingRestModule.forRoot(),
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,65 @@
+@import "../../assets/styles/palette";
+@import "../../assets/styles/variables";
+
 :host {
-  display: flex;
+  color: $clouds-color;
+
+  .navbar-wrapper {
+    background-color: $dark-midnight-blue-color;
+    display: flex;
+    width: 100%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+    height: 40px;
+  }
+
+  .navbar-logo {
+    min-width: 40px;
+    padding: 0 4px;
+    mask: url($img-dir + "logo.svg") center center no-repeat;
+    mask-size: 40px 40px;
+    background-color: $clouds-color;
+    margin: 0 20px;
+  }
+
+  .navbar-logo-label {
+    font-size: 28px;
+    filter: drop-shadow(0 0 1px $asbestos-color);
+  }
+
+  .navbar-logo-wrapper{
+    display: flex;
+    position: absolute;
+    flex-basis: 200px;
+  }
+
+  .navbar-switch-wrapper {
+    flex:1;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+  }
+
+  .navbar-search-wrapper {
+    flex:1;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+  }
+
+  .navbar-search{
+    padding: 0 30px;
+    width: 400px;
+    height: 28px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Oswald', serif;
+    font-size: 18px;
+    box-shadow: 0 1px 8px -4px rgba(0, 0, 0, 0.75);
+    color: $nav-font-color;
+    background: $wet-asphalt-color url($img-dir + "glass.svg") no-repeat scroll right 5px top 2px;
+    background-size: 24px 24px;
+    &:focus {
+      outline: 0;
+    }
+  }
 }

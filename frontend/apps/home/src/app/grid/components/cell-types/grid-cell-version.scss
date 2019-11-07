@@ -1,0 +1,50 @@
+@import "../../../../assets/styles/palette";
+@import "../../../../assets/styles/variables";
+
+$very-old-color: $pomegranate-color;
+$old-color: $pomegranate-color;
+$ok-color: $carrot-color;
+$good-color: $nephritis-color;
+
+:host {
+  display: flex;
+  font-size: 1.6rem;
+  justify-content: center;
+  align-items: center;
+
+  .grid-cell-version {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: calc(#{$grid-cell-width} - 8px);
+    height: calc(#{$grid-cell-height} - 8px);
+    background-color: $clouds-color;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+    z-index: 20;
+  }
+
+  .grid-cell-status {
+    filter: drop-shadow(0 0 2px $dark-midnight-blue-color);
+  }
+
+  .project-version-status-very-old {
+    color: $clouds-color;
+    background-color: $pomegranate-color;
+  }
+
+  .project-version-status-old {
+    color: $ok-color;
+    .grid-cell-status {
+      filter: drop-shadow(0 0 5px $ok-color);
+    }
+  }
+
+  .project-version-status-good, .project-version-status-ok {
+    color: $good-color;
+    .grid-cell-status {
+      filter: drop-shadow(0 0 5px $good-color);
+    }
+  }
+}

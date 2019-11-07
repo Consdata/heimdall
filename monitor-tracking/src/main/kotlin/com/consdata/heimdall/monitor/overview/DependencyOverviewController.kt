@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/overview")
-internal class DependencyOverviewController(private val repository: DependencyOverviewRepository) {
+internal class DependencyOverviewController(private val service: DependencyOverviewService) {
 
     @GetMapping
-    fun getOverview(): List<DependencyOverviewEntity> = repository.findAll()
+    fun getOverview(): List<DependencyOverviewEntity> = service.getOverview()
 
 }

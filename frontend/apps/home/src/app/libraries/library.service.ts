@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {
   ArtifactVersion,
   MonitorTrackingOverviewEntry,
-  MonitorTrackingService,
-  MonitorTrackingStatus
+  MonitorTrackingService
 } from '@heimdall-frontend/heimdall/monitor-tracking/api';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';

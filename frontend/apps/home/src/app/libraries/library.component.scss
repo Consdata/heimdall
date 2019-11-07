@@ -1,13 +1,13 @@
 :host {
 
   .lib-container {
+    height: 100%;
     text-align: center;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
-    margin: 16px;
-    //background: $clouds-color;
     background: white;
     border-radius: 5px;
-    //color: $midnight-blue-color;
+    display: flex;
+    flex-direction: column;
   }
 
   .library-info-container {
@@ -16,7 +16,6 @@
 
   .library-info-name {
     font-size: 20px;
-    //filter: drop-shadow(0 0 1px $asbestos-color);
   }
 
   .library-info-current-version {
