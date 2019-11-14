@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DependencyEntity, GridService, GridViewEntity, ProjectEntity} from '../services/grid.service';
-import {map} from "rxjs/operators";
+import {GridService} from '../services/grid.service';
+import {DependencyEntity, GridViewEntity, ProjectEntity} from '../services/grid.models';
 
 @Component({
   selector: 'grid-view',
@@ -40,6 +40,9 @@ import {map} from "rxjs/operators";
   `,
   styleUrls: [
     'grid-view.component.scss'
+  ],
+  providers: [
+    GridService
   ]
 })
 export class GridViewComponent implements OnInit {

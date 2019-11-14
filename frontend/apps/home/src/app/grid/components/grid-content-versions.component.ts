@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {DependencyEntity, ProjectEntity, VersionEntity} from '../services/grid.service';
+import {DependencyEntity, ProjectEntity, VersionEntity} from '../services/grid.models';
 
 @Component({
   selector: 'grid-content-versions',

@@ -1,5 +1,4 @@
-import {Component, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
-import {VersionStatus} from '../../services/grid.service';
+import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
   selector: 'grid-cell-background',

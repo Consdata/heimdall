@@ -2,48 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {DependencyEntity, GridViewEntity, ProjectEntity, VersionEntity, VersionStatus} from './grid.models';
 
-export enum VersionStatus {
-  VERYOLD, OLD, OK, GOOD
-}
-
-export interface GridViewEntity {
-  projectEntities: ProjectEntity[];
-  dependencyEntities: DependencyEntity[];
-  versionEntities: VersionEntity[];
-}
-
-export interface ProjectEntity {
-  projectId: number,
-  projectArtifact: string,
-  projectGroup: string,
-  projectVersionMajor: number,
-  projectVersionMinor: number,
-  projectVersionPatch: number,
-}
-
-export interface DependencyEntity {
-  dependencyId: number,
-  dependencyArtifact: string,
-  dependencyGroup: string,
-  dependencyScope: string,
-  dependencyLatestMajor: number,
-  dependencyLatestMinor: number,
-  dependencyLatestPatch: number,
-}
-
-export interface VersionEntity {
-  projectId: number,
-  dependencyId: number,
-  versionMajor: number,
-  versionMinor: number,
-  versionPatch: number,
-  status: VersionStatus,
-}
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GridService {
 
   constructor(private http: HttpClient) {
@@ -77,7 +38,7 @@ export class GridService {
     } else if (version.versionMajor === dependency.dependencyLatestMajor) {
       return VersionStatus.OLD;
     } else {
-      return VersionStatus.VERYOLD
+      return VersionStatus.VERY_OLD
     }
   }
 }

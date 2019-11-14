@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {VersionEntity, VersionStatus} from '../../services/grid.service';
+import {VersionEntity, VersionStatus} from '../../services/grid.models';
 
 @Component({
   selector: 'grid-cell-version',
@@ -32,7 +32,7 @@ export class GridCellVersionComponent implements OnInit {
   }
 
   setStatusInfo(): void {
-    if (this.version.status === VersionStatus.VERYOLD) {
+    if (this.version.status === VersionStatus.VERY_OLD) {
       this.versionClass = 'project-version-status-very-old';
       this.versionText = 'Very old';
     } else if (this.version.status === VersionStatus.OLD) {
