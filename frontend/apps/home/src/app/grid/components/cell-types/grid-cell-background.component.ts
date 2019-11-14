@@ -9,10 +9,10 @@ import {VersionStatus} from '../../services/grid.service';
     </div>
   `,
   styleUrls: [
-    'grid-cell-background.scss'
+    'grid-cell-background.component.scss'
   ]
 })
-export class GridCellBackground {
+export class GridCellBackgroundComponent {
 
   @HostBinding('style.grid-column-start')
   @Input() public column: number;

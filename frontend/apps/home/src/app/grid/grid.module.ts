@@ -1,25 +1,26 @@
 import {NgModule} from '@angular/core';
-import {GridView} from './components/grid-view';
-import {GridCellText} from './components/cell-types/grid-cell-text';
-import {GridContentVersions} from './components/grid-content-versions';
-import {GridCellVersion} from './components/cell-types/grid-cell-version';
-import {GridCellBackground} from './components/cell-types/grid-cell-background';
+
 import {BrowserModule} from '@angular/platform-browser';
+import {GridViewComponent} from './components/grid-view.component';
+import {GridCellTextComponent} from './components/cell-types/grid-cell-text.component';
+import {GridContentVersionsComponent} from './components/grid-content-versions.component';
+import {GridCellVersionComponent} from './components/cell-types/grid-cell-version.component';
+import {GridCellBackgroundComponent} from './components/cell-types/grid-cell-background.component';
 
 @NgModule({
   declarations: [
-    GridView,
-    GridCellText,
-    GridContentVersions,
-    GridCellVersion,
-    GridCellBackground,
+    GridViewComponent,
+    GridCellTextComponent,
+    GridContentVersionsComponent,
+    GridCellVersionComponent,
+    GridCellBackgroundComponent,
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
   exports: [
-    GridView
+    GridViewComponent
   ],
   bootstrap: []
 })

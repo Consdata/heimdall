@@ -9,10 +9,10 @@ import {VersionEntity, VersionStatus} from '../../services/grid.service';
     </div>
   `,
   styleUrls: [
-    'grid-cell-version.scss'
+    'grid-cell-version.component.scss'
   ]
 })
-export class GridCellVersion implements OnInit {
+export class GridCellVersionComponent implements OnInit {
 
   @HostBinding('style.grid-column-start')
   @Input() public column: number;

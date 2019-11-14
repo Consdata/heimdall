@@ -39,10 +39,10 @@ import {map} from "rxjs/operators";
       </div>
   `,
   styleUrls: [
-    'grid-view.scss'
+    'grid-view.component.scss'
   ]
 })
-export class GridView implements OnInit {
+export class GridViewComponent implements OnInit {
 
   public gridView: GridViewEntity;
 

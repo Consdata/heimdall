@@ -10,10 +10,10 @@ import {Component, Input} from '@angular/core';
     </div>
   `,
   styleUrls: [
-    'grid-cell-text.scss'
+    'grid-cell-text.component.scss'
   ]
 })
-export class GridCellText {
+export class GridCellTextComponent {
 
   @Input() mainText: string;
 
