@@ -1,5 +1,4 @@
-import {Component, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
-import {VersionStatus} from '../../services/grid.service';
+import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
   selector: 'grid-cell-background',
@@ -9,10 +8,10 @@ import {VersionStatus} from '../../services/grid.service';
     </div>
   `,
   styleUrls: [
-    'grid-cell-background.scss'
+    'grid-cell-background.component.scss'
   ]
 })
-export class GridCellBackground {
+export class GridCellBackgroundComponent {
 
   @HostBinding('style.grid-column-start')
   @Input() public column: number;

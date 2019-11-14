@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {VersionEntity, VersionStatus} from '../../services/grid.service';
+import {VersionEntity, VersionStatus} from '../../services/grid.models';
 
 @Component({
   selector: 'grid-cell-version',
@@ -9,10 +9,10 @@ import {VersionEntity, VersionStatus} from '../../services/grid.service';
     </div>
   `,
   styleUrls: [
-    'grid-cell-version.scss'
+    'grid-cell-version.component.scss'
   ]
 })
-export class GridCellVersion implements OnInit {
+export class GridCellVersionComponent implements OnInit {
 
   @HostBinding('style.grid-column-start')
   @Input() public column: number;
@@ -32,7 +32,7 @@ export class GridCellVersion implements OnInit {
   }
 
   setStatusInfo(): void {
-    if (this.version.status === VersionStatus.VERYOLD) {
+    if (this.version.status === VersionStatus.VERY_OLD) {
       this.versionClass = 'project-version-status-very-old';
       this.versionText = 'Very old';
     } else if (this.version.status === VersionStatus.OLD) {

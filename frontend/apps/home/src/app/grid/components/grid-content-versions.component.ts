@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {DependencyEntity, ProjectEntity, VersionEntity} from '../services/grid.service';
+import {DependencyEntity, ProjectEntity, VersionEntity} from '../services/grid.models';
 
 @Component({
   selector: 'grid-content-versions',
@@ -26,10 +26,10 @@ import {DependencyEntity, ProjectEntity, VersionEntity} from '../services/grid.s
       </div>
   `,
   styleUrls: [
-    'grid-content-versions.scss'
+    'grid-content-versions.component.scss'
   ]
 })
-export class GridContentVersions implements OnInit {
+export class GridContentVersionsComponent implements OnInit {
 
   @Input() columns: ProjectEntity[];
 
@@ -55,8 +55,8 @@ export class GridContentVersions implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gridTemplateColumnProperty = GridContentVersions.calculateColumnGridSize(this.columns.length);
-    this.gridTemplateRowProperty = GridContentVersions.calculateRowGridSize(this.rows.length);
+    this.gridTemplateColumnProperty = GridContentVersionsComponent.calculateColumnGridSize(this.columns.length);
+    this.gridTemplateRowProperty = GridContentVersionsComponent.calculateRowGridSize(this.rows.length);
   }
 
   getColumnNumberBasedOnId(version: VersionEntity): number {
