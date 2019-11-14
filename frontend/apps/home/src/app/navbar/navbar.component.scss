@@ -1,19 +1,25 @@
 @import "../../assets/styles/palette";
 @import "../../assets/styles/variables";
 
+$navbar-height: 40px;
+
 :host {
   color: $clouds-color;
+  display: block;
+  height: $navbar-height + 10px;
 
   .navbar-wrapper {
+    position: fixed;
+    z-index: 2000;
     background-color: $dark-midnight-blue-color;
     display: flex;
     width: 100%;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
-    height: 40px;
+    height: $navbar-height;
   }
 
   .navbar-logo {
-    min-width: 40px;
+    min-width: $navbar-height;
     padding: 0 4px;
     mask: url($img-dir + "logo.svg") center center no-repeat;
     mask-size: 40px 40px;
