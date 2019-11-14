@@ -1,8 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ViewState, ViewStateService} from './view-state.service';
 
-export enum ViewState {
-  GRID, CARDS
-}
 
 @Component({
   selector: 'view-switch',
@@ -24,18 +22,20 @@ export enum ViewState {
     'view-switch.scss'
   ]
 })
-export class ViewSwitch {
+export class ViewSwitch implements OnInit {
   @Input() viewState: ViewState = null;
-  @Output() viewStateEmitter = new EventEmitter<ViewState>();
+
+  constructor(private viewStateService: ViewStateService) {}
+
+  ngOnInit() {
+    this.viewStateService.currentState.subscribe(viewState => this.viewState = viewState)
+  }
 
   changeView(event: any): void {
     if (event.target.checked === true) {
-      this.viewState = ViewState.CARDS;
-      localStorage.setItem('viewMode', 'CARDS');
+      this.viewStateService.changeStateToCardsView()
     } else {
-      this.viewState = ViewState.GRID;
-      localStorage.setItem('viewMode', 'GRID');
+      this.viewStateService.changeStateToGridView()
     }
-    this.viewStateEmitter.emit(this.viewState);
   }
 }

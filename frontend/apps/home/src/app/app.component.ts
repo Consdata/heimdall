@@ -1,14 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ViewState} from './navbar/view-switch';
 import {animate, style, transition, trigger} from "@angular/animations";
+import {ViewState, ViewStateService} from './navbar/view-state.service';
 
 @Component({
   selector: 'hmd-root',
   template: `
       <navbar
-              (filterValueEmitter)="filterValue($event)"
-              (viewStateEmitter)="changeView($event)"
-              [currentViewState]="currentViewState">
+              (filterValueEmitter)="filterValue($event)">
       </navbar>
       <libraries-list
               *ngIf="isSelectedView(ViewState.CARDS)"
@@ -40,21 +38,14 @@ export class AppComponent implements OnInit {
   ViewState = ViewState;
   currentViewState: ViewState;
 
+  constructor(private viewStateService: ViewStateService) {}
+
   ngOnInit(): void {
-    let viewMode = localStorage.getItem('viewMode');
-    if (viewMode) {
-      this.currentViewState = ViewState[viewMode];
-    } else {
-      this.currentViewState = ViewState.CARDS;
-    }
+    this.viewStateService.currentState.subscribe(viewState => this.currentViewState = viewState)
   }
 
   filterValue(filter) {
     this.filter = filter;
-  }
-
-  changeView(event: ViewState): void {
-    this.currentViewState = event;
   }
 
   isSelectedView(view: ViewState): boolean {
