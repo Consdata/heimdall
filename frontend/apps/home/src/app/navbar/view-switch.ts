@@ -6,14 +6,14 @@ import {ViewState, ViewStateService} from './view-state.service';
   selector: 'view-switch',
   template: `
       <div class="view-switch-container">
-          <div class="view-switch-icon">
+          <div class="view-switch-icon" [hmdTooltip]='"Grid View"'>
               <div class="view-switch-icon-grid"></div>
           </div>
           <label class="view-switch-label">
               <input type="checkbox" (change)="changeView($event)" [attr.checked]="viewState ? '' : null">
               <span class="view-switch-slider-round"></span>
           </label>
-          <div class="view-switch-icon">
+          <div class="view-switch-icon" [hmdTooltip]='"Panel View"'>
               <div class="view-switch-icon-cards"></div>
           </div>
       </div>
