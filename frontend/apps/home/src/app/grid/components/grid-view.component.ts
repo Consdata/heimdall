@@ -5,7 +5,7 @@ import {DependencyEntity, GridViewEntity, ProjectEntity, VersionEntity} from '..
 @Component({
   selector: 'grid-view',
   template: `
-    <div class="grid-container">
+    <div class="grid-container" *ngIf="gridView">
       <div class="grid-top-row">
         <grid-cell-text></grid-cell-text>
         <grid-cell-text
