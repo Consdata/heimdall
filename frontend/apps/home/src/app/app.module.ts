@@ -12,6 +12,7 @@ import {HeimdallMonitorTrackingRestModule} from '@heimdall-frontend/heimdall/mon
 import {GridModule} from './grid/grid.module';
 import {ViewSwitch} from './navbar/view-switch';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TooltipModule} from "./tooltip/tooltip.module";
 
 @NgModule({
   declarations: [AppComponent,
@@ -27,7 +28,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     RestApiModule,
     RouterModule.forRoot([], {initialNavigation: 'enabled'}),
     HeimdallMonitorTrackingRestModule.forRoot(),
-    GridModule
+    GridModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

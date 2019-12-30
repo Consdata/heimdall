@@ -1,0 +1,13 @@
+@import "../../assets/styles/palette";
+
+:host {
+  display: block
+}
+
+div {
+  color: $clouds-color;
+  background-color: $darker-midnight-blue-color;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+}

@@ -4,8 +4,8 @@ import {Component, Input} from '@angular/core';
   selector: 'grid-cell-text',
   template: `
     <div class="grid-cell" [ngClass]="typeClass">
-        <div class="grid-cell-text grid-cell-main-text">{{mainText}}</div>
-        <div class="grid-cell-text grid-cell-major-description-text">{{majorDescription}}</div>
+        <div class="grid-cell-text grid-cell-main-text" [hmdTooltip]='mainText'>{{mainText}}</div>
+        <div class="grid-cell-text grid-cell-major-description-text" [hmdTooltip]='majorDescription'>{{majorDescription}}</div>
         <div class="grid-cell-text grid-cell-minor-description-text">{{minorDescription}}</div>
     </div>
   `,

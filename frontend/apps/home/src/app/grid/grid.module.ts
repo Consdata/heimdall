@@ -6,6 +6,7 @@ import {GridCellTextComponent} from './components/cell-types/grid-cell-text.comp
 import {GridContentVersionsComponent} from './components/grid-content-versions.component';
 import {GridCellVersionComponent} from './components/cell-types/grid-cell-version.component';
 import {GridCellBackgroundComponent} from './components/cell-types/grid-cell-background.component';
+import {TooltipModule} from "../tooltip/tooltip.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {GridCellBackgroundComponent} from './components/cell-types/grid-cell-bac
     GridCellBackgroundComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    TooltipModule
   ],
   providers: [],
   exports: [
