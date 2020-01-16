@@ -37,7 +37,7 @@ services:
     environment:
       - AXON_AXONSERVER_SERVERS=axonserver
       - APP_INSTANCE_UUID=8b26fbd665f7
-      - JAVA_XMX=384m
+      - JAVA_XMX=512m
     depends_on:
       - axonserver
   report:
