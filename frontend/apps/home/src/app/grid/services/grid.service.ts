@@ -7,11 +7,26 @@ import {DependencyEntity, GridViewEntity, ProjectEntity, VersionEntity, VersionS
 @Injectable()
 export class GridService {
 
+  readonly excluded: string[] = [
+    'eximee-console',
+    'eximee-console-form-starter',
+    'eximee-console-metadata-editor',
+    'eximee-console-repository-browser',
+    'eximee-console-model-mapper'];
+
   constructor(private http: HttpClient) {
   }
 
   getLibsGridView(): Observable<GridViewEntity> {
     return this.http.get<GridViewEntity>('api/monitor-tracking/v1/matrix').pipe(
+      map((grid: GridViewEntity) => {
+        let projectEntitis = grid.projectEntities.filter(projectEntity => { return !this.excluded.includes(projectEntity.projectArtifact)});
+        return {
+          dependencyEntities: grid.dependencyEntities,
+          versionEntities: grid.versionEntities,
+          projectEntities: projectEntitis
+        };
+      }),
       map(data => {
           for (let version of data.versionEntities) {
             let dependency = data.dependencyEntities.find(dependency => dependency.dependencyId === version.dependencyId);

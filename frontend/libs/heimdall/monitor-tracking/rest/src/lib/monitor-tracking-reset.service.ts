@@ -13,11 +13,21 @@ import {MonitorTrackingOverviewEntryDto} from './monitor-tracking-overview-entry
 @Injectable()
 export class MonitorTrackingResetService implements MonitorTrackingService {
 
+  readonly excluded: string[] = [
+    'eximee-console',
+    'eximee-console-form-starter',
+    'eximee-console-metadata-editor',
+    'eximee-console-repository-browser',
+    'eximee-console-model-mapper'];
+
   constructor(private http: HttpClient) {
   }
 
   overview(): Observable<MonitorTrackingOverview> {
     return this.http.get<MonitorTrackingOverviewEntryDto[]>('api/monitor-tracking/v1/overview').pipe(
+      map((dtos: MonitorTrackingOverviewEntryDto[]) => {
+        return dtos.filter(dto => {return !this.excluded.includes(dto.projectArtifact);});
+      }),
       map(result => result.map(item => this.mapItem(item)))
     )
   }
