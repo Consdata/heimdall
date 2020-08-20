@@ -7,6 +7,8 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'kotlin'
+apply plugin: 'kotlin-jpa'
+apply plugin: 'kotlin-allopen'
 
 sourceCompatibility = '1.8'
 
@@ -49,6 +51,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+allOpen {
+    annotation 'javax.persistence.Entity'
+    annotation 'javax.persistence.Embeddable'
+    annotation 'javax.persistence.MappedSuperclass'
 }
 
 compileKotlin {
