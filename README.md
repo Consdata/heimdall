@@ -38,6 +38,7 @@
 ## Building app
 
 ### Tag latst
+
 ```
 $ ./gradlew build
 $ docker-compose build
@@ -45,6 +46,7 @@ $ docker-compose push
 ```
 
 ### Specific tag
+
 ```
 $ ./gradlew build
 $ HEIMDALL_VERSION="0.1.10" docker-compose build
