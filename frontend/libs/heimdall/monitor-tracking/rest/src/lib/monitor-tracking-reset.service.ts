@@ -17,7 +17,7 @@ export class MonitorTrackingResetService implements MonitorTrackingService {
   }
 
   overview(): Observable<MonitorTrackingOverview> {
-    return this.http.get<MonitorTrackingOverviewEntryDto[]>('api/monitor-tracking/v1/overview').pipe(
+    return this.http.get<MonitorTrackingOverviewEntryDto[]>('api/v1/overview').pipe(
       map(result => result.map(item => this.mapItem(item)))
     )
   }

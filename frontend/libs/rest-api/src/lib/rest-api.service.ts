@@ -10,7 +10,7 @@ export class RestApiService {
   }
 
   reports$(): Observable<ReportDto> {
-    return this.httpClient.get<ReportDto>('/api/report-list/v1/report');
+    return this.httpClient.get<ReportDto>('api/v1/report');
   }
 
 }

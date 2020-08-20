@@ -13,58 +13,17 @@ services:
     ports:
       - "8200:80"
     depends_on:
-      - frontend
-      - monitor
-      - monitor-tracking
-      - report
-      - report-list
-      - dependency-list
+      - backend
   frontend:
     build: frontend
     image: consdata/heimdall-frontend:${HEIMDALL_VERSION:-latest}
-  monitor:
-    build: monitor
-    image: consdata/heimdall-monitor:${HEIMDALL_VERSION:-latest}
-    environment:
-      - AXON_AXONSERVER_SERVERS=axonserver
-      - APP_INSTANCE_UUID=f911507619ad
-      - JAVA_XMX=384m
-    depends_on:
-      - axonserver
-  monitor-tracking:
-    build: monitor-tracking
-    image: consdata/heimdall-monitor-tracking:${HEIMDALL_VERSION:-latest}
-    environment:
-      - AXON_AXONSERVER_SERVERS=axonserver
-      - APP_INSTANCE_UUID=8b26fbd665f7
-      - JAVA_XMX=512m
-    depends_on:
-      - axonserver
-  report:
-    build: report
-    image: consdata/heimdall-report:${HEIMDALL_VERSION:-latest}
+  backend:
+    build: backend
+    image: consdata/heimdall-backend:${HEIMDALL_VERSION:-latest}
     environment:
       - AXON_AXONSERVER_SERVERS=axonserver
       - APP_INSTANCE_UUID=7a784ff31438
-      - JAVA_XMX=384m
-    depends_on:
-      - axonserver
-  report-list:
-    build: report-list
-    image: consdata/heimdall-report-list:${HEIMDALL_VERSION:-latest}
-    environment:
-      - AXON_AXONSERVER_SERVERS=axonserver
-      - APP_INSTANCE_UUID=281eaa492d17
-      - JAVA_XMX=384m
-    depends_on:
-      - axonserver
-  dependency-list:
-    build: dependency-list
-    image: consdata/heimdall-dependency-list:${HEIMDALL_VERSION:-latest}
-    environment:
-      - AXON_AXONSERVER_SERVERS=axonserver
-      - APP_INSTANCE_UUID=549a220eba75
-      - JAVA_XMX=384m
+      - JAVA_XMX=512m
     depends_on:
       - axonserver
 volumes:

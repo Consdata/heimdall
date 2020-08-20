@@ -11,7 +11,7 @@ export class GridService {
   }
 
   getLibsGridView(): Observable<GridViewEntity> {
-    return this.http.get<GridViewEntity>('api/monitor-tracking/v1/matrix').pipe(
+    return this.http.get<GridViewEntity>('api/v1/matrix').pipe(
       map(data => {
           for (let version of data.versionEntities) {
             let dependency = data.dependencyEntities.find(dependency => dependency.dependencyId === version.dependencyId);
