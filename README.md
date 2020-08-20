@@ -5,7 +5,7 @@
 ## Running app
 
 - Start Axon Server
-- Start modules if needed
+- Start backend if needed
 - Start frontend if needed
 
 ### Running Axon Server
@@ -19,29 +19,21 @@
 
 - $ docker run -d --name axonserver -p 8024:8024 -p 8124:8124 axoniq/axonserver
 
-### Running app modules
-
-You can run any number of modules, neither is required to run others.
+### Running app backend
 
 #### Local via Intellij
-- Start services via Intellij configs.
-- $ yarn start --proxy-config proxy.local.dev.conf.json
-- Open: http://localhost:4200/
+- Start service via Intellij config.
+- Start frontend with proxy: `$ yarn start --proxy-config proxy.local.dev.conf.json`
+- Open: `http://localhost:4200/`
 
 #### Local via docker-compose
-- $ docker-compose up
-- $ yarn start --proxy-config proxy.local.compose.conf.json
-- Open: http://localhost:4200/
+- Start app as docker: `$ docker-compose up`
+- Start frontend with proxy: `$ yarn start --proxy-config proxy.local.compose.conf.json`
+- Open: `http://localhost:4200/`
 
 #### Build via docker-compose
-- $ docker-compose up
-- Open: http://localhost:8200/
-
-#### Build via k8s
-- Create ingress.yaml based on ingress.yaml.tpl (change hostname to virtual host pointing k8s)
-  - (alt) $ HOSTNAME="heimdall.k8s.lan" envsubst < k8s/ingress.yaml.tpl | kubectl apply -f -
-- $ kubectl apply -f k8s
-- Open: virtual host from ingress.yaml
+- Start app as docker `$ docker-compose up`
+- Open: `http://localhost:8200/`
 
 ## Building app
 
@@ -64,7 +56,7 @@ $ HEIMDALL_VERSION="0.1.10" docker-compose push
 ### Send dependency report
 
 ```bash
-npx @consdata/heimdall-scanner npm|maven | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8081/report
+npx @consdata/heimdall-scanner npm|maven | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8080/report
 ```
 ```bash
 npx @consdata/heimdall-scanner npm|maven | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8200/api/report/v1/report
@@ -73,7 +65,7 @@ npx @consdata/heimdall-scanner npm|maven | curl -H "Content-Type: application/js
 ### Mark dependency as tracked
 
 ```bash
-curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "artifact": "core", "scope": "Npm" }' http://localhost:8083/monitor/tracking
+curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "artifact": "core", "scope": "Npm" }' http://localhost:8080/monitor/tracking
 ```
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "artifact": "core", "scope": "Npm" }' http://localhost:8200/api/monitor/v1/monitor/tracking
@@ -82,7 +74,7 @@ curl -H "Content-Type: application/json" -X POST -d '{ "group": "@angular", "art
 ### Search for dependencies
 
 ```bash
-curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://localhost:8085/
+curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://localhost:8080/
 ```
 ```bash
 curl -H "Content-Type: application/json" -d '{"query": "angular core"}' http://localhost:8200/api/dependency-list/v1/
