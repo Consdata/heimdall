@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "heimdall2": "apps/heimdall2",
+    "heimdall2-e2e": "apps/heimdall2-e2e"
+  }
+}

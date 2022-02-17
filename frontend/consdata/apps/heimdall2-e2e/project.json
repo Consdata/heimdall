@@ -1,0 +1,28 @@
+{
+  "root": "apps/heimdall2-e2e",
+  "sourceRoot": "apps/heimdall2-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/heimdall2-e2e/cypress.json",
+        "devServerTarget": "heimdall2:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "heimdall2:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/heimdall2-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["heimdall2"]
+}
