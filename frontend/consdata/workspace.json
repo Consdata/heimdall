@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "feature-dependency-table": "libs/feature-dependency-table",
+    "feature-dependency-table-cell": "libs/feature-dependency-table-cell",
     "heimdall2": "apps/heimdall2",
     "heimdall2-e2e": "apps/heimdall2-e2e"
   }

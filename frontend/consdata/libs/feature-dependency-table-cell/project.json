@@ -1,0 +1,23 @@
+{
+  "root": "libs/feature-dependency-table-cell",
+  "sourceRoot": "libs/feature-dependency-table-cell/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/feature-dependency-table-cell/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/feature-dependency-table-cell"],
+      "options": {
+        "jestConfig": "libs/feature-dependency-table-cell/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
