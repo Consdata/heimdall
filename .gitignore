@@ -1,7 +1,7 @@
 HELP.md
 
 # IDEs and editors
-.idea/*
+.idea/
 !.idea/runConfigurations
 .project
 .classpath
