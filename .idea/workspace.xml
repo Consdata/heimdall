@@ -6,56 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f2647d6-ed57-437d-91b3-d5a5e088ca7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/apps/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/cypress.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/cypress.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/project.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/fixtures/example.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/src/fixtures/example.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/integration/app.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/src/integration/app.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/support/app.po.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/src/support/app.po.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/support/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/src/support/commands.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/support/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/src/support/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0-e2e/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/.babelrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/.browserslistrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/.browserslistrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/jest.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/project.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/app.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/app/app.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/app.spec.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/app/app.spec.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/app/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/nx-welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/app/nx-welcome.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/assets/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/assets/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/environments/environment.prod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/polyfills.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/src/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/apps/heimdall2.0/tsconfig.spec.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/heimdall2.0/tsconfig.spec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/babel.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/jest.preset.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.preset.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/libs/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/libs/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/nx.json" beforeDir="false" afterPath="$PROJECT_DIR$/nx.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/tools/generators/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/tools/generators/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/tools/tsconfig.tools.json" beforeDir="false" afterPath="$PROJECT_DIR$/tools/tsconfig.tools.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/tsconfig.base.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consdata/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/workspace.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
