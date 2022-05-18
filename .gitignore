@@ -1,7 +1,34 @@
 HELP.md
 
+# gradle
+.gradle
+build/
+.build
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
+.gradletasknamecache
+
+# compiled output
+dist
+tmp
+out-tsc
+out
+
+# dependencies
+/node_modules
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
 # IDEs and editors
-.idea/
+.idea/*
 !.idea/runConfigurations
 .project
 .classpath
@@ -14,3 +41,43 @@ HELP.md
 *.ipr
 out/
 .vscode/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+*.mv.db
+
+# Node
+node_modules
+
+# Axon Server
+AxonServer/
+data/
+*.trace.db
+
+# kubernetes
+ingress.yaml
