@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "heimdall2.0": "apps/heimdall2.0",
+    "heimdall2.0-e2e": "apps/heimdall2.0-e2e"
+  }
+}

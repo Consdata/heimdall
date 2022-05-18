@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4f2647d6-ed57-437d-91b3-d5a5e088ca7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/project.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/project.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/main.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/jest.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/jest.preset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/consdata/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/HeimdallApplication.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/dependnecies/DependencyEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/dependnecies/DependencyListController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/dependnecies/DependencyListProjection.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/dependnecies/DependencyRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/dependnecies/DependencySearchService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/dependnecies/SearchRequest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/logging/Logging.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/ArtifactScope.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/DependencyTrackingAdded.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/ProjectMatrixProjection.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/ProjectOverviewProjection.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/add/AddDependencyTrackingController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/add/AddDependencyTrackingDto.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixDependencyEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixDependencyRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixDto.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixProjectEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixProjectRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixVersionEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/matrix/DependencyMatrixVersionRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/AddDependencyTrackingCommand.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/DependencyOverview.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/DependencyOverviewController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/DependencyOverviewDto.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/DependencyOverviewEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/DependencyOverviewRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/DependencyOverviewService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/DependencyTracking.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/overview/TrackingStatus.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/project/ProjectEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/project/ProjectRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/tracking/TrackedDependencyEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/monitor/tracking/TrackedDependencyRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/projections/ApplicationInstanceUuid.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/projections/EnvironmentApplicationInstanceUuid.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/projections/MultiNodeProjection.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/projections/MultiNodeProjectionConfiguration.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/ArtifactReport.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/ReportAddedEvent.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/ReportAddedEventV2Upcast.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/add/AddReportController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/add/AddReportDto.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/add/AddReportDtoToArtifactReportParser.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/add/DefaultReportDtoParser.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/add/ReportDtoParser.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/list/ReportListController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/list/ReportListDto.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/list/ReportListEntity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/list/ReportListProjection.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/list/ReportListRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/report/AddReportCommand.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/report/report/Report.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/kotlin/com/consdata/heimdall/monitor/project/ProjectEntityTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/kotlin/com/consdata/heimdall/monitor/tracking/TrackedDependencyEntityTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/kotlin/com/consdata/heimdall/report/add/ArtifactVersionParserTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/kotlin/com/consdata/heimdall/report/list/ReportListProjectionItTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/resources/application-test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/basic-architecture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/.prettierignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/assets/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/cypress.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/cypress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/project.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/src/fixtures/example.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/fixtures/example.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/src/integration/app.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/integration/app.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/src/support/app.po.ts" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/support/app.po.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/src/support/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/support/commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/src/support/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/src/support/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2-e2e/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0-e2e/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/.browserslistrc" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/.browserslistrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/jest.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/project.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/app/app.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/app.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/app/app.spec.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/app.spec.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/app/nx-welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/app/nx-welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/assets/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/libs/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/apps/heimdall2/tsconfig.spec.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/apps/heimdall2.0/tsconfig.spec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/babel.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/babel.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/jest.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/jest.preset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/libs/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/tools/generators/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/nx.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/nx.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/tools/generators/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/tools/tsconfig.tools.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/tools/tsconfig.tools.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/tsconfig.base.json" beforeDir="false" afterPath="$PROJECT_DIR$/consdata/tsconfig.base.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/consdata/workspace.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/compress.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/maven-dependency-tree-parser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/maven-scanner.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/npm-scanner.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/package-file.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/parser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/pom-parser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/run.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/scanner.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/util.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/src/yarn-lock-parser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/heimdall-scanner/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="heimdall" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="ICL-5435" />
+                    <option name="lastUsedInstant" value="1645087591" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1645087590" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1oYqKLPWb35lBWc9cr7ko3UNOrV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="heimdall.backend.test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="heimdall.backend.test" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HeimdallApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="heimdall.backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.consdata.heimdall.HeimdallApplication" />
+      <option name="VM_PARAMETERS" value="-Xmx64m" />
+      <option name="PROGRAM_PARAMETERS" value="app.instance.uuid=&quot;1&quot;" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Dockerfile: Compose Deployment" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.Dockerfile: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f2647d6-ed57-437d-91b3-d5a5e088ca7f" name="Default Changelist" comment="" />
+      <created>1613473807048</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613473807048</updated>
+      <workItem from="1613473809471" duration="1186000" />
+      <workItem from="1613475913685" duration="7050000" />
+      <workItem from="1615387427231" duration="26000" />
+      <workItem from="1617113738721" duration="3686000" />
+      <workItem from="1623144488107" duration="20000" />
+      <workItem from="1623260186633" duration="894000" />
+      <workItem from="1623751079680" duration="25000" />
+      <workItem from="1624430486027" duration="1549000" />
+      <workItem from="1645085937640" duration="2977000" />
+      <workItem from="1652779272424" duration="198000" />
+      <workItem from="1652866210261" duration="6368000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/backend/src/main/kotlin/com/consdata/heimdall/HeimdallApplication.kt</url>
+          <line>13</line>
+          <properties class="com.consdata.heimdall.HeimdallApplication" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
