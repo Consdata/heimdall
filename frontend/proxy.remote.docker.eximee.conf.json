@@ -1,6 +1,0 @@
-{
-  "/api": {
-    "target": "http://docker.eximee:8200/",
-    "secure": false
-  }
-}
