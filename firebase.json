@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/apps/heimdall2.0",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
