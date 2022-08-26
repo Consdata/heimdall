@@ -1,5 +1,7 @@
 import {initializeApp} from 'firebase/app';
-import {getDatabase, onValue, ref} from 'firebase/database';
+import {getAuth, connectAuthEmulator} from 'firebase/auth';
+import {getDatabase, onValue, ref, connectDatabaseEmulator} from 'firebase/database';
+import {environment} from "../environments/environment";
 
 export const App = () => (
   <>
@@ -22,8 +24,19 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app)
 const db = getDatabase(app);
-const starCountRef = ref(db, 'projects/');
+
+if(environment.runEmulators) {
+  connectAuthEmulator(auth, "http://localhost:9099");
+  connectDatabaseEmulator(db, "localhost", 9005);
+}
+
+
+const starCountRef = ref(db, '/projects');
+
 onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
+  console.log("Data", data);
 });
