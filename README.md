@@ -92,3 +92,35 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+## Firebase
+
+### Login and switch users
+```
+node_modules/.bin/firebase login 
+node_modules/.bin/firebase login:add another@acoount.com 
+node_modules/.bin/firebase login:use another@acoount.com
+```
+
+### Init and running emulators
+```
+node_modules/.bin/firebase init emulators
+node_modules/.bin/firebase emulators:start
+```
+
+### Channels
+
+```
+# Init
+node_modules/.bin/firebase init hosting:github
+
+# List of open channels
+.\node_modules\.bin\firebase hosting:channel:list
+
+# Manually deploy to preview channels
+
+.\node_modules\.bin\firebase hosting:channel:deploy new-awesome-branch --expires 7d
+
+# Delete channels
+.\node_modules\.bin\firebase hosting:channel:delete new-awesome-branch
+```
